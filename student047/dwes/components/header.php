@@ -32,10 +32,17 @@ $root = '/student047/dwes/';
         margin: 0;
     }
 
+    .display-1,
+    .display-2,
+    .display-3,
+    .display-4,
+    .display-5 {
+        font-weight: 500;
+    }
+
     .navbar {
         background-color: rgba(255, 255, 255, 0.61) !important;
-        backdrop-filter: blur(35px) !important;
-        border-bottom: 1px solid white !important;
+        backdrop-filter: blur(20px) !important;
     }
 
     code {
