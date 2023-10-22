@@ -1,3 +1,6 @@
-# Proyecto Hotel PHP de DAW
+# Proyecto Hotel PHP de DAW - Internazionale
 
-Proyecto de Hotel con PHP de clase.
+![Alt text](image.png)
+*Página de inicio*
+
+Este es un proyecto hecho con PHP de clase.
