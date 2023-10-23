@@ -32,6 +32,10 @@ $root = '/student047/dwes/';
         margin: 0;
     }
 
+    :root {
+        color-scheme: light dark;
+    }
+
     .display-1,
     .display-2,
     .display-3,
@@ -107,7 +111,7 @@ $root = '/student047/dwes/';
                     </li>
                     <!-- TODO hacer inicio de sesión -->
                     <li class="nav-item">
-                        <a class="btn btn-primary disabled" role="button" href=<?php echo '"' . $root . '/forms/form_select_reservations.php' . '"'; ?>>Iniciar Sesión</a>
+                        <a class="btn btn-primary" role="button" href=<?php echo '"' . $root . '/forms/form_customer_login.php' . '"'; ?>>Iniciar Sesión</a>
                     </li>
                 </ul>
             </div> 
