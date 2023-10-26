@@ -18,7 +18,6 @@ $root = '/student047/dwes/';
 </head>
 
 <style>
-
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
     * {
@@ -52,7 +51,6 @@ $root = '/student047/dwes/';
     code {
         font-family: monospace !important;
     }
-
 </style>
 
 <body>
@@ -114,6 +112,6 @@ $root = '/student047/dwes/';
                         <a class="btn btn-primary" role="button" href=<?php echo '"' . $root . '/forms/form_customer_login.php' . '"'; ?>>Iniciar Sesión</a>
                     </li>
                 </ul>
-            </div> 
+            </div>
         </div>
     </nav>

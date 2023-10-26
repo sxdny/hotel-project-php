@@ -22,6 +22,8 @@ $root = '/student047/dwes/';
             <input type="password" class="form-control" name="passwd" aria-describedby="passwd" required>
         </div>
 
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+
         <p>No tienes usuario? <a href="#">Registrarse </a></p>
 
     </form>
