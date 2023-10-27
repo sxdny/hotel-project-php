@@ -42,7 +42,7 @@ mysqli_close($conn);
         </div>
         <div class="mb-3">
             <label class="form-label">DNI / NIF / NIE</label>
-            <input type="text" class="form-control" name="dni" aria-describedby="dni" value=<?php echo "'" . $client['DNI'] . "'" ?> required>
+            <input type="text" class="form-control" name="dni" aria-describedby="dni" value=<?php echo "'" . $client['DNI'] . "'" ?> required maxlength="9">
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label>
@@ -53,15 +53,15 @@ mysqli_close($conn);
             <input type="number" class="form-control" name="telefono" aria-describedby="telefono" value=<?php echo "'" . $client['telefono'] . "'" ?> required>
         </div>
 
-        <input type="number" hidden value=<?php echo "'".$client['id']."'"?> name="client-id">
+        <input type="number" hidden value=<?php echo "'" . $client['id'] . "'" ?> name="client-id">
 
         <div class="mb-3 d-flex flex-column">
             <label class="form-label">Método de pago</label>
-            <?php 
+            <?php
 
-            if($client['metodo_pago'] == 'tarjeta' || $client['metodo_pago'] == 'Tarjeta' || $client['metodo_pago'] == 'Transferencia') {
-                echo 
-                '
+            if ($client['metodo_pago'] == 'tarjeta' || $client['metodo_pago'] == 'Tarjeta' || $client['metodo_pago'] == 'Transferencia') {
+                echo
+                    '
                 <select class="form-label form-select" name="metodo-de-pago">
                     <option selected value="tarjeta">Tarjeta</option>
                     <option value="paypal">PayPal</option>
@@ -69,9 +69,9 @@ mysqli_close($conn);
                 </select>
                 ';
             }
-            if($client['metodo_pago'] == 'paypal'|| $client['metodo_pago'] == 'PayPal') {
-                echo 
-                '
+            if ($client['metodo_pago'] == 'paypal' || $client['metodo_pago'] == 'PayPal') {
+                echo
+                    '
                 <select class="form-label form-select" name="metodo-de-pago">
                     <option value="tarjeta">Tarjeta</option>
                     <option selected value="paypal">PayPal</option>
@@ -79,9 +79,9 @@ mysqli_close($conn);
                 </select>
                 ';
             }
-            if($client['metodo_pago'] == 'efectivo' || $client['metodo_pago'] == 'Efectivo') {
-                echo 
-                '
+            if ($client['metodo_pago'] == 'efectivo' || $client['metodo_pago'] == 'Efectivo') {
+                echo
+                    '
                 <select class="form-label form-select" name="metodo-de-pago">
                     <option value="tarjeta">Tarjeta</option>
                     <option value="paypal">PayPal</option>
