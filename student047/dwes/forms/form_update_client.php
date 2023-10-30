@@ -1,6 +1,5 @@
 <?php
 
-# TODO hacer que esto también funciones con los includes?
 $root = '/student047/dwes/';
 
 // credenciales para el acceso a la base de datos
@@ -91,6 +90,16 @@ mysqli_close($conn);
             }
             ?>
         </div>
+        <div class="mb-3">
+            <label class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" name="username" aria-describedby="username" value=<?php echo "'" . $client['username'] . "'" ?> required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            <input type="password" class="form-control" name="passwd" aria-describedby="passwd" value=<?php echo "'" . $client['passwd'] . "'" ?> required>
+        </div>
+        <!-- TODO hacer que se pueda cambiar la foto de pfp -->
+        
 
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>

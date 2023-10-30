@@ -51,7 +51,7 @@ mysqli_close($conn);
 
     <div class="info">
         <?php
-            // mostrar info filtrado
+        // mostrar info filtrado
         ?>
     </div>
 
@@ -62,7 +62,7 @@ mysqli_close($conn);
             echo '
             <form class="col" action="form_update_client.php" method="POST">
             <div class="card" style="min-width: 16rem;">
-                <img src="../images/asap_rocky.jpg" class="card-img-top img-fluid" alt="Preview habitación.">
+                <img src="../' . $client['pfp'] . '" class="card-img-top img-fluid" alt="Preview habitación.">
                 <div class="card-body">
                     <h5 class="card-title">' . $client['nombre'] . '</h5>
                     <p class="card-text">' . $client['email'] . '</p>
@@ -76,7 +76,7 @@ mysqli_close($conn);
                     
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Editar</button>
-                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal'.$client['id'].'">
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal' . $client['id'] . '">
                             Eliminar
                         </button>
                     </div>
@@ -87,7 +87,7 @@ mysqli_close($conn);
             </form>
             <!-- Modal -->
             <!-- Generar un modal para cada cliente -->
-                    <div class="modal fade" id="exampleModal'.$client['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal' . $client['id'] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <form class="modal-dialog-centered"action="../db/db_client_delete.php" method="POST">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -96,7 +96,7 @@ mysqli_close($conn);
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ¿Estás seguro que deseas eliminar a <b>'.$client['nombre'].'</b>?
+                                    ¿Estás seguro que deseas eliminar a <b>' . $client['nombre'] . '</b>?
                                     El cliente ya no podrá entrar a su cuenta de usuario para realizar acciones.
                                 </div>
                                 <input type="text" hidden value="' . $client['id'] . '" name="client-id">

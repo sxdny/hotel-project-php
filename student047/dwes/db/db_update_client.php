@@ -9,6 +9,8 @@ $email = $_POST['email'];
 $telefono = $_POST['telefono'];
 $client_id = $_POST['client-id'];
 $metodo_de_pago = $_POST['metodo-de-pago'];
+$username = $_POST['username'];
+$passwd = $_POST['passwd'];
 
 // credenciales acceso base de datos
 $server = "localhost";
@@ -30,8 +32,11 @@ $sql =
         DNI = '". $dni. "',
         email = '". $email . "',
         telefono = ". $telefono . ",
-        metodo_pago = '". $metodo_de_pago . "'
+        metodo_pago = '". $metodo_de_pago . "',
+        username = '" .$username . "',
+        passwd = '" . $passwd . "'
     WHERE id = ".$client_id .";";
+
 ?>
 
 <?php include('../components/header.php') ?>
