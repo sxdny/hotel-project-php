@@ -21,7 +21,7 @@ if (!$conn) {
 
 // buscar el cliente con la password
 $sql =
-    "SELECT id FROM clientes
+    "SELECT * FROM clientes
     WHERE username ='" . $username . "' AND passwd = '" . $passwd . "';";
 $result = mysqli_query($conn, $sql);
 $id = mysqli_fetch_all($result, MYSQLI_ASSOC);

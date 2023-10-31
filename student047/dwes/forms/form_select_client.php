@@ -62,7 +62,7 @@ mysqli_close($conn);
             echo '
             <form class="col" action="form_update_client.php" method="POST">
             <div class="card" style="min-width: 16rem;">
-                <img src="../' . $client['pfp'] . '" class="card-img-top img-fluid" alt="Preview habitación.">
+                <img src="../' . $client['pfp'] . '" class="card-img-top" alt="Preview habitación.">
                 <div class="card-body">
                     <h5 class="card-title">' . $client['nombre'] . '</h5>
                     <p class="card-text">' . $client['email'] . '</p>

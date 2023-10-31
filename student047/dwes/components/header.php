@@ -11,7 +11,6 @@ $root = '/student047/dwes/';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- TODO cambiar título dependiendo de donde estemos -->
     <title>Internazionale</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -51,6 +50,20 @@ $root = '/student047/dwes/';
     code {
         font-family: monospace !important;
     }
+
+    .logo-text {
+        font-weight: 500;
+        font-size: 1.4rem;
+        text-decoration: none;
+        color: black;
+    }
+
+    .welcome-text {
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: none;
+        color: black;
+    }
 </style>
 
 <body>
@@ -58,7 +71,10 @@ $root = '/student047/dwes/';
     <!-- navbar menu -->
     <nav class="navbar fixed-top navbar-expand-lg bg-light px-4">
         <div class="container-fluid">
-            <a class="navbar-brand" href=<?php echo '"' . $root . 'index.php' . '"'; ?>>Internazionale</a>
+            <div class="d-flex align-content-center text-center justify-content-around gap-3 align-items-center">
+                <a class="logo-text" href=<?php echo '"' . $root . 'index.php' . '"'; ?>>Internazionale</a>
+                <a class="welcome-text">Bienvenido Paco</a>
+            </div>
 
             <!-- navigation button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -70,7 +86,6 @@ $root = '/student047/dwes/';
             <div class="collapse justify-content-end navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav gap-2">
 
-                    <!-- TODO juntar los dropdownd con los droprights (hacerlo todo junto) -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -88,7 +103,6 @@ $root = '/student047/dwes/';
                             aria-expanded="false">
                             Habitaciones (Admin)
                         </a>
-                        <!-- TODO hacer apartado Editar -->
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_insert_room.php' . '"'; ?>>Insertar</a></li>
 
@@ -103,11 +117,9 @@ $root = '/student047/dwes/';
                     <li class="nav-item">
                         <a class="nav-link" href=<?php echo '"' . $root . '/forms/form_select_reservations.php' . '"'; ?>>Reservar</a>
                     </li>
-                    <!-- TODO hacer dropdown con varios links directos -->
                     <li class="nav-item">
                         <a class="nav-link" href=<?php echo '"' . $root . '/manuals/help.php' . '"'; ?>>Ayuda</a>
                     </li>
-                    <!-- TODO hacer inicio de sesión -->
                     <li class="nav-item">
                         <a class="btn btn-primary" role="button" href=<?php echo '"' . $root . '/forms/form_customer_login.php' . '"'; ?>>Iniciar Sesión</a>
                     </li>
