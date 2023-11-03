@@ -109,13 +109,9 @@ session_start();
                             Habitaciones (Admin)
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_insert_room.php' . '"'; ?>>Insertar</a></li>
+                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_insert_room.php' . '"'; ?>>Nueba habitación</a></li>
 
-                            <li><a class="dropdown-item disabled" href="#" disabled>Editar</a></li>
-
-                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_select_room.php' . '"'; ?>>Ver</a></li>
-
-                            <li><a class="dropdown-item disabled" href="#">Borrar / ocultar</a></li>
+                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_select_room.php' . '"'; ?>>Editar habitaciones</a></li>
 
                         </ul>
                     </li>
@@ -130,11 +126,11 @@ session_start();
                             '
                             <li class="nav-item dropdown">
                                 <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="rounded-circle" src="/student047/dwes/'.$_SESSION["cliente"]["pfp"] .'" width="40" height="40"
+                                    <img class="rounded-circle" src="/student047/dwes/' . $_SESSION["cliente"]["pfp"] . '" width="40" height="40"
                                 </a>
                                 <ul class="dropdown-menu pfp-nav">
                                     <li>
-                                        <a class="dropdown-item" href="'. $root . '/forms/form_insert_client.php">Perfil</a>
+                                        <a class="dropdown-item" href="' . $root . '/forms/form_insert_client.php">Perfil</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item text-danger" href="' . $root . '/db/db_logout.php">Cerrar sesión</a>

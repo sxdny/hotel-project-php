@@ -56,7 +56,6 @@ mysqli_close($conn);
     </div>
 
     <div class="container-fluid my-5 d-flex row gap-3">
-        <!-- Mostrar cada una de las habitaciones disponibles. -->
         <?php
         foreach ($clients as $client) {
             echo '
