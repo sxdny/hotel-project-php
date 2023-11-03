@@ -3,10 +3,12 @@
 // directorio root para enlaces
 $root = '/student047/dwes/';
 
+session_start();
+
 ?>
 
 <!doctype html>
-<html lang="es" data-bs-theme="light">
+<html lang="es" data-bs-theme="auto">
 
 <head>
     <meta charset="utf-8">
@@ -64,6 +66,11 @@ $root = '/student047/dwes/';
         text-decoration: none;
         color: black;
     }
+
+    .pfp-nav {
+        transform: translate(-120px);
+        margin-top: 0.6rem !important;
+    }
 </style>
 
 <body>
@@ -73,7 +80,6 @@ $root = '/student047/dwes/';
         <div class="container-fluid">
             <div class="d-flex align-content-center text-center justify-content-around gap-3 align-items-center">
                 <a class="logo-text" href=<?php echo '"' . $root . 'index.php' . '"'; ?>>Internazionale</a>
-                <a class="welcome-text">Bienvenido Paco</a>
             </div>
 
             <!-- navigation button -->
@@ -85,7 +91,6 @@ $root = '/student047/dwes/';
             <!-- menu items -->
             <div class="collapse justify-content-end navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav gap-2">
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -115,14 +120,39 @@ $root = '/student047/dwes/';
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=<?php echo '"' . $root . '/forms/form_select_reservations.php' . '"'; ?>>Reservar</a>
+                        <a class="nav-link" href="/student047/dwes/forms/form_select_reservations.php">Reservar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=<?php echo '"' . $root . '/manuals/help.php' . '"'; ?>>Ayuda</a>
+                        <a class="nav-link" href="/student047/dwes/manuals/help.php">Ayuda</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" role="button" href=<?php echo '"' . $root . '/forms/form_customer_login.php' . '"'; ?>>Iniciar Sesión</a>
-                    </li>
+                    <?php if (isset($_SESSION["cliente"])) {
+                        echo
+                            '
+                            <li class="nav-item dropdown">
+                                <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img class="rounded-circle" src="/student047/dwes/'.$_SESSION["cliente"]["pfp"] .'" width="40" height="40"
+                                </a>
+                                <ul class="dropdown-menu pfp-nav">
+                                    <li>
+                                        <a class="dropdown-item" href="'. $root . '/forms/form_insert_client.php">Perfil</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-danger" href="' . $root . '/db/db_logout.php">Cerrar sesión</a>
+                                    </li> 
+                                </ul>
+                            </li>
+                            '
+                        ;
+                    } else {
+                        echo
+                            '
+                                <li class="nav-item dropdown">
+                                    <a class="btn btn-primary" role="button" href="'
+                            . $root . '/forms/form_customer_login.php">Iniciar Sesión</a>
+                                </li>    
+                                '
+                        ;
+                    } ?>
                 </ul>
             </div>
         </div>

@@ -8,6 +8,10 @@ $root = '/student047/dwes/';
 <!-- Aquí va el form -->
 <section class="container-fluid mt-5 p-5">
 
+    <div class="d-flex flex-column text-center">
+        <h1 class="display-5">¡Bienvenido de nuevo!</h1>
+    </div>
+
     <h2> Iniciar Sesión </h2>
 
     <form action="../db/db_customer_login.php" method="post">
@@ -24,7 +28,7 @@ $root = '/student047/dwes/';
 
         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
 
-        <p>No tienes usuario? <a href="#">Registrarse </a></p>
+        <p class="mt-3">No tienes usuario? <a href="#">Registrarse </a></p>
 
     </form>
 

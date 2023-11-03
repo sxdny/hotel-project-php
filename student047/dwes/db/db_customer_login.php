@@ -24,30 +24,12 @@ $sql =
     "SELECT * FROM clientes
     WHERE username ='" . $username . "' AND passwd = '" . $passwd . "';";
 $result = mysqli_query($conn, $sql);
-$id = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$clientes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 session_start();
 
-$_SESSION["username"] = $id[0];
-
+$_SESSION["cliente"] = $clientes[0];
 ?>
 
-<?php include('../components/header.php') ?>
-<div class="m-5 pt-5">
-
-    <?php
-    echo "Información del usuario <br>";
-    print_r($id[0]);
-    echo "SESSION VARIABLE: <br>:";
-    print_r($_SESSION["username"]);
-    ?>
-
-    <a class="btn btn-primary" href=<?php echo '"' . $root . '/index.php' . '"'; ?>>Inicio</a>
-
-    <a class="btn btn-primary" href=<?php echo '"' . $root . '/forms/form_select_client.php' . '"'; ?>>Ver clientes</a>
-
-    <a class="btn btn-primary" href=<?php echo '"' . $root . '/forms/form_insert_client.php' . '"'; ?>>Volver a
-        INSERTAR</a>
-
-</div>
-<?php include('../components/footer.php') ?>
+<!-- No debe haber nada aqui para que esto funcione -->
+<?php header('Location: /student047/dwes/index.php'); ?>
