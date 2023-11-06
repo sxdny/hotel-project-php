@@ -130,7 +130,7 @@ session_start();
                                 </a>
                                 <ul class="dropdown-menu pfp-nav">
                                     <li>
-                                        <a class="dropdown-item" href="' . $root . '/forms/form_insert_client.php">Perfil</a>
+                                        <a class="dropdown-item disabled" href="' . $root . '/forms/form_insert_client.php">Perfil</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item text-danger" href="' . $root . '/db/db_logout.php">Cerrar sesión</a>

@@ -30,58 +30,37 @@ mysqli_close($conn);
 
 <?php include('../components/header.php') ?>
 
-<section class="container-fluid my-5 d-flex row gap-3 justify-content-center">
+<section class="container-fluid my-5 pt-5 d-flex flex-column gap-3 justify-content-center">
     <?php
     foreach ($habitaciones as $habitacion) {
         echo '
-            <form class="col" action="form_update_client.php" method="POST">
-            <div class="card" style="min-width: 16rem;">
-                <img src="../images/hotel-unsplash.jpg" class="card-img-top" alt="Preview habitación.">
-                <div class="card-body">
-                    <h5 class="card-title">' . $habitacion['nombre'] . '</h5>
-                    <p class="card-text">' . $habitacion['descripcion'] . '</p>
-                    <hr>
-                    <p> <b> Características avanzadas: </b> </p>
-                    <p> Id: ' . $habitacion['capacidad'] . ' </p>
-                    <p> DNI: ' . $habitacion['tipo'] . ' </p>
-                    <p> Telefono: ' . $habitacion['estado'] . ' </p>
-                    <p> Método de pago: ' . $habitacion['precio'] . '</p>
-                    <input type="text" hidden value="' . $habitacion['id'] . '" name="client_id_update">
-                    
-                    <div class="d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Editar</button>
-                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal' . $habitacion['id'] . '">
-                            Eliminar
-                        </button>
-                    </div>
+            <form class="row mx-5" action="../forms/form_insert_reservation.php" method="POST">
 
-                    <!-- Button trigger modal -->
+            <div class="col card mb-3" style="min-width: 20rem;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="../images/hotel-unsplash.jpg" class="img-fluid rounded-start w-100" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title">'.$habitacion['nombre'].'</h3>
+
+                            <p class="card-text">'.$habitacion['descripcion'].' </p>
+
+                            <input name="habitacion-id" type="text" hidden value="'.$habitacion['id'].'"></input>
+
+                            <p class="card-text">Características de la habitación:</p>
+
+                            <div class="d-flex justify-content-end text-end h-100">
+                                <button class="btn btn-primary" type="submit">
+                                    Reservar habitación
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </form>
-            <!-- Modal -->
-            <!-- Generar un modal para cada cliente -->
-                    <div class="modal fade" id="exampleModal' . $habitacion['id'] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <form class="modal-dialog-centered"action="../db/db_client_delete.php" method="POST">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar usuario</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    ¿Estás seguro que deseas eliminar la <b>' . $habitacion['nombre'] . '</b>?
-                                    La habitación ya no estará disponible para reservar.
-                                </div>
-                                <input type="text" hidden value="' . $habitacion['id'] . '" name="client-id">
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-danger">Eliminar definitivamente</button>
-                                </div>
-                                </div>
-                            </div>
-                        </form> 
-                    </div>       
+            </form>     
             ';
     }
     ?>
