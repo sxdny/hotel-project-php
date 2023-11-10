@@ -1,6 +1,6 @@
-<?php
+<?php include('../components/db_connection.php') ?>
 
-$root = '/student047/dwes/';
+<?php
 
 // obtener variables cliente
 $nombre = $_POST['nombre'];
@@ -11,19 +11,6 @@ $client_id = $_POST['client-id'];
 $metodo_de_pago = $_POST['metodo-de-pago'];
 $username = $_POST['username'];
 $passwd = $_POST['passwd'];
-
-// credenciales acceso base de datos
-$server = "localhost";
-$usuario = "root";
-$contra = "";
-$baseDeDatos = "hotel";
-
-$conn = mysqli_connect($server, $usuario, $contra, $baseDeDatos);
-
-// comprobar conexión base de datos
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 // actualizar datos cliente
 $sql =

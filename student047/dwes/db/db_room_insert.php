@@ -1,6 +1,6 @@
-<?php
+<?php include('../components/db_connection.php') ?>
 
-$root = '/student047/dwes/';
+<?php
 
 // obtener variables de la habitación
 $nombre = $_POST['nombre'];
@@ -9,24 +9,31 @@ $capacidad = $_POST['capacidad'];
 $tipo = $_POST['tipo'];
 $estado = $_POST['estado'];
 $precio = $_POST['precio'];
+$img = "images/rooms/" . $_FILES["img"]["name"];
 
-// credenciales acceso base de datos
-$server = "localhost";
-$usuario = "root";
-$contra = "";
-$baseDeDatos = "hotel";
+// insertar nueva habitación
+$sql =
+    "INSERT INTO habitaciones (id, nombre, descripcion, capacidad, tipo, estado, precio, img) VALUES (DEFAULT, '" . $nombre . "', '" . $descripcion . "', " . $capacidad . ", '" . $tipo . "', '" . $estado . "', ".$precio . ", '".$img . "')";
 
-$conn = mysqli_connect($server, $usuario, $contra, $baseDeDatos);
+// subir pfp al servidor
+if ($_FILES["img"]["error"] === UPLOAD_ERR_OK) {
+    $archivo_temporal = $_FILES["img"]["tmp_name"];
+    $nuevo_destino = "../images/rooms/" . $_FILES["img"]["name"];
 
-// comprobar conexión base de datos
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    if (move_uploaded_file($archivo_temporal, $nuevo_destino)) {
+        echo "El archivo ha sido subido correctamente.";
+    } else {
+        echo "Error al mover el archivo.";
+    }
+
+} else {
+    echo "Ha habido un error al subir el archivo.";
 }
 
-// insertar nuevo cliente
-$sql =
-    "INSERT INTO habitaciones (id, nombre, descripcion, capacidad, tipo, estado, precio) VALUES (DEFAULT, '" . $nombre . "', '" . $descripcion . "', " . $capacidad . ", '" . $tipo . "', '" . $estado . "', ".$precio . ")";
+echo $sql;
+
 ?>
+
 
 <?php include('../components/header.php') ?>
 

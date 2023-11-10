@@ -1,46 +1,27 @@
+<?php include('../components/db_connection.php') ?>
+
 <?php
-# TODO hacer que esto también funciones con los includes?
-$root = '/student047/dwes/';
 
-// obtener el id de la habitación escogida por el usuario
-$habitacion_id = $_POST["habitacion-id"];
+// obtener la variable de la habitación seleccionada
+$habitacion_id = $_POST['habitacion_id'];
 
-// credenciales conexión a la base de datos
-$server = "localhost";
-$usuario = "root";
-$contra = "";
-$baseDeDatos = "hotel";
+echo $habitacion_id;
 
-$conn = mysqli_connect($server, $usuario, $contra, $baseDeDatos);
-
-// comprobar conexión a la base de datos
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// buscar el cliente con la password
-$sql =
-    "SELECT * FROM habitaciones
-    WHERE id =". $habitacion_id . ";";
+$sql = "SELECT * FROM habitaciones WHERE id = " . $habitacion_id . ";";
 $result = mysqli_query($conn, $sql);
-$habitacion = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$habitaciones = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$habitacion = $habitaciones[0];
+
 ?>
 
-<?php include('../components/header.php') ?>
+<!-- Mostrar un preview de la habitación seleccionada y los datos de la reserva -->
+<?php 
+    print_r($habitacion)
+?>
 
-<section class="m-5 pt-5 h-100">
+<form action="../db/db_reservation_insert.php">
 
-    <h3 class="mt-3">Datos de la habitación</h3>
+    <!-- Imagen de la habitación -->
+    
 
-    <form class="" action="../db/db_reservation_insert.php" method="POST">
-
-        <?php echo $habitacion_id ?>
-        <?php echo $sql ?>
-        <?php print_r($habitacion); ?>
-
-        <button type="submit" class="btn btn-primary">Insertar</button>
-
-    </form>
-
-</section>
-<?php include('../components/footer.php') ?>
+</form>

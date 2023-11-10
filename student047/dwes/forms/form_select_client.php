@@ -1,19 +1,6 @@
+<?php include('../components/db_connection.php') ?>
+
 <?php
-
-# TODO hacer que esto también funciones con los includes?
-$root = '/student047/dwes/';
-
-// credenciales acceso a la base de datos
-$server = "localhost";
-$usuario = "root";
-$contra = "";
-$baseDeDatos = "hotel";
-$conn = mysqli_connect($server, $usuario, $contra, $baseDeDatos);
-
-// comprobar conexión a la base de datos
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 // query seleccionar clientes
 // TODO cambiar esto para filtrado

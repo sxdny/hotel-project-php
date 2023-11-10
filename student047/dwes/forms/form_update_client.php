@@ -1,19 +1,6 @@
+<?php include('../components/db_connection.php') ?>
+
 <?php
-
-$root = '/student047/dwes/';
-
-// credenciales para el acceso a la base de datos
-$server = "localhost";
-$usuario = "root";
-$contra = "";
-$baseDeDatos = "hotel";
-
-$conn = mysqli_connect($server, $usuario, $contra, $baseDeDatos);
-
-// comprobar conexión a la base de datos
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 // obtener la id del cliente a editar
 $client_id = $_POST['client_id_update'];

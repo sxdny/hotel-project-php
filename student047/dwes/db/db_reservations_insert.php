@@ -1,7 +1,7 @@
 <?php include('components/header.php') ?>
 
 <?php
-    // TODO hacer insertar reservas
+    // TODO hacer el insertar reservas
 ?>
 
 <?php include('components/footer.php') ?>

@@ -109,7 +109,7 @@ session_start();
                             Habitaciones (Admin)
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_insert_room.php' . '"'; ?>>Nueba habitación</a></li>
+                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_insert_room.php' . '"'; ?>>Nueva habitación</a></li>
 
                             <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_select_room.php' . '"'; ?>>Editar habitaciones</a></li>
 

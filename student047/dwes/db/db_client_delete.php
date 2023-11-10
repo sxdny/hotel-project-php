@@ -1,22 +1,9 @@
-<?php
+<?php include('../components/db_connection.php') ?>
 
-$root = '/student047/dwes/';
+<?php
 
 // obtener id del ciente a borrar
 $client_id = $_POST['client-id'];
-
-// credenciales acceso a la base de datos
-$server = "localhost";
-$usuario = "root";
-$contra = "";
-$baseDeDatos = "hotel";
-
-$conn = mysqli_connect($server, $usuario, $contra, $baseDeDatos);
-
-// comprobar conexión a la base de datos.
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 // borrar usuario de la base de datos
 $sql = "DELETE FROM clientes WHERE id = " . $client_id . ";";

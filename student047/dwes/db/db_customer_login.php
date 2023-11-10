@@ -1,23 +1,10 @@
-<?php
+<?php include('../components/db_connection.php') ?>
 
-$root = '/student047/dwes/';
+<?php
 
 // obtener variables del form
 $username = $_POST['username'];
 $passwd = $_POST['passwd'];
-
-// credenciales conexión a la base de datos
-$server = "localhost";
-$usuario = "root";
-$contra = "";
-$baseDeDatos = "hotel";
-
-$conn = mysqli_connect($server, $usuario, $contra, $baseDeDatos);
-
-// comprobar conexión a la base de datos
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 // buscar el cliente con la password
 $sql =
