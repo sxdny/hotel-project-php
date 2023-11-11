@@ -1,7 +1,7 @@
-# Proyecto Hotel PHP de DAW - Internazionale
-Proyecto hecho con PHP de clase.
+<h1 style="text-align: center"> Internazionale </h1>
+<p style="text-align: center">Un PMS (Sistema de Gestión Hotelera) desarrollado en PHP. Este es un proyecto de clase.</p>
 
-![Alt text](image.png)
+![Página de Inicio de Internazionale.](image.png)
 *Página de inicio*
 
 ## Cosas a tener en cuenta:
