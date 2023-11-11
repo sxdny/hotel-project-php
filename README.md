@@ -1,5 +1,6 @@
-<h1 align="center;"> Internazionale </h1>
-<p align="center;">Un PMS (Sistema de Gestión Hotelera) desarrollado en PHP. Este es un proyecto de clase.</p>
+<h1 align="center"> Internazionale </h1>
+<h1 align="center"> Actividades Grado Superior  👨‍🏫 </h1>
+<p align="center">Un PMS (Sistema de Gestión Hotelera) desarrollado en PHP. Este es un proyecto de clase.</p>
 
 ![Página de Inicio de Internazionale.](image.png)
 *Página de inicio*
