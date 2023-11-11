@@ -1,5 +1,6 @@
 <h1 style="text-align: center;"> Internazionale </h1>
 <p style="text-align: center;">Un PMS (Sistema de Gestión Hotelera) desarrollado en PHP. Este es un proyecto de clase.</p>
+<p style="text-align: center;">Text_content</p>
 
 ![Página de Inicio de Internazionale.](image.png)
 *Página de inicio*
