@@ -6,6 +6,10 @@ $dateIn = $_POST['date-in'];
 $dateOut = $_POST['date-out'];
 $nPersonas = $_POST['n-personas'];
 
+$_SESSION['date-in'] = $dateIn;
+$_SESSION['date-out'] = $dateOut;
+$_SESSION['n-personas'] = $nPersonas;
+
 $sql =
 "SELECT * FROM habitaciones
 WHERE estado = 'Available'
