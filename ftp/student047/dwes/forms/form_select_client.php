@@ -45,7 +45,7 @@ mysqli_close($conn);
     <div class="container-fluid my-5 d-flex row gap-3">
         <?php
         foreach ($clients as $client) {
-            echo '
+        ?>
             <form class="col" action="form_update_client.php" method="POST">
             <div class="card" style="min-width: 16rem;">
                 <img src="../' . $client['pfp'] . '" class="card-img-top" alt="Preview habitación.">
@@ -95,6 +95,7 @@ mysqli_close($conn);
                         </form> 
                     </div>       
             ';
+        <?php
         }
         ?>
     </div>

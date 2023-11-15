@@ -7,11 +7,11 @@
         <p>A continuación, introduzca la fecha de entrada, la de salida y el número de personas que se alojarán en la habitación.</p>
         <div class="mb-3">
             <label for="date-in" class="form-label">Date-in:</label>
-            <input required type="date" class="form-control" name="date-in" aria-describedby="date-in">
+            <input required type="date" class="date-picker datepicker form-control" name="date-in" aria-describedby="date-in">
         </div>
         <div class="mb-3">
             <label for="date-out" class="form-label">Date-out:</label>
-            <input required type="date" class="form-control" name="date-out" aria-describedby="date-out">
+            <input required type="date" class="form-control" name="date-out" aria-describedby="date-out"> 
         </div>
         <div class="mb-3">
             <label for="date-out" class="form-label">Número de personas:</label>
