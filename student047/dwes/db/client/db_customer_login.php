@@ -1,10 +1,13 @@
-<?php include('../components/db_connection.php') ?>
+<?php
+$root = '/student047/dwes/';
+include($root . 'components/db_connection.php')
+    ?>
 
 <?php
 
 // obtener variables del form
-$username = $_POST['username'];
-$passwd = $_POST['passwd'];
+$username  = $_POST['username'];
+$passwd    = $_POST['passwd'];
 
 // buscar el cliente con la password
 $sql =

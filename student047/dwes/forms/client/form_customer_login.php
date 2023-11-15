@@ -1,9 +1,8 @@
 <?php
-# TODO hacer que esto también funciones con los includes?
 $root = '/student047/dwes/';
 ?>
 
-<?php include('../components/header.php') ?>
+<?php include($root . 'components/header.php') ?>
 
 <!-- Aquí va el form -->
 <section class="container-fluid mt-5 p-5">
@@ -14,7 +13,7 @@ $root = '/student047/dwes/';
 
     <h2> Iniciar Sesión </h2>
 
-    <form action="../db/db_customer_login.php" method="post">
+    <form action="../db/client/db_customer_login.php" method="post">
 
         <p>Introduzca los datos para iniciar sesión:</p>
         <div class="mb-3">
@@ -34,4 +33,4 @@ $root = '/student047/dwes/';
 
 </section>
 
-<?php include('../components/footer.php') ?>
+<?php include($root . 'components/footer.php') ?>

@@ -1,4 +1,7 @@
-<?php include('../components/db_connection.php') ?>
+<?php
+$root = '/student047/dwes/';
+include($root . 'components/db_connection.php')
+    ?>
 
 <?php
 
@@ -16,12 +19,7 @@ mysqli_close($conn);
 
 ?>
 
-<?php
-# TODO hacer que esto también funciones con los includes?
-$root = '/student047/dwes/';
-?>
-
-<?php include('../components/header.php') ?>
+<?php include($root . 'components/header.php') ?>
 <section class=" m-5 pt-5 h-100">
 
     <h3 class="mt-3">Editar datos de la habitación <span class="badge bg-secondary">Admin</span></h3>
@@ -120,4 +118,4 @@ $root = '/student047/dwes/';
     </form>
 
 </section>
-<?php include('../components/footer.php') ?>
+<?php include($root . 'components/footer.php') ?>

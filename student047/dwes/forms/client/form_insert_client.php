@@ -1,15 +1,14 @@
 <?php
-# TODO hacer que esto también funciones con los includes?
 $root = '/student047/dwes/';
 ?>
 
-<?php include('../components/header.php') ?>
+<?php include($root . 'components/header.php') ?>
 <section class=" m-5 pt-5 h-100">
 
     <h3 class="mt-3">Insertar un cliente <span class="badge bg-secondary">Admin</span></h3>
 
     <!-- el enctype="multipart/form-data" es para que el formulario pueda subir archivos -->
-    <form class="" action="../db/db_client_insert.php" method="POST" enctype="multipart/form-data">
+    <form class="" action="../db/client/db_client_insert.php" method="POST" enctype="multipart/form-data">
         <p>Introduzca los datos del cliente:</p>
         <div class="mb-3">
             <label class="form-label">Nombre del cliente</label>
@@ -56,4 +55,4 @@ $root = '/student047/dwes/';
     </form>
 
 </section>
-<?php include('../components/footer.php') ?>
+<?php include($root . 'components/footer.php') ?>

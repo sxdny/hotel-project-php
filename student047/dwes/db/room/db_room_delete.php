@@ -1,4 +1,7 @@
-<?php include('../components/db_connection.php') ?>
+<?php
+$root = '/student047/dwes/';
+include($root . 'components/db_connection.php')
+    ?>
 
 <?php
 
@@ -9,30 +12,30 @@ $habitacion_id = $_POST['habitacion-id'];
 $sql = "DELETE FROM habitaciones WHERE id = " . $habitacion_id . ";";
 ?>
 
-<?php include('../components/header.php') ?>
+<?php include($root . 'components/header.php') ?>
+
 <div class="m-5 pt-5">
 
     <?php
     // output de la query
     if ($conn->query($sql) === TRUE) {
-        echo '
+        ?>
         <div class="alert alert-success mt-2" role="alert">
             La habitación ha sido eliminada correctamente!
         </div>
-        ';
+        <?php
     } else {
-        echo
-            '
+        ?>
         <div class="alert alert-danger mt-2" role="alert">'
-            . 'Error: ' . $sql . '<br>' . $conn->error . '
+            <?php echo 'Error: ' . $sql . '<br>' . $conn->error ?>
         </div>
-        ';
+        <?php
     }
     ?>
 
-    <a class="btn btn-primary" href=<?php echo '"' . $root . '/index.php' . '"'; ?>>Inicio</a>
+    <a class="btn btn-primary" href="<?php echo $root . '/index.php' ?>">Inicio</a>
 
-    <a class="btn btn-primary" href=<?php echo '"' . $root . '/forms/form_select_room.php' . '"'; ?>>Ver habitaciones</a>
+    <a class="btn btn-primary" href="<?php echo $root . '/forms/room/form_select_room.php' ?>">Ver habitaciones</a>
 
 </div>
-<?php include('../components/footer.php') ?>
+<?php include($root . 'components/footer.php') ?>

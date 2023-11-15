@@ -1,4 +1,7 @@
-<?php include('../components/db_connection.php') ?>
+<?php
+$root = '/student047/dwes/';
+include($root . 'components/db_connection.php')
+    ?>
 
 <?php
 
@@ -20,9 +23,9 @@ $_SESSION['habitacion-id'] = $_POST['habitacion_id'];
 
 ?>
 
-<?php include('../components/header.php') ?>
+<?php include($root . 'components/header.php') ?>
 
-<form action="../db/db_reservations_insert.php" method="POST">
+<form action="<?php echo $root . 'db/reservation/db_reservation_insert.php' ?>" method="POST">
 
     <!-- Mostrar un preview de la habitación seleccionada y los datos de la reserva -->
 
@@ -97,4 +100,4 @@ $_SESSION['habitacion-id'] = $_POST['habitacion_id'];
 
 </form>
 
-<?php include('../components/footer.php') ?>
+<?php include($root . 'components/footer.php') ?>

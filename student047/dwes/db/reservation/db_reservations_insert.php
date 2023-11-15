@@ -1,7 +1,10 @@
-<?php include('../components/db_connection.php') ?>
+<?php
+$root = '/student047/dwes/';
+include($root . 'components/db_connection.php')
+    ?>
 
 
-<?php include('../components/header.php') ?>
+<?php include($root . 'components/header.php') ?>
 
 
 <section class="mt-5 p-5">
@@ -22,4 +25,4 @@
 </section>
 
 
-<?php include('../components/footer.php') ?>
+<?php include($root . 'components/footer.php') ?>

@@ -1,4 +1,7 @@
-<?php include('../components/db_connection.php') ?>
+<?php
+$root = '/student047/dwes/';
+include($root . 'components/db_connection.php')
+    ?>
 
 <?php
 
@@ -27,16 +30,13 @@ if (isset($_POST['filtro'])) {
 }
 ?>
 
-<?php include('../components/header.php') ?>
+<?php include($root . 'components/header.php') ?>
 <section class="pt-5 m-5">
 
     <div class="d-flex justify-content-between">
         <div class="heading">
             <h3 class="mt-3">Ver habitaciones <span class="badge bg-secondary">Admin</span></h3>
         </div>
-        <!-- menú filtrado -->
-        <!-- TODO hacer submenús -->
-        <!-- TODO barra de búsqueda con AJAX? -->
         <div class="filter">
             <div class="dropdown">
                 <form class="d-flex" action="form_select_room.php" method="POST">
@@ -56,20 +56,24 @@ if (isset($_POST['filtro'])) {
         <?php
         if (isset($_POST['filtro'])) {
             if ($filtro == 'All') {
-                echo
-                    "<p> Viendo: <span class='badge text-bg-info'>Todas las habitaciones</span></p>";
+                ?>
+                <p> Viendo: <span class='badge text-bg-info'>Todas las habitaciones</span></p>
+                <?php
             }
             if ($filtro == 'Available') {
-                echo
-                    "<p> Viendo: <span class='badge text-bg-info'>Todas las habitaciones disponibles</span></p>";
+                ?>
+                <p> Viendo: <span class='badge text-bg-info'>Todas las habitaciones disponibles</span></p>
+                <?php
             }
             if ($filtro == 'Booked') {
-                echo
-                    "<p> Viendo: <span class='badge text-bg-info'>Todas las habitaciones reservadas</span></p>";
+                ?>
+                <p> Viendo: <span class='badge text-bg-info'>Todas las habitaciones reservadas</span></p>
+                <?php
             }
         } else {
-            echo
-                "<p> Viendo: <span class='badge text-bg-info'>Todas las habitaciones</span></p>";
+            ?>
+            <p> Viendo: <span class='badge text-bg-info'>Todas las habitaciones</span></p>
+            <?php
         }
         ?>
     </div>
@@ -120,12 +124,8 @@ if (isset($_POST['filtro'])) {
             </form>
             <!-- Modal -->
             <!-- Generar un modal para cada cliente -->
-            <div
-                class="modal fade"
-                id="<?php echo "exampleModal" . $habitacion['id'] ?>"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="<?php echo "exampleModal" . $habitacion['id'] ?>" tabindex="-1"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <form class="modal-dialog-centered" action="../db/db_room_delete.php" method="POST">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -137,7 +137,8 @@ if (isset($_POST['filtro'])) {
                                 ¿Estás seguro que deseas eliminar la <b>
                                     <?php echo $habitacion['nombre'] ?>
                                 </b>?
-                                La habitación ya no estará disponible para reservar y se eliminará completamente de la base de datos.
+                                La habitación ya no estará disponible para reservar y se eliminará completamente de la base
+                                de datos.
                             </div>
                             <input type="text" hidden value="<?php echo $habitacion['id'] ?>" name="habitacion-id">
                             <div class="modal-footer">
@@ -154,4 +155,4 @@ if (isset($_POST['filtro'])) {
     </div>
 
 </section>
-<?php include('../components/footer.php') ?>
+<?php include($root . 'components/footer.php') ?>

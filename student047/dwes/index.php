@@ -1,4 +1,6 @@
-<?php include('components/header.php') ?>
+<?php
+include('components/header.php')
+?>
 
 <div class="d-flex flex-column my-5 pt-5 align-items-center justify-content-center">
     <div class="text-center m-5">
@@ -10,7 +12,7 @@
             } ?>
         </h1>
         <p>Para empezar una reserva, pulse el siguiente botón:</p>
-        <a class="btn btn-primary btn-md mt-3" href="forms/form_select_reservations.php" role="button">Empezar a
+        <a class="btn btn-primary btn-md mt-3" href="forms/reservation/form_select_reservation.php" role="button">Empezar a
             reservar</a>
     </div>
     <div style="height: 45rem" class="d-flex w-100 flex-column justify-content-center text-center align-items-center">
