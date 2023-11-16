@@ -3,8 +3,6 @@
 // directorio root para enlaces
 $root = '/student047/dwes/';
 
-session_start();
-
 ?>
 
 <!doctype html>
@@ -21,6 +19,7 @@ session_start();
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+    /* FIXME Posible error para el icono del datetime: */
     * {
         font-family: 'Inter', sans-serif !important;
     }
@@ -97,9 +96,9 @@ session_start();
                             Clientes (Admin)
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_insert_client.php' . '"'; ?>>Nuevo cliente</a></li>
+                            <li><a class="dropdown-item" href="<?php echo $root . '/forms/client/form_insert_client.php' ?>">Nuevo cliente</a></li>
 
-                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_select_client.php' . '"'; ?>>Listar clientes</a></li>
+                            <li><a class="dropdown-item" href="<?php echo $root . '/forms/client/form_select_client.php' ?>">Listar clientes</a></li>
                         </ul>
                     </li>
 
@@ -109,46 +108,45 @@ session_start();
                             Habitaciones (Admin)
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_insert_room.php' . '"'; ?>>Nueva habitación</a></li>
+                            <li><a class="dropdown-item" href="<?php echo $root . '/forms/room/form_insert_room.php' ?>">Nueva habitación</a></li>
 
-                            <li><a class="dropdown-item" href=<?php echo '"' . $root . '/forms/form_select_room.php' . '"'; ?>>Editar habitaciones</a></li>
+                            <li><a class="dropdown-item" href="<?php echo $root . '/forms/room/form_select_room.php'?>">Listar habitaciones</a></li>
 
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/student047/dwes/forms/form_select_reservations.php">Reservar</a>
+                        <a class="nav-link" href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">Reservar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/student047/dwes/manuals/help.php">Ayuda</a>
+                        <a class="nav-link" href="<?php echo $root . '/manuals/help.php' ?>">Ayuda</a>
                     </li>
                     <?php if (isset($_SESSION["cliente"])) {
-                        echo
-                            '
+                    ?>
                             <li class="nav-item dropdown">
                                 <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="rounded-circle" src="/student047/dwes/' . $_SESSION["cliente"]["pfp"] . '" width="40" height="40"
+                                    
+                                    <img class="rounded-circle" src="<?php echo $root . $_SESSION["cliente"]["pfp"] ?>" width="40" height="40"
                                 </a>
                                 <ul class="dropdown-menu pfp-nav">
                                     <li>
-                                        <a class="dropdown-item disabled" href="' . $root . '/forms/form_insert_client.php">Perfil</a>
+                                        <!-- Ir a edición del cliente -->
+                                        <a class="dropdown-item disabled" href="#">Perfil</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item text-danger" href="' . $root . '/db/db_logout.php">Cerrar sesión</a>
+                                        <a class="dropdown-item text-danger" href="<?php echo $root . '/db/client/db_logout.php' ?>">Cerrar sesión</a>
                                     </li> 
                                 </ul>
                             </li>
-                            '
+                        <?php    
                         ;
                     } else {
-                        echo
-                            '
+                        ?>
                                 <li class="nav-item dropdown">
-                                    <a class="btn btn-primary" role="button" href="'
-                            . $root . '/forms/form_customer_login.php">Iniciar Sesión</a>
+                                    <a class="btn btn-primary" role="button" href="<?php echo $root . '/forms/client/form_customer_login.php' ?>">Iniciar Sesión</a>
                                 </li>    
-                                '
-                        ;
-                    } ?>
+                        <?php
+                        ; }
+                        ?>
                 </ul>
             </div>
         </div>

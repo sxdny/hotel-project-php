@@ -1,13 +1,27 @@
-<?php include('../components/db_connection.php') ?>
+<?php
+session_start();
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+// component variables
+$header = $root . '/components/header.php';
+$footer = $root . '/components/footer.php';
+$dbConnection = $root . '/components/db_connection.php';
+
+include($dbConnection);
+
+?>
 
 <?php
+
+session_start();
+
 // obtener data entrada y de salida
-$dateIn = $_POST['date-in'];
-$dateOut = $_POST['date-out'];
+$dateIn    = $_POST['date-in'];
+$dateOut   = $_POST['date-out'];
 $nPersonas = $_POST['n-personas'];
 
-$_SESSION['date-in'] = $dateIn;
-$_SESSION['date-out'] = $dateOut;
+$_SESSION['date-in']    = $dateIn;
+$_SESSION['date-out']   = $dateOut;
 $_SESSION['n-personas'] = $nPersonas;
 
 $sql =
@@ -22,18 +36,19 @@ mysqli_close($conn);
 
 ?>
 
-<?php include('../components/header.php') ?>
+<?php include($header) ?>
+
 
 <section class="container-fluid my-5 pt-5 d-flex flex-column gap-3 justify-content-center">
     <?php
     foreach ($habitaciones as $habitacion) {
     ?>
-            <form class="row mx-5" action="../forms/form_insert_reservation.php" method="POST">
+            <form class="row mx-5" action="<?php echo $root . '/forms/reservation/form_insert_reservation.php' ?>" method="POST">
 
             <div class="col card mb-3 px-0" style="min-width: 20rem;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="../<?php echo $habitacion['img'] ?>" class="img-fluid rounded-start w-100 h-100" alt="...">
+                        <img src="<?php echo $root . $habitacion['img'] ?>" class="img-fluid rounded-start w-100 h-100" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -64,4 +79,4 @@ mysqli_close($conn);
 
 </section>
 
-<?php include('../components/footer.php') ?>
+<?php include($footer) ?>
