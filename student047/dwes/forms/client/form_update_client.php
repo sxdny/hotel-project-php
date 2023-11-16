@@ -1,12 +1,19 @@
 <?php
-$root = '/student047/dwes/';
-include($root . 'components/db_connection.php')
-    ?>
+session_start();
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+// component variables
+$header       = $root . '/components/header.php';
+$dbConnection = $root . '/components/db_connection.php';
+$footer       = $root . '/components/footer.php';
+
+include($dbConnection);
+?>
 
 <?php
 
 // obtener la id del cliente a editar
-$client_id = $_POST['client_id_update'];
+$client_id = $_POST['client-id'];
 
 // obtener información del cliente a editar
 $sql = "SELECT * FROM clientes WHERE id = " . $client_id . ";";
@@ -18,13 +25,13 @@ mysqli_close($conn);
 
 ?>
 
-<?php include($root . 'components/header.php') ?>
+<?php include($header) ?>
 
 <section class="pt-5 m-5">
 
     <h3 class="mt-3">Editar datos cliente <span class="badge bg-secondary">Admin</span></h3>
 
-    <form class="" action="<?php $root . 'db/client/db_update_client.php'?>" method="POST">
+    <form class="" action="<?php echo $root . '/db/client/db_update_client.php'?>" method="POST">
         <div class="mb-3">
             <label class="form-label">Nombre</label>
             <input type="text" class="form-control" name="nombre" aria-describedby="nombre" value="<?php echo  $client['nombre'] ?>" required>
@@ -93,4 +100,4 @@ mysqli_close($conn);
 
 </section>
 
-<?php include($root . 'components/footer.php') ?>
+<?php include($footer) ?>

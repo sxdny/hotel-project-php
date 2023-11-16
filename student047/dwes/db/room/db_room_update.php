@@ -1,7 +1,14 @@
 <?php
-$root = '/student047/dwes/';
-include($root . 'components/db_connection.php')
-    ?>
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+// component variables
+$header = $root . '/components/header.php';
+$footer = $root . '/components/footer.php';
+$dbConnection = $root . '/components/db_connection.php';
+
+include($dbConnection);
+
+?>
 
 <?php
 
@@ -27,7 +34,7 @@ $sql =
 
 ?>
 
-<?php include($root . 'components/header.php') ?>
+<?php include($header) ?>
 
 <div class="m-5 pt-5">
     <?php
@@ -53,4 +60,4 @@ $sql =
 
 </div>
 
-<?php include($root . 'components/footer.php') ?>
+<?php include($footer) ?>

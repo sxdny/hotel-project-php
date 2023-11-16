@@ -1,6 +1,13 @@
-<?php
-$root = '/student047/dwes/';
-include($root . 'components/db_connection.php') ?>
+<<?php
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+// component variables
+$header = $root . '/components/header.php';
+$dbConnection = $root . '/components/db_connection.php';
+$footer = $root . '/components/footer.php';
+
+include($dbConnection);
+?>
 
 <?php
 
@@ -20,10 +27,10 @@ $sql =
 // subir foto de perfil (pfp) al servidor
 if ($_FILES["img"]["error"] === UPLOAD_ERR_OK) {
     $archivo_temporal = $_FILES["img"]["tmp_name"];
-    $nuevo_destino = "../images/rooms/" . $_FILES["img"]["name"];
+    $nuevo_destino = "../../images/rooms/" . $_FILES["img"]["name"];
 
     if (move_uploaded_file($archivo_temporal, $nuevo_destino)) {
-        echo "El archivo ha sido subido correctamente.";
+        echo "El archivo se ha sido subido correctamente.";
     } else {
         echo "Error al mover el archivo.";
     }
@@ -37,7 +44,7 @@ echo $sql;
 ?>
 
 
-<?php include($root . 'components/header.php') ?>
+<?php include($header) ?>
 
 <div class="m-5 pt-5">
 
@@ -71,4 +78,4 @@ echo $sql;
     </a>
 </div>
 
-<?php include($root . 'components/footer.php') ?>
+<?php include($footer) ?>

@@ -1,7 +1,13 @@
 <?php
-$root = '/student047/dwes/';
-include($root . 'components/db_connection.php')
-    ?>
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+// component variables
+$header       = $root . '/components/header.php';
+$dbConnection = $root . '/components/db_connection.php';
+$footer       = $root . '/components/footer.php';
+
+include($dbConnection);
+?>
 
 <?php
 
@@ -12,11 +18,10 @@ $client_id = $_POST['client-id'];
 $sql = "DELETE FROM clientes WHERE id = " . $client_id . ";";
 ?>
 
-<?php include($root . 'components/header.php') ?>
+<?php include($header) ?>
 <div class="m-5 pt-5">
 
     <?php
-    // output de la query
     if ($conn->query($sql) === TRUE) {
         ?>
         <div class="alert alert-success mt-2" role="alert">
@@ -37,4 +42,4 @@ $sql = "DELETE FROM clientes WHERE id = " . $client_id . ";";
     <a class="btn btn-primary" href="<?php echo $root . '/forms/client/form_select_client.php' ?>">Ver clientes</a>
 
 </div>
-<?php include($root . 'components/footer.php') ?>
+<?php include($footer) ?>

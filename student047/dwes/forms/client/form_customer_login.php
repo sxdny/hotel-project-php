@@ -1,8 +1,14 @@
 <?php
-$root = '/student047/dwes/';
+session_start();
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+// component variables
+$header = $root . '/components/header.php';
+$footer = $root . '/components/footer.php';
+
 ?>
 
-<?php include($root . 'components/header.php') ?>
+<?php include($header) ?>
 
 <!-- Aquí va el form -->
 <section class="container-fluid mt-5 p-5">
@@ -13,7 +19,7 @@ $root = '/student047/dwes/';
 
     <h2> Iniciar Sesión </h2>
 
-    <form action="../db/client/db_customer_login.php" method="post">
+    <form action="<?php echo $root . '/db/client/db_customer_login.php' ?>" method="post">
 
         <p>Introduzca los datos para iniciar sesión:</p>
         <div class="mb-3">
@@ -33,4 +39,4 @@ $root = '/student047/dwes/';
 
 </section>
 
-<?php include($root . 'components/footer.php') ?>
+<?php include($footer) ?>

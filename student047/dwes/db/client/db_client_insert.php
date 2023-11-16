@@ -1,7 +1,12 @@
 <?php
-$root = '/student047/dwes/';
-include($root . 'components/db_connection.php')
-    ?>
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+$dbConnection = $root . '/components/db_connection.php';
+$header = $root . '/components/header.php';
+$footer = $root . '/components/footer.php';
+
+include($dbConnection);
+?>
 
 <?php
 
@@ -22,7 +27,9 @@ $sql =
 // subir pfp al servidor
 if ($_FILES["pfp"]["error"] === UPLOAD_ERR_OK) {
     $archivo_temporal = $_FILES["pfp"]["tmp_name"];
-    $nuevo_destino = "../images/pfps/" . $_FILES["pfp"]["name"];
+    $nuevo_destino = "../../images/pfps/" . $_FILES["pfp"]["name"];
+
+    echo $nuevo_destino;
 
     if (move_uploaded_file($archivo_temporal, $nuevo_destino)) {
         echo "El archivo ha sido subido correctamente.";
@@ -36,7 +43,7 @@ if ($_FILES["pfp"]["error"] === UPLOAD_ERR_OK) {
 
 ?>
 
-<?php include($root . 'components/header.php') ?>
+<?php include($header) ?>
 <div class="m-5 pt-5">
 
     <?php
@@ -56,14 +63,12 @@ if ($_FILES["pfp"]["error"] === UPLOAD_ERR_OK) {
     }
     ?>
 
-    ?>
-
     <a class="btn btn-primary" href="<?php echo $root . '/index.php' ?>">Inicio</a>
     
-    <a class="btn btn-primary" href="<?php echo $root . '/forms/room/form_select_room.php' ?>">Ver habitaciones</a>
+    <a class="btn btn-primary" href="<?php echo $root . '/forms/client/form_select_client.php' ?>">Ver clientes</a>
 
     <a class="btn btn-primary" href="<?php echo $root . '/forms/client/form_insert_client.php' ?>">Volver a insertar un cliente</a>
 
 
 </div>
-<?php include($root . 'components/footer.php') ?>
+<?php include($footer) ?>

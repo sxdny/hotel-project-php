@@ -1,14 +1,19 @@
 <?php
-$root = '/student047/dwes/';
-include($root . 'components/db_connection.php')
-    ?>
+session_start();
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
 
-<?php include($root . 'components/header.php') ?>
+// component variables
+$header = $root . '/components/header.php';
+$footer = $root . '/components/footer.php';
+
+?>
+
+<?php include($header) ?>
 <section class=" m-5 pt-5 h-100">
 
     <h3 class="mt-3">Insertar habitación <span class="badge bg-secondary">Admin</span></h3>
 
-    <form class="" action="<?php echo $root . 'db/db_room_insert.php'?>" method="POST" enctype="multipart/form-data">
+    <form class="" action="<?php echo $root . '/db/room/db_room_insert.php'?>" method="POST" enctype="multipart/form-data">
         <p>Introduzca los datos de la habitación:</p>
         <div class="mb-3">
             <label class="form-label">Nombre de la habitación</label>
@@ -56,4 +61,4 @@ include($root . 'components/db_connection.php')
     </form>
 
 </section>
-<?php include($root . 'components/footer.php') ?>
+<?php include($footer) ?>

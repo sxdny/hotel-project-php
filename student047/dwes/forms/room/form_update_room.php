@@ -1,7 +1,15 @@
 <?php
-$root = '/student047/dwes/';
-include($root . 'components/db_connection.php')
-    ?>
+session_start();
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+// component variables
+$header = $root . '/components/header.php';
+$footer = $root . '/components/footer.php';
+$dbConnection = $root . '/components/db_connection.php';
+
+include($dbConnection);
+
+?>
 
 <?php
 
@@ -19,12 +27,12 @@ mysqli_close($conn);
 
 ?>
 
-<?php include($root . 'components/header.php') ?>
+<?php include($header) ?>
 <section class=" m-5 pt-5 h-100">
 
     <h3 class="mt-3">Editar datos de la habitación <span class="badge bg-secondary">Admin</span></h3>
 
-    <form class="" action="../db/db_room_update.php" method="POST">
+    <form class="" action="<?php echo $root . '/db/room/db_room_update.php' ?>" method="POST">
         <p>Introduzca los datos de la habitación:</p>
         <div class="mb-3">
             <label class="form-label">Nombre de la habitación</label>
@@ -43,8 +51,10 @@ mysqli_close($conn);
         </div>
         <div class="mb-3 d-flex flex-column">
             <label for="date-out" class="form-label">Tipo</label>
+            <?php
 
-            <?php if ($habitacion['tipo'] == 'estandar') { ?>
+            if ($habitacion['tipo'] == 'estandar') {
+                ?>
                 <select class="form-label form-select" name="tipo" required>
                     <option selected value="estandar">Estándar</option>
                     <option value="suite">Suite</option>
@@ -52,8 +62,10 @@ mysqli_close($conn);
                     <option value="doble">Doble</option>
                 </select>
 
-            <?php }
-            if ($habitacion['tipo'] == 'suite') { ?>
+            <?php
+            }
+            if ($habitacion['tipo'] == 'suite') {
+            ?>
                 <select class="form-label form-select" name="tipo" required>
                     <option value="estandar">Estándar</option>
                     <option selected value="suite">Suite</option>
@@ -61,7 +73,8 @@ mysqli_close($conn);
                     <option value="doble">Doble</option>
                 </select>
 
-            <?php }
+            <?php
+            }
             if ($habitacion['tipo'] == 'doble') { ?>
                     <select class="form-label form-select" name="tipo" required>
                         <option value="estandar">Estándar</option>
@@ -70,7 +83,8 @@ mysqli_close($conn);
                         <option selected value="doble">Doble</option>
                     </select>
 
-            <?php }
+            <?php
+            }
             if ($habitacion['tipo'] == 'ejecutiva') { ?>
                 <select class="form-label form-select" name="tipo" required>
                     <option value="estandar">Estándar</option>
@@ -118,4 +132,4 @@ mysqli_close($conn);
     </form>
 
 </section>
-<?php include($root . 'components/footer.php') ?>
+<?php include($footer) ?>

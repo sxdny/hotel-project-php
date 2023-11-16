@@ -1,4 +1,6 @@
 <?php
+session_start();
+$root = '/student047/dwes/';
 include('components/header.php')
 ?>
 

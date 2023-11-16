@@ -1,7 +1,15 @@
 <?php
-$root = '/student047/dwes/';
-include($root . 'components/db_connection.php')
-    ?>
+session_start();
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+// component variables
+$header = $root . '/components/header.php';
+$footer = $root . '/components/footer.php';
+$dbConnection = $root . '/components/db_connection.php';
+
+?>
+
+<?php include($dbConnection) ?>
 
 <?php
 
@@ -30,7 +38,7 @@ if (isset($_POST['filtro'])) {
 }
 ?>
 
-<?php include($root . 'components/header.php') ?>
+<?php include($header) ?>
 <section class="pt-5 m-5">
 
     <div class="d-flex justify-content-between">
@@ -84,9 +92,9 @@ if (isset($_POST['filtro'])) {
         <?php
         foreach ($habitaciones as $habitacion) {
             ?>
-            <form class="col" action="form_update_room.php" method="POST">
+            <form class="col" action="<?php echo $root . 'forms/room/form_update_room.php'?>" method="POST">
                 <div class="card" style="min-width: 16rem;">
-                    <img src="../<?php echo $habitacion['img'] ?>" class="card-img-top" alt="Preview habitación.">
+                    <img src="<?php echo $root . $habitacion['img'] ?>" class="card-img-top" alt="Preview habitación.">
                     <div class="card-body">
                         <h5 class="card-title">
                             <?php echo $habitacion['nombre'] ?>
@@ -155,4 +163,4 @@ if (isset($_POST['filtro'])) {
     </div>
 
 </section>
-<?php include($root . 'components/footer.php') ?>
+<?php include($footer) ?>

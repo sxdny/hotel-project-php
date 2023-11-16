@@ -1,9 +1,20 @@
 <?php
-$root = '/student047/dwes/';
-include($root . 'components/db_connection.php')
-    ?>
+session_start();
+$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+
+// component variables
+$header = $root . '/components/header.php';
+$footer = $root . '/components/footer.php';
+$dbConnection = $root . '/components/db_connection.php';
+
+include($dbConnection);
+
+?>
 
 <?php
+
+session_start();
+
 // obtener data entrada y de salida
 $dateIn    = $_POST['date-in'];
 $dateOut   = $_POST['date-out'];
@@ -25,13 +36,14 @@ mysqli_close($conn);
 
 ?>
 
-<?php include($root . 'components/header.php') ?>
+<?php include($header) ?>
+
 
 <section class="container-fluid my-5 pt-5 d-flex flex-column gap-3 justify-content-center">
     <?php
     foreach ($habitaciones as $habitacion) {
     ?>
-            <form class="row mx-5" action="<?php $root . 'forms/reservation/form_insert_reservation.php' ?>" method="POST">
+            <form class="row mx-5" action="<?php echo $root . '/forms/reservation/form_insert_reservation.php' ?>" method="POST">
 
             <div class="col card mb-3 px-0" style="min-width: 20rem;">
                 <div class="row g-0">
@@ -67,4 +79,4 @@ mysqli_close($conn);
 
 </section>
 
-<?php include('../components/footer.php') ?>
+<?php include($footer) ?>
