@@ -13,8 +13,6 @@ include($dbConnection);
 
 <?php
 
-session_start();
-
 // obtener data entrada y de salida
 $dateIn    = $_POST['date-in'];
 $dateOut   = $_POST['date-out'];
