@@ -14,7 +14,8 @@ $footer = $root . '/components/footer.php';
     <h3 class="mt-3">Insertar un cliente <span class="badge bg-secondary">Admin</span></h3>
 
     <!-- el enctype="multipart/form-data" es para que el formulario pueda subir archivos -->
-    <form class="" action="<?php echo $root . '/db/client/db_client_insert.php' ?>" method="POST" enctype="multipart/form-data">
+    <form class="" action="<?php echo $root . '/db/client/db_client_insert.php' ?>" method="POST"
+        enctype="multipart/form-data">
         <p>Introduzca los datos del cliente:</p>
         <div class="mb-3">
             <label class="form-label">Nombre del cliente</label>
@@ -52,7 +53,7 @@ $footer = $root . '/components/footer.php';
         <!-- TODO hacer que el cliente pueda NO elegir una pfp -->
         <div class="mb-3">
             <label class="form-label">Foto de perfil</label>
-            <input type="file" class="form-control" name="pfp" aria-describedby="passwd" required>
+            <input type="file" accept="image/png,image/jpeg" class="form-control" name="pfp" aria-describedby="passwd" required>
         </div>
 
 
