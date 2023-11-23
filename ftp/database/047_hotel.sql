@@ -20,19 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de dades: `hotel`
 --
-
-DELIMITER $$
---
--- Procediments
---
-CREATE PROCEDURE `047out_of_service` (IN `var_id_habitacion` INT)   BEGIN
-
-UPDATE 047habitaciones
-SET estado = "Out of service"
-WHERE id = var_id_habitacion;
-
-END$$
-
 -- --------------------------------------------------------
 
 --
@@ -237,11 +224,11 @@ SET estado = "Available"
 WHERE NOT EXISTS (SELECT 1
                  	FROM 047reservas
                  	WHERE 047habitaciones.id =
-                 	reservas.id_habitacion)
+                 	047reservas.id_habitacion)
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `tr_reservas_insert` AFTER INSERT ON `047reservas` FOR EACH ROW UPDATE 047habitaciones
+CREATE TRIGGER `047tr_reservas_insert` AFTER INSERT ON `047reservas` FOR EACH ROW UPDATE 047habitaciones
 SET estado = "Booked"
 WHERE EXISTS (SELECT 1
                  	FROM 047reservas
