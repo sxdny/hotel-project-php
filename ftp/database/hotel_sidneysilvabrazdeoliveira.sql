@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2023 a las 12:40:14
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Temps de generació: 23-11-2023 a les 17:51:00
+-- Versió del servidor: 10.4.28-MariaDB
+-- Versió de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,14 +18,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `hotel_ftp`
+-- Base de dades: `hotel`
 --
 
 DELIMITER $$
 --
--- Procedimientos
+-- Procediments
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `out_of_service` (IN `var_id_habitacion` INT)   BEGIN
+CREATE PROCEDURE `047out_of_service` (IN `var_id_habitacion` INT)   BEGIN
 
 UPDATE 047habitaciones
 SET estado = "Out of service"
@@ -33,7 +33,7 @@ WHERE id = var_id_habitacion;
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `randomReservations` ()   BEGIN
+CREATE PROCEDURE `047randomReservations` ()   BEGIN
 
 DECLARE date1 DATE;
 DECLARE date2 DATE;
@@ -62,11 +62,11 @@ VALUES
 END$$
 
 --
--- Funciones
+-- Funcions
 --
-CREATE DEFINER=`root`@`localhost` FUNCTION `randomDATE` () RETURNS DATE  RETURN (SELECT CURDATE() - INTERVAL FLOOR(RAND() * 14) DAY)$$
+CREATE FUNCTION `047randomDATE` () RETURNS DATE  RETURN (SELECT CURDATE() - INTERVAL FLOOR(RAND() * 14) DAY)$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `search_by_service` (`var_wifi` VARCHAR(255), `var_aire_acondicionado` VARCHAR(255), `var_cocina` VARCHAR(255), `var_caja_fuerte` VARCHAR(255), `var_limpieza_diaria` VARCHAR(255), `var_cambio_sabanas_y_toallas` VARCHAR(255), `var_regalo` VARCHAR(255)) RETURNS INT(11)  RETURN (SELECT id FROM view_habitaciones_available
+CREATE FUNCTION `047search_by_service` (`var_wifi` VARCHAR(255), `var_aire_acondicionado` VARCHAR(255), `var_cocina` VARCHAR(255), `var_caja_fuerte` VARCHAR(255), `var_limpieza_diaria` VARCHAR(255), `var_cambio_sabanas_y_toallas` VARCHAR(255), `var_regalo` VARCHAR(255)) RETURNS INT(11)  RETURN (SELECT id FROM view_habitaciones_available
 WHERE
 wifi = var_wifi
 AND
@@ -82,7 +82,7 @@ cambio_sabanas_y_toallas = var_cambio_sabanas_y_toallas
 AND
 regalo = var_regalo)$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `trueValuesJSON` (`var_id_room` INT) RETURNS LONGTEXT CHARSET utf8mb4 COLLATE utf8mb4_bin  BEGIN
+CREATE FUNCTION `trueValuesJSON` (`var_id_room` INT) RETURNS LONGTEXT CHARSET utf8mb4 COLLATE utf8mb4_bin  BEGIN
 
 DECLARE len INT DEFAULT 0;
 DECLARE json_len INT DEFAULT 0;
@@ -109,7 +109,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `047clientes`
+-- Estructura de la taula `047clientes`
 --
 
 CREATE TABLE `047clientes` (
@@ -125,7 +125,7 @@ CREATE TABLE `047clientes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `047clientes`
+-- Bolcament de dades per a la taula `047clientes`
 --
 
 INSERT INTO `047clientes` (`id`, `nombre`, `DNI`, `email`, `telefono`, `metodo_pago`, `username`, `passwd`, `pfp`) VALUES
@@ -144,7 +144,7 @@ INSERT INTO `047clientes` (`id`, `nombre`, `DNI`, `email`, `telefono`, `metodo_p
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `047empleados`
+-- Estructura de la taula `047empleados`
 --
 
 CREATE TABLE `047empleados` (
@@ -159,7 +159,7 @@ CREATE TABLE `047empleados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `047empleados`
+-- Bolcament de dades per a la taula `047empleados`
 --
 
 INSERT INTO `047empleados` (`id`, `nombre`, `apellidos`, `DNI`, `email`, `telefono`, `cargo`, `id_local`) VALUES
@@ -217,7 +217,7 @@ INSERT INTO `047empleados` (`id`, `nombre`, `apellidos`, `DNI`, `email`, `telefo
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `047habitaciones`
+-- Estructura de la taula `047habitaciones`
 --
 
 CREATE TABLE `047habitaciones` (
@@ -232,7 +232,7 @@ CREATE TABLE `047habitaciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `047habitaciones`
+-- Bolcament de dades per a la taula `047habitaciones`
 --
 
 INSERT INTO `047habitaciones` (`id`, `nombre`, `descripcion`, `capacidad`, `tipo`, `estado`, `precio`, `img`) VALUES
@@ -245,7 +245,7 @@ INSERT INTO `047habitaciones` (`id`, `nombre`, `descripcion`, `capacidad`, `tipo
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `047locales`
+-- Estructura de la taula `047locales`
 --
 
 CREATE TABLE `047locales` (
@@ -258,11 +258,11 @@ CREATE TABLE `047locales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `047locales`
+-- Bolcament de dades per a la taula `047locales`
 --
 
 INSERT INTO `047locales` (`id`, `nombre`, `tipo`, `ubicacion`, `descripcion`, `json_caracteristicas`) VALUES
-(1, 'Local L´Atelier', 'Tienda', 'Planta baja', 'Tienda Local L\'Atelier en la Planta Baja', '{\n    \"wifi\" : false,\n    \"aire_acondicionado\" : true,\n    \"interior\" : true,\n    \"terraza\" : false,\n    \"piscina\" : false\n}'),
+(1, 'Local L´Atelier', 'Tienda', 'Planta baja', 'Tienda Local L´Atelier en la Planta Baja', '{\n    \"wifi\" : false,\n    \"aire_acondicionado\" : true,\n    \"interior\" : true,\n    \"terraza\" : false,\n    \"piscina\" : false\n}'),
 (2, 'Il Porto', 'Restaurante', 'Piso 4', 'Restaurante Il Porto en el Piso 4', '{\n    \"wifi\" : true,\n    \"aire_acondicionado\" : true,\n    \"interior\" : true,\n    \"terraza\" : true,\n    \"piscina\" : false\n}'),
 (3, 'Salón de eventos 1', 'Salón de eventos', 'Lobby', 'Salón de eventos en el Lobby', '{\n    \"wifi\" : false,\n    \"aire_acondicionado\" : true,\n    \"interior\" : true,\n    \"terraza\" : false,\n    \"piscina\" : false\n}'),
 (4, 'Maruja', 'Cafetería', 'Piso 3', 'Cafetería Maruja en el Piso 3', '{\n    \"wifi\" : true,\n    \"aire_acondicionado\" : true,\n    \"interior\" : true,\n    \"terraza\" : false,\n    \"piscina\" : false\n}'),
@@ -277,7 +277,7 @@ INSERT INTO `047locales` (`id`, `nombre`, `tipo`, `ubicacion`, `descripcion`, `j
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `047reservas`
+-- Estructura de la taula `047reservas`
 --
 
 CREATE TABLE `047reservas` (
@@ -294,7 +294,7 @@ CREATE TABLE `047reservas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `047reservas`
+-- Bolcament de dades per a la taula `047reservas`
 --
 
 INSERT INTO `047reservas` (`id_reserva`, `id_habitacion`, `id_cliente`, `n_personas`, `data_entrada`, `data_salida`, `precio_inicial`, `precio_final`, `estado`, `json_servicios`) VALUES
@@ -302,126 +302,26 @@ INSERT INTO `047reservas` (`id_reserva`, `id_habitacion`, `id_cliente`, `n_perso
 (172, 229, 17, 4, '2023-11-04', '2023-11-29', 3000, 3000, 'Check-in', NULL);
 
 --
--- Disparadores `047reservas`
+-- Disparadors `047reservas`
 --
 DELIMITER $$
-CREATE TRIGGER `tr_reservas_delete` AFTER DELETE ON `047reservas` FOR EACH ROW UPDATE habitaciones
+CREATE TRIGGER `047tr_reservas_delete` AFTER DELETE ON `047reservas` FOR EACH ROW UPDATE 047habitaciones
 SET estado = "Available"
 WHERE NOT EXISTS (SELECT 1
-                 	FROM reservas
-                 	WHERE habitaciones.id =
+                 	FROM 047reservas
+                 	WHERE 047habitaciones.id =
                  	reservas.id_habitacion)
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `tr_reservas_insert` AFTER INSERT ON `047reservas` FOR EACH ROW UPDATE habitaciones
+CREATE TRIGGER `tr_reservas_insert` AFTER INSERT ON `047reservas` FOR EACH ROW UPDATE 047habitaciones
 SET estado = "Booked"
 WHERE EXISTS (SELECT 1
-                 	FROM reservas
-                 	WHERE habitaciones.id =
-                 	reservas.id_habitacion)
+                 	FROM 047reservas
+                 	WHERE 047habitaciones.id =
+                 	047reservas.id_habitacion)
 $$
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `view_reservas_limite_hoy`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `view_reservas_limite_hoy` (
-);
-
--- --------------------------------------------------------
-
---
--- Estructura para la vista `view_reservas_limite_hoy`
---
-DROP TABLE IF EXISTS `view_reservas_limite_hoy`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_reservas_limite_hoy`  AS SELECT `reservas`.`id_reserva` AS `id_reserva`, `reservas`.`id_habitacion` AS `id_habitacion`, `reservas`.`id_cliente` AS `id_cliente`, `reservas`.`data_entrada` AS `data_entrada`, `reservas`.`data_salida` AS `data_salida`, `reservas`.`precio_inicial` AS `precio_inicial`, `reservas`.`precio_final` AS `precio_final`, `reservas`.`estado` AS `estado`, `reservas`.`json_servicios` AS `json_servicios` FROM `reservas` WHERE `reservas`.`data_salida` >= curdate() ;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `047clientes`
---
-ALTER TABLE `047clientes`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`) USING HASH;
-
---
--- Indices de la tabla `047empleados`
---
-ALTER TABLE `047empleados`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_local` (`id_local`);
-
---
--- Indices de la tabla `047habitaciones`
---
-ALTER TABLE `047habitaciones`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `047locales`
---
-ALTER TABLE `047locales`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `047reservas`
---
-ALTER TABLE `047reservas`
-  ADD PRIMARY KEY (`id_reserva`),
-  ADD UNIQUE KEY `id_habitacion` (`id_habitacion`) USING BTREE,
-  ADD UNIQUE KEY `id_cliente` (`id_cliente`) USING BTREE;
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `047clientes`
---
-ALTER TABLE `047clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT de la tabla `047empleados`
---
-ALTER TABLE `047empleados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
-
---
--- AUTO_INCREMENT de la tabla `047habitaciones`
---
-ALTER TABLE `047habitaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
-
---
--- AUTO_INCREMENT de la tabla `047locales`
---
-ALTER TABLE `047locales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT de la tabla `047reservas`
---
-ALTER TABLE `047reservas`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `047empleados`
---
-ALTER TABLE `047empleados`
-  ADD CONSTRAINT `fk_local` FOREIGN KEY (`id_local`) REFERENCES `047locales` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
