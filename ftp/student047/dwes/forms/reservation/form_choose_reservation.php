@@ -13,8 +13,6 @@ include($dbConnection);
 
 <?php
 
-session_start();
-
 // obtener data entrada y de salida
 $dateIn    = $_POST['date-in'];
 $dateOut   = $_POST['date-out'];
@@ -25,7 +23,7 @@ $_SESSION['date-out']   = $dateOut;
 $_SESSION['n-personas'] = $nPersonas;
 
 $sql =
-"SELECT * FROM habitaciones
+"SELECT * FROM 047habitaciones
 WHERE estado = 'Available'
 AND capacidad >=". $nPersonas . ";";
 

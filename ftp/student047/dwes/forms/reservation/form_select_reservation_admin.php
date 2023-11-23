@@ -11,11 +11,10 @@ include($dbConnection);
 
 <?php
 
-// query seleccionar clientes
-// TODO cambiar esto para filtrado
-$sql = "SELECT * FROM 047clientes;";
+// seleccionar todas las reservas
+$sql = "SELECT * FROM 047reservas;";
 $result = mysqli_query($conn, $sql);
-$clients = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$reservations = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 mysqli_close($conn);
 
@@ -24,8 +23,7 @@ mysqli_close($conn);
 <?php include($header) ?>
 <section class="pt-5 m-5">
 
-    <!-- menú de filtrado -->
-    <!-- TODO hacer menú de filtrado -->
+    <!-- menú de filtrado / búsqueda -->
     <div class="d-flex justify-content-between">
         <div class="heading">
             <h3 class="mt-3">Ver clientes <span class="badge bg-secondary">Admin</span></h3>
@@ -55,22 +53,25 @@ mysqli_close($conn);
         <table class="table">
 
             <tr>
-                <th>Foto</th>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Correo electrónico</th>
-                <th>DNI / NIE</th>
-                <th>Teléfono de contacto</th>
-                <th>Método de pago</th>
+                <th>Id reserva</th>
+                <th>Id habitación</th>
+                <th>Id cliente</th>
+                <th>Número de personas</th>
+                <th>Data de entrada</th>
+                <th>Data de salida</th>
+                <th>Precio inicial</th>
+                <th>Precio final</th>
+                <th>Estado</th>
+                <th>Servicios</th>
                 <th></th>
                 <th></th>
             </tr>
 
             <?php
-            foreach ($clients as $client) {
+            foreach ($reservation as $reservation) {
                 ?>
 
-                <div class="position-absolute modal top-0 fade" id="<?php echo 'exampleModal' . $client['id'] ?>"
+                <div class="position-absolute modal top-0 fade" id="<?php echo 'exampleModal' . $reservation['id_reserva'] ?>"
                     tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
                     <form class="modal-dialog" action="<?php echo $root . 'db/client/db_client_delete.php' ?>"
@@ -78,17 +79,17 @@ mysqli_close($conn);
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar usuario</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar reserva</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ¿Estás seguro que deseas eliminar a <b>
-                                        <?php echo $client['nombre'] ?>
+                                    ¿Estás seguro que deseas eliminar la reserva <b>
+                                        <?php echo $reservation['id_reserva'] ?>
                                     </b>?
-                                    El cliente ya no podrá entrar a su cuenta de usuario para realizar acciones.
+                                    Puede que haya problemas al eliminar la reserva
                                 </div>
-                                <input type="text" hidden value="<?php echo $client['id'] ?>" name="client-id">
+                                <input type="text" hidden value="<?php echo $reservation['id_reserva'] ?>" name="id-reserva">
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
                                     <button type="submit" class="btn btn-danger">Eliminar definitivamente</button>
@@ -98,30 +99,30 @@ mysqli_close($conn);
                     </form>
                 </div>
 
-                <form class="col" action="<?php echo 'form_update_client.php' ?>" method="POST">
+                <form class="col" action="<?php echo 'form_update_reservation.php' ?>" method="POST">
 
                     <tr>
                         <td>
-                            <img class="rounded" src="<?php echo $root . $client['pfp'] ?>" width="40px" height="40px">
+                            <?php $reservation['id_reserva'] ?>
                         </td>
                         <td>
-                            <?php echo $client['id'] ?>
-                            <input hidden type="text" value="<?php echo $client['id'] ?>" name="client-id">
+                            <?php echo $reservation['id'] ?>
+                            <input hidden type="text" value="<?php echo $reservation['id'] ?>" name="client-id">
                         </td>
                         <td>
-                            <?php echo $client['nombre'] ?>
+                            <?php echo $reservation['nombre'] ?>
                         </td>
                         <td>
-                            <?php echo $client['email'] ?>
+                            <?php echo $reservation['email'] ?>
                         </td>
                         <td>
-                            <?php echo $client['DNI'] ?>
+                            <?php echo $reservation['DNI'] ?>
                         </td>
                         <td>
-                            <?php echo $client['telefono'] ?>
+                            <?php echo $reservation['telefono'] ?>
                         </td>
                         <td>
-                            <?php echo $client['metodo_pago'] ?>
+                            <?php echo $reservation['metodo_pago'] ?>
                         </td>
 
                         <td>
@@ -130,7 +131,7 @@ mysqli_close($conn);
 
                         <td>
                             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                data-bs-target="<?php echo '#exampleModal' . $client['id'] ?>">
+                                data-bs-target="<?php echo '#exampleModal' . $reservation['id'] ?>">
                                 Eliminar
                             </button>
                         </td>

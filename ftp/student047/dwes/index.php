@@ -4,7 +4,7 @@ $root = '/student047/dwes/';
 include('components/header.php')
 ?>
 
-<div class="d-flex flex-column my-5 pt-5 align-items-center justify-content-center">
+<div class="d-flex flex-column mt-5 pt-5 align-items-center justify-content-center">
     <div class="text-center m-5">
         <h1 class="display-5">
             <?php if (isset($_SESSION["cliente"])) {

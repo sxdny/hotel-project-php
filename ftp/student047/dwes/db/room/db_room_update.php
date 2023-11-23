@@ -23,7 +23,7 @@ $estado         = $_POST['estado'];
 
 // actualizar datos cliente
 $sql =
-    "UPDATE habitaciones
+    "UPDATE 047habitaciones
     SET nombre = '" . $nombre . "',
         descripcion = '" . $descripcion . "',
         capacidad = " . $capacidad . ",

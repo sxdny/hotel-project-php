@@ -19,7 +19,7 @@ $passwd = $_POST['passwd'];
 
 // buscar el cliente con la password
 $sql =
-    "SELECT * FROM clientes
+    "SELECT * FROM 047clientes
     WHERE username ='" . $username . "' AND passwd = '" . $passwd . "';";
 $result = mysqli_query($conn, $sql);
 $clientes = mysqli_fetch_all($result, MYSQLI_ASSOC);

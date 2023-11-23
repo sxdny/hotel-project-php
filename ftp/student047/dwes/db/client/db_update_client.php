@@ -23,7 +23,7 @@ $passwd         = $_POST['passwd'];
 
 // actualizar datos cliente
 $sql =
-    "UPDATE clientes
+    "UPDATE 047clientes
     SET nombre = '" .$nombre. "',
         DNI = '". $dni. "',
         email = '". $email . "',

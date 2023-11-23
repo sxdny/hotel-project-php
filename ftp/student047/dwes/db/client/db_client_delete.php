@@ -15,7 +15,7 @@ include($dbConnection);
 $client_id = $_POST['client-id'];
 
 // borrar usuario de la base de datos
-$sql = "DELETE FROM clientes WHERE id = " . $client_id . ";";
+$sql = "DELETE FROM 047clientes WHERE id = " . $client_id . ";";
 ?>
 
 <?php include($header) ?>

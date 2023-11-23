@@ -19,10 +19,10 @@ if (isset($_POST['filtro'])) {
 
     if ($filtro == 'All') {
         $sql =
-            "SELECT * FROM habitaciones;";
+            "SELECT * FROM 047habitaciones;";
     } else {
         $sql =
-            "SELECT * FROM habitaciones
+            "SELECT * FROM 047habitaciones
             WHERE estado = '" . $filtro . "';";
     }
 
@@ -31,7 +31,7 @@ if (isset($_POST['filtro'])) {
     mysqli_close($conn);
 
 } else {
-    $sql = "SELECT * FROM habitaciones;";
+    $sql = "SELECT * FROM 047habitaciones;";
     $result = mysqli_query($conn, $sql);
     $habitaciones = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_close($conn);

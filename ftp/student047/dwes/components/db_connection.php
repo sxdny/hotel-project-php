@@ -2,11 +2,11 @@
 
 $root = '/student047/dwes/';
 
-// credenciales acceso base de datos
-$server = "localhost";
-$usuario = "root";
-$contra = "";
-$baseDeDatos = "hotel";
+// credenciales acceso base de datos (remotehost.es)
+$server = "dwesdatabase";
+$usuario = "dwess1234";
+$contra = "test1234.";
+$baseDeDatos = "047_hotel";
 
 $conn = mysqli_connect($server, $usuario, $contra, $baseDeDatos);
 
