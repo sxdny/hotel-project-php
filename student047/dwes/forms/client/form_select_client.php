@@ -13,7 +13,7 @@ include($dbConnection);
 
 // query seleccionar clientes
 // TODO cambiar esto para filtrado
-$sql = "SELECT * FROM clientes;";
+$sql = "SELECT * FROM 047clientes;";
 $result = mysqli_query($conn, $sql);
 $clients = mysqli_fetch_all($result, MYSQLI_ASSOC);
 

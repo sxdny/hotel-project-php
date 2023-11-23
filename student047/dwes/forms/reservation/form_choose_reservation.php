@@ -23,7 +23,7 @@ $_SESSION['date-out']   = $dateOut;
 $_SESSION['n-personas'] = $nPersonas;
 
 $sql =
-"SELECT * FROM habitaciones
+"SELECT * FROM 047habitaciones
 WHERE estado = 'Available'
 AND capacidad >=". $nPersonas . ";";
 

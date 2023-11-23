@@ -22,7 +22,7 @@ $img          = "images/rooms/" . $_FILES["img"]["name"];
 
 // insertar nueva habitación
 $sql =
-    "INSERT INTO habitaciones (id, nombre, descripcion, capacidad, tipo, estado, precio, img) VALUES (DEFAULT, '" . $nombre . "', '" . $descripcion . "', " . $capacidad . ", '" . $tipo . "', '" . $estado . "', " . $precio . ", '" . $img . "')";
+    "INSERT INTO 047habitaciones (id, nombre, descripcion, capacidad, tipo, estado, precio, img) VALUES (DEFAULT, '" . $nombre . "', '" . $descripcion . "', " . $capacidad . ", '" . $tipo . "', '" . $estado . "', " . $precio . ", '" . $img . "')";
 
 // subir foto de perfil (pfp) al servidor
 if ($_FILES["img"]["error"] === UPLOAD_ERR_OK) {

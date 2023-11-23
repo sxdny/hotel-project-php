@@ -11,7 +11,6 @@ include($dbConnection);
 
 
 if (isset($_SESSION['cliente'])) {
-
     // para las personas que hayan iniciado sesión
 
     // datos de la reserva:
@@ -27,7 +26,7 @@ if (isset($_SESSION['cliente'])) {
     // hacer la query:
 
     $sql =
-        "INSERT INTO reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
+        "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
         VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dateIn . "','" . $dateOut . "'," . $precio . "," . $precioFinal . ",'" . $estado . "')
         ";
 
@@ -46,7 +45,7 @@ if (isset($_SESSION['cliente'])) {
     $username = $nombre . $dni;
 
     $sql =
-        "INSERT INTO clientes (id, nombre, DNI, email, telefono, metodo_pago, username, pfp)
+        "INSERT INTO 047clientes (id, nombre, DNI, email, telefono, metodo_pago, username, pfp)
     VALUES (DEFAULT, '" . $nombre . "','" . $dni . "', '" . $email . "', " . $telefono . ", '" . $metodo_de_pago . "', '" . $username . "', '" . $pfp . "');";
 
     if ($conn->query($sql)) {
@@ -58,7 +57,7 @@ if (isset($_SESSION['cliente'])) {
     // obtener el id del cliente que acabamos de insertar
     $sql =
         "
-        SELECT id FROM clientes
+        SELECT id FROM 047clientes
         ORDER BY id DESC LIMIT 1;
         ";
 
@@ -81,7 +80,7 @@ if (isset($_SESSION['cliente'])) {
     // hacer la query:
 
     $sql =
-        "INSERT INTO reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
+        "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
         VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dateIn . "','" . $dateOut . "'," . $precio . "," . $precioFinal . ",'" . $estado . "')
         ";
 }
@@ -95,6 +94,7 @@ if (isset($_SESSION['cliente'])) {
 
     <?php
     // mensaje output de la query
+    echo $sql;
     if ($conn->query($sql) === TRUE) {
         ?>
         <div class="alert alert-success mt-2" role="alert">

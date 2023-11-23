@@ -10,11 +10,6 @@ $dbConnection = $root . '/components/db_connection.php';
 ?>
 
 <?php
-
-
-?>
-
-<?php
 include($header);
 
 include($dbConnection);

@@ -12,7 +12,7 @@ include($dbConnection);
 <?php
 
 // seleccionar todas las reservas
-$sql = "SELECT * FROM reservation;";
+$sql = "SELECT * FROM 047reservas;";
 $result = mysqli_query($conn, $sql);
 $reservations = mysqli_fetch_all($result, MYSQLI_ASSOC);
 

@@ -19,6 +19,7 @@ $root = '/student047/dwes/';
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+    /* TODO Pasar todos los estilos a un archivo a parte. */
     /* FIXME Posible error para el icono del datetime: */
     * {
         font-family: 'Inter', sans-serif !important;
@@ -130,7 +131,7 @@ $root = '/student047/dwes/';
                                     reserva</a></li>
 
                             <li><a class="dropdown-item"
-                                    href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">Listar
+                                    href="<?php echo $root . '/forms/reservation/form_select_reservation_admin.php' ?>">Listar
                                     reservas</a></li>
                         </ul>
                     </li>

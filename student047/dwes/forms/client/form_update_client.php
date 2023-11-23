@@ -16,7 +16,7 @@ include($dbConnection);
 $client_id = $_POST['client-id'];
 
 // obtener información del cliente a editar
-$sql = "SELECT * FROM clientes WHERE id = " . $client_id . ";";
+$sql = "SELECT * FROM 047clientes WHERE id = " . $client_id . ";";
 $result = mysqli_query($conn, $sql);
 $clients = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $client = $clients[0];

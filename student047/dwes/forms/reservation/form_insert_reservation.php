@@ -23,7 +23,7 @@ include($header);
 
 include($dbConnection);
 
-$sql = "SELECT * FROM habitaciones WHERE id = " . $habitacion_id . ";";
+$sql = "SELECT * FROM 047habitaciones WHERE id = " . $habitacion_id . ";";
 $result = mysqli_query($conn, $sql);
 $habitaciones = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $habitacion = $habitaciones[0];

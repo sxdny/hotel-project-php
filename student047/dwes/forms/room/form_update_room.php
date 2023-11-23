@@ -17,7 +17,7 @@ include($dbConnection);
 $habitacion_id = $_POST['room_id_update'];
 
 // obtener información del cliente a editar
-$sql = "SELECT * FROM habitaciones WHERE id = " . $habitacion_id . ";";
+$sql = "SELECT * FROM 047habitaciones WHERE id = " . $habitacion_id . ";";
 $result = mysqli_query($conn, $sql);
 $habitaciones = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -62,10 +62,10 @@ mysqli_close($conn);
                     <option value="doble">Doble</option>
                 </select>
 
-            <?php
+                <?php
             }
             if ($habitacion['tipo'] == 'suite') {
-            ?>
+                ?>
                 <select class="form-label form-select" name="tipo" required>
                     <option value="estandar">Estándar</option>
                     <option selected value="suite">Suite</option>
@@ -73,17 +73,17 @@ mysqli_close($conn);
                     <option value="doble">Doble</option>
                 </select>
 
-            <?php
+                <?php
             }
             if ($habitacion['tipo'] == 'doble') { ?>
-                    <select class="form-label form-select" name="tipo" required>
-                        <option value="estandar">Estándar</option>
-                        <option value="suite">Suite</option>
-                        <option value="ejecutiva">Ejecutiva</option>
-                        <option selected value="doble">Doble</option>
-                    </select>
+                <select class="form-label form-select" name="tipo" required>
+                    <option value="estandar">Estándar</option>
+                    <option value="suite">Suite</option>
+                    <option value="ejecutiva">Ejecutiva</option>
+                    <option selected value="doble">Doble</option>
+                </select>
 
-            <?php
+                <?php
             }
             if ($habitacion['tipo'] == 'ejecutiva') { ?>
                 <select class="form-label form-select" name="tipo" required>
@@ -94,7 +94,7 @@ mysqli_close($conn);
                 </select>
             <?php } ?>
         </div>
-        <input type="number" hidden value="<?php echo $habitacion['id']?>" name="habitacion-id">
+        <input type="number" hidden value="<?php echo $habitacion['id'] ?>" name="habitacion-id">
         <div class="mb-3">
             <label class="form-label">Precio por noche</label>
             <input type="number" class="form-control" name="precio" aria-describedby="precio"

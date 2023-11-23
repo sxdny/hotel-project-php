@@ -24,7 +24,7 @@ $pfp             = "images/pfps/" . $_FILES["pfp"]["name"];
 
 // insertar nuevo cliente
 $sql =
-    "INSERT INTO clientes (id, nombre, dni, email, telefono, metodo_pago, username, passwd, pfp) VALUES (DEFAULT, '" . $nombre . "', '" . $dni . "', '" . $email . "', " . $telefono . ", '" . $metodo_de_pago . "', '" . $username . "', '" . $passwd . "', '" . $pfp . "')";
+    "INSERT INTO 047clientes (id, nombre, dni, email, telefono, metodo_pago, username, passwd, pfp) VALUES (DEFAULT, '" . $nombre . "', '" . $dni . "', '" . $email . "', " . $telefono . ", '" . $metodo_de_pago . "', '" . $username . "', '" . $passwd . "', '" . $pfp . "')";
 
 // subir pfp al servidor
 if ($_FILES["pfp"]["error"] === UPLOAD_ERR_OK) {

@@ -21,7 +21,7 @@ $precio = $_POST['precio'];
 $estado = $_POST['estado'];
 
 $sql =
-    "INSERT INTO reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
+    "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
         VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dateIn . "','" . $dateOut . "'," . $precio . "," . $precio . ",'" . $estado . "')
         ";
 ?>

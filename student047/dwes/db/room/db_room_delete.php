@@ -9,7 +9,7 @@ include($root . 'components/db_connection.php')
 $habitacion_id = $_POST['habitacion-id'];
 
 // borrar usuario de la base de datos
-$sql = "DELETE FROM habitaciones WHERE id = " . $habitacion_id . ";";
+$sql = "DELETE FROM 047habitaciones WHERE id = " . $habitacion_id . ";";
 ?>
 
 <?php include($root . 'components/header.php') ?>
