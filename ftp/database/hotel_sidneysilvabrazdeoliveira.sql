@@ -44,7 +44,7 @@ SELECT id FROM 047habitaciones
 WHERE estado !=  "Out of service"
 ORDER BY RAND() 
 LIMIT 1
-INTO room;
+INTO  room;
 
 SELECT 047habitaciones.precio FROM 047habitaciones WHERE id = room LIMIT 1 INTO precio;
 
