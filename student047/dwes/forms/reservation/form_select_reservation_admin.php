@@ -68,11 +68,12 @@ mysqli_close($conn);
             </tr>
 
             <?php
-            foreach ($reservation as $reservation) {
+            foreach ($reservations as $reservation) {
                 ?>
 
-                <div class="position-absolute modal top-0 fade" id="<?php echo 'exampleModal' . $reservation['id_reserva'] ?>"
-                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="position-absolute modal top-0 fade"
+                    id="<?php echo 'exampleModal' . $reservation['id_reserva'] ?>" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
 
                     <form class="modal-dialog" action="<?php echo $root . 'db/client/db_client_delete.php' ?>"
                         method="POST">
@@ -89,7 +90,8 @@ mysqli_close($conn);
                                     </b>?
                                     Puede que haya problemas al eliminar la reserva
                                 </div>
-                                <input type="text" hidden value="<?php echo $reservation['id_reserva'] ?>" name="id-reserva">
+                                <input type="text" hidden value="<?php echo $reservation['id_reserva'] ?>"
+                                    name="id-reserva">
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
                                     <button type="submit" class="btn btn-danger">Eliminar definitivamente</button>
@@ -103,26 +105,37 @@ mysqli_close($conn);
 
                     <tr>
                         <td>
-                            <?php $reservation['id_reserva'] ?>
+                            <?php echo $reservation['id_reserva'] ?>
+                            <input hidden type="number" value="<?php echo $reservation['id_reserva'] ?>" name="reservation-id">
                         </td>
                         <td>
-                            <?php echo $reservation['id'] ?>
-                            <input hidden type="text" value="<?php echo $reservation['id'] ?>" name="client-id">
+                            <?php echo $reservation['id_habitacion'] ?>
                         </td>
                         <td>
-                            <?php echo $reservation['nombre'] ?>
+                            <?php echo $reservation['id_cliente'] ?>
                         </td>
                         <td>
-                            <?php echo $reservation['email'] ?>
+                            <?php echo $reservation['n_personas'] ?>
                         </td>
                         <td>
-                            <?php echo $reservation['DNI'] ?>
+                            <?php echo $reservation['data_entrada'] ?>
                         </td>
                         <td>
-                            <?php echo $reservation['telefono'] ?>
+                            <?php echo $reservation['data_salida'] ?>
                         </td>
                         <td>
-                            <?php echo $reservation['metodo_pago'] ?>
+                            <?php echo $reservation['precio_inicial'] ?>
+                        </td>
+                        <td>
+                            <?php echo $reservation['precio_final'] ?>
+                        </td>
+
+                        <td>
+                            <?php echo $reservation['estado'] ?>
+                        </td>
+
+                        <td>
+                            <?php echo $reservation['json_servicios'] ?>
                         </td>
 
                         <td>
@@ -131,7 +144,7 @@ mysqli_close($conn);
 
                         <td>
                             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                data-bs-target="<?php echo '#exampleModal' . $reservation['id'] ?>">
+                                data-bs-target="<?php echo '#exampleModal' . $reservation['id_reserva'] ?>">
                                 Eliminar
                             </button>
                         </td>
