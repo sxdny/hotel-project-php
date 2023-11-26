@@ -10,10 +10,6 @@ session_destroy();
 unset($_SESSION["cliente"]);
 ?>
 <?php session_destroy() ?>
-<?php if (isset($_SERVER['HTTP_REFERER'])) {
-    // para retroceder dos páginas
-    echo '<script>window.history.go(-1);</script>';
-} else {
-    header('Location: /student047/dwes/index.php');
-}
+<?php
+header('Location: /student047/dwes/index.php');
 exit(); ?>

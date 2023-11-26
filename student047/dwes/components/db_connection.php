@@ -6,7 +6,7 @@ $root = '/student047/dwes/';
 $server = "localhost";
 $usuario = "root";
 $contra = "";
-$baseDeDatos = "hotel";
+$baseDeDatos = "047hotel";
 
 $conn = mysqli_connect($server, $usuario, $contra, $baseDeDatos);
 

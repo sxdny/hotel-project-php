@@ -13,12 +13,13 @@ include($dbConnection);
 
 <?php include($header) ?>
 
-<section class="container w-100 my-5 py-5">
-    <h2 class="mt-5">Hagamos una reserva!</h2>
-    
-    <form class="mt-3" action="<?php echo 'form_choose_reservation.php' ?>" method="POST">
-        <!-- FIXME Arreglar los botones de calendario (Los botones no se muestran) -->
-        <p>A continuación, introduzca la fecha de entrada, la de salida y el número de personas que se alojarán en la habitación.</p>
+<section class="section-reservation container-fluid d-flex flex-column">
+
+    <form class="reservation-form" action="<?php echo 'form_choose_reservation.php' ?>" method="POST">
+
+        <h1>¡Hagamos una reserva!</h1>
+       
+        <p>Introduzca los datos para empezar a realizar una reserva:</p>
         <div class="mb-3">
             <label for="date-in" class="form-label">Date-in:</label>
             <input required type="date" class="datepicker date-picker form-control" name="date-in" aria-describedby="date-in">
@@ -31,8 +32,10 @@ include($dbConnection);
             <label for="date-out" class="form-label">Número de personas:</label>
             <input required type="number" class="form-control" name="n-personas" aria-describedby="n-personas" min="0" max="4">
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-</section>
 
-<?php include($footer) ?>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+
+    </form>
+
+    <?php include($footer) ?>
+</section>

@@ -4,36 +4,7 @@ Si tienes alguna duda sobre cualquier apartado de la página, has llegado al lug
 
 Lista de contenidos:
 
-- Permisos
-  - Administrador
-  - Cliente
-  - Invitado
-- Componentes:
-  - Barra de navegación.
-  - Footer
-- Formularios
-  - Administradores
-    - Clientes
-      - Insertar (Administrador)
-      - Editar (Administrador)
-        - Actualizar datos
-        - Eliminar
-    - Habitaciones
-      - Insertar (Administrador)
-      - Editar (Administrador)
-        - Actualizar datos (en desarrollo)
-        - Eliminar (en desarrollo)
-    - Reservas
-      - Insertar (en desarrollo)
-      - Editar (en desarrollo)
-        - Actualizar datos (en desarrollo)
-        - Editar (en desarrollo)
-  - Clientes
-    - Reservas
-      - Insertar (en desarrollo)
-    - Datos
-      - Insertar (en desarrollo)
-      - Actualizar datos (en desarrollo)
+Añadir la lista de contenidos aquí.
 
 ### Permisos
 ---

@@ -8,19 +8,15 @@ $footer = $root . '/components/footer.php';
 
 ?>
 
-<?php include($header) ?>
-
 <!-- Aquí va el form -->
-<section class="container-fluid mt-5 p-5">
+<section class="section-login container-fluid d-flex flex-column pt-5">
 
-    <div class="d-flex flex-column text-center">
-        <h1 class="display-5">¡Bienvenido de nuevo!</h1>
-    </div>
+    <?php include($header) ?>
 
-    <h2> Iniciar Sesión </h2>
+    <form class="login-form" action="<?php echo $root . '/db/client/db_customer_login.php' ?>" method="post">
 
-    <form action="<?php echo $root . '/db/client/db_customer_login.php' ?>" method="post">
 
+        <h1>Iniciar Sesión</h1>
         <p>Introduzca los datos para iniciar sesión:</p>
         <div class="mb-3">
             <label class="form-label">Nombre de usuario:</label>
@@ -33,10 +29,9 @@ $footer = $root . '/components/footer.php';
 
         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
 
-        <p class="mt-3">No tienes usuario? <a href="#">Registrarse </a></p>
+        <p class="mt-3">No tienes un usuario? <a href="#">Registrarse </a></p>
 
     </form>
 
+    <?php include($footer) ?>
 </section>
-
-<?php include($footer) ?>

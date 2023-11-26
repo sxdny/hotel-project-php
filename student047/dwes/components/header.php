@@ -14,60 +14,8 @@ $root = '/student047/dwes/';
     <title>Internazionale</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?php echo $root . '/styles/index.css' ?>">
 </head>
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-    /* TODO Pasar todos los estilos a un archivo a parte. */
-    /* FIXME Posible error para el icono del datetime: */
-    * {
-        font-family: 'Inter', sans-serif !important;
-    }
-
-    body,
-    html {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-    }
-
-    .display-1,
-    .display-2,
-    .display-3,
-    .display-4,
-    .display-5 {
-        font-weight: 500;
-    }
-
-    .navbar {
-        background-color: rgba(255, 255, 255, 0.61) !important;
-        backdrop-filter: blur(20px) !important;
-    }
-
-    code {
-        font-family: monospace !important;
-    }
-
-    .logo-text {
-        font-weight: 500;
-        font-size: 1.4rem;
-        text-decoration: none;
-        color: black;
-    }
-
-    .welcome-text {
-        font-weight: 500;
-        font-size: 1rem;
-        text-decoration: none;
-        color: black;
-    }
-
-    .pfp-nav {
-        transform: translate(-120px);
-        margin-top: 0.6rem !important;
-    }
-</style>
 
 <body>
 
@@ -87,64 +35,82 @@ $root = '/student047/dwes/';
             <!-- menu items -->
             <div class="collapse justify-content-end navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav gap-2">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Clientes (Admin)
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item"
-                                    href="<?php echo $root . '/forms/client/form_insert_client.php' ?>">Nuevo
-                                    cliente</a></li>
 
-                            <li><a class="dropdown-item"
-                                    href="<?php echo $root . '/forms/client/form_select_client.php' ?>">Listar
-                                    clientes</a></li>
-                        </ul>
-                    </li>
+                    <!-- Lista de menús (Hacer que aparezcan según el tipo de usuario) -->
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Habitaciones (Admin)
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item"
-                                    href="<?php echo $root . '/forms/room/form_insert_room.php' ?>">Nueva habitación</a>
+                    <?php if (isset($_SESSION['cliente'])) { ?>
+
+                        <?php if ($_SESSION['cliente']['tipo'] == 'admin') { ?>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Clientes (Admin)
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo $root . '/forms/client/form_insert_client.php' ?>">Nuevo
+                                            cliente</a></li>
+
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo $root . '/forms/client/form_select_client.php' ?>">Listar
+                                            clientes</a></li>
+                                </ul>
                             </li>
 
-                            <li><a class="dropdown-item"
-                                    href="<?php echo $root . '/forms/room/form_select_room.php' ?>">Listar
-                                    habitaciones</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Habitaciones (Admin)
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo $root . '/forms/room/form_insert_room.php' ?>">Nueva
+                                            habitación</a>
+                                    </li>
 
-                        </ul>
-                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo $root . '/forms/room/form_select_room.php' ?>">Listar
+                                            habitaciones</a></li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Reservas (Admin)
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item"
-                                    href="<?php echo $root . '/forms/reservation/form_insert_reservation_admin.php' ?>">Nueva
-                                    reserva</a></li>
+                                </ul>
+                            </li>
 
-                            <li><a class="dropdown-item"
-                                    href="<?php echo $root . '/forms/reservation/form_select_reservation_admin.php' ?>">Listar
-                                    reservas</a></li>
-                        </ul>
-                    </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Reservas (Admin)
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo $root . '/forms/reservation/form_insert_reservation_admin.php' ?>">Nueva
+                                            reserva</a></li>
 
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">Reservar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $root . '/manuals/help.php' ?>">Ayuda</a>
-                    </li>
-                    <?php if (isset($_SESSION["cliente"])) {
-                        ?>
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo $root . '/forms/reservation/form_select_reservation_admin.php' ?>">Listar
+                                            reservas</a></li>
+                                </ul>
+                            </li>
+
+                        <?php } else { ?>
+
+                            <li class="nav-item">
+                                <a disabled class="nav-link"
+                                    href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">Mis
+                                    reservas</a>
+                            </li>
+
+                        <?php }
+                        ; ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">Reservar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo $root . '/manuals/help.php' ?>">Ayuda</a>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -161,19 +127,22 @@ $root = '/student047/dwes/';
                                     </li>
                                 </ul>
                         </li>
-                        <?php
-                        ;
-                    } else {
-                        ?>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">Reservar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo $root . '/manuals/help.php' ?>">Ayuda</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a style="font-size: 14px; font-weight: 500;" class="btn btn-primary" role="button"
                                 href="<?php echo $root . '/forms/client/form_customer_login.php' ?>">Iniciar Sesión</a>
                         </li>
-                        <?php
-                        ;
-                    }
-                    ?>
+                    <?php }
+                    ; ?>
                 </ul>
+
             </div>
         </div>
     </nav>
