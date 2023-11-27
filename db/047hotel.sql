@@ -232,8 +232,6 @@ INSERT INTO `047reservas` (`id_reserva`, `id_habitacion`, `id_cliente`, `n_perso
 -- Disparadores `047reservas`
 --
 
-DROP TRIGGER IF EXISTS `047tr_reservas_delete`;
-
 DELIMITER $$
 CREATE TRIGGER `047tr_reservas_delete` AFTER DELETE ON `047reservas` FOR EACH ROW UPDATE 047habitaciones
 SET estado = "Available"
@@ -244,8 +242,6 @@ WHERE NOT EXISTS (SELECT 1
 $$
 DELIMITER ;
 DELIMITER $$
-
-DROP TRIGGER IF EXISTS `047tr_reservas_insert`;
 
 CREATE TRIGGER `047tr_reservas_insert` AFTER INSERT ON `047reservas` FOR EACH ROW UPDATE 047habitaciones
 SET estado = "Booked"
