@@ -17,7 +17,7 @@ include($dbConnection);
 
     <form class="reservation-form" action="<?php echo 'form_choose_reservation.php' ?>" method="POST">
 
-        <h1>¡Hagamos una reserva!</h1>
+        <h2>¡Hagamos una reserva!</h2>
        
         <p>Introduzca los datos para empezar a realizar una reserva:</p>
         <div class="mb-3">

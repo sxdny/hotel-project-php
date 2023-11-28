@@ -9,7 +9,6 @@ if (isset($_COOKIE[session_name()])) {
 session_destroy();
 unset($_SESSION["cliente"]);
 ?>
-<?php session_destroy() ?>
 <?php
 header('Location: /student047/dwes/index.php');
 exit(); ?>

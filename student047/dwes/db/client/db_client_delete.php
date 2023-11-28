@@ -1,4 +1,5 @@
 <?php
+session_start();
 $root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
 
 // component variables
@@ -18,28 +19,20 @@ $client_id = $_POST['client-id'];
 $sql = "DELETE FROM 047clientes WHERE id = " . $client_id . ";";
 ?>
 
-<?php include($header) ?>
 <div class="m-5 pt-5">
 
     <?php
     if ($conn->query($sql) === TRUE) {
+        $_SESSION['mensaje'] = 'El cliente ha sido eliminado correctamente!';
+        header('Location: /student047/dwes/forms/client/form_select_client.php');
         ?>
-        <div class="alert alert-success mt-2" role="alert">
-            El cliente ha sido eliminado correctamente!
-        </div>
         <?php
     } else {
+        $_SESSION['mensaje'] = 'Error: ' . $sql . '<br>' . $conn->error;
+        header('Location: /student047/dwes/forms/client/form_select_client.php');
         ?>
-        <div class="alert alert-danger mt-2" role="alert">'
-            <?php echo 'Error: ' . $sql . '<br>' . $conn->error ?>
-        </div>
         <?php
     }
     ?>
 
-    <a class="btn btn-primary" href="<?php echo $root . '/index.php' ?>">Inicio</a>
-    
-    <a class="btn btn-primary" href="<?php echo $root . '/forms/client/form_select_client.php' ?>">Ver clientes</a>
-
 </div>
-<?php include($footer) ?>

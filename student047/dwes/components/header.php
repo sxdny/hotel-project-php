@@ -96,7 +96,7 @@ $root = '/student047/dwes/';
 
                             <li class="nav-item">
                                 <a disabled class="nav-link"
-                                    href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">Mis
+                                    href="<?php echo $root . '/forms/reservation/form_select_my_reservations.php' ?>">Mis
                                     reservas</a>
                             </li>
 

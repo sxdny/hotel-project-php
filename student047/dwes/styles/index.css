@@ -56,8 +56,12 @@ code {
 .help-content,
 .login-form,
 .reservation-form {
-    width: 50% !important;
     align-self: center !important;
+    background-color: rgba(255, 255, 255, 0.61) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.125) !important;
+    border-radius: 15px;
+    margin: 9rem;
 }
 
 .container-50 > .img-help {
@@ -69,20 +73,27 @@ code {
     background-size: cover;
 }
 
-.login-form, .reservation-form {
+.login-form,
+.reservation-form {
     display: flex;
     flex-direction: column;
     place-content: center;
     height: 100%;
-    padding: 0rem 12rem;
+    padding: 0rem 8rem;
 }
 
 .login-form > button {
     width: 9rem;
 }
 
-.section-login, .section-reservation {
+.section-login,
+.section-reservation {
     height: 100dvh;
+    background: rgb(170, 254, 250);
+    background: -moz-radial-gradient(circle, rgba(170, 254, 250, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(170, 254, 250, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: radial-gradient(circle, rgba(170, 254, 250, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#aafefa",endColorstr="#ffffff",GradientType=1);
 }
 
 @media (max-width: 992px) {

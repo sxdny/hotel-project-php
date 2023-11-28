@@ -22,7 +22,8 @@ mysqli_close($conn);
 ?>
 
 <?php include($header) ?>
-<section class="pt-5 m-5">
+
+<section class="select-clients pt-5 m-5 mb-0">
 
     <!-- menú de filtrado -->
     <!-- TODO hacer menú de filtrado -->
@@ -45,9 +46,7 @@ mysqli_close($conn);
     </div>
 
     <div class="info">
-        <?php
-        // mostrar info filtrado
-        ?>
+        <!-- Mostrar información de alguna cosa no me acuerdo. -->
     </div>
 
     <div class="container-fluid my-5 d-flex row gap-3">
@@ -142,5 +141,26 @@ mysqli_close($conn);
             ?>
         </table>
     </div>
+
+    <?php
+    if (isset($_SESSION['mensaje'])) {
+        ?>
+
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Console</strong>
+                <small class="text-muted">Just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <?php echo $_SESSION['mensaje'] ?>
+            </div>
+        </div>
+        <?php
+        unset($_SESSION['mensaje']);
+    }
+    ?>
+
 </section>
+
 <?php include($footer) ?>
