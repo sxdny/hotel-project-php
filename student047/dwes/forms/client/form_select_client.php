@@ -148,12 +148,14 @@ mysqli_close($conn);
 
         <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
-                <strong class="me-auto">Console</strong>
-                <small class="text-muted">Just now</small>
+                <strong class="me-auto">Consola</strong>
+                <small class="text-muted">Ahora mismo</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                <?php echo $_SESSION['mensaje'] ?>
+                <p class="text-success m-0">
+                    <?php echo $_SESSION['mensaje'] ?>
+                </p>
             </div>
         </div>
         <?php

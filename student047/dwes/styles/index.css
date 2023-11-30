@@ -21,6 +21,21 @@ html {
     font-weight: 500;
 }
 
+.display-1 {
+    font-size: 88px;
+    letter-spacing: -5px;
+    line-height: 82px;
+    font-weight: bold;
+}
+
+.subtext {
+    font-size: 18px;
+    margin-top: 25px;
+    color: gray;
+    width: 30vw;
+    align-self: center;
+}
+
 .navbar {
     background-color: rgba(255, 255, 255, 0.61) !important;
     backdrop-filter: blur(20px) !important;
@@ -44,6 +59,11 @@ code {
     color: black;
 }
 
+.btn-reservar {
+    width: 12rem;
+    align-self: center;
+}
+
 .pfp-nav {
     transform: translate(-120px);
     margin-top: 0.6rem !important;
@@ -51,6 +71,24 @@ code {
 
 .img-help {
     height: 30rem !important;
+}
+
+.text-gradient {
+    background-image: linear-gradient(to right, rgb(126, 208, 255) 0%, #142588 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero {
+    height: 145rem;
+    background-color: white;
+    margin-top: 5rem;
+    width: 80vw;
+    align-self: center;
+    border-radius: 25px 25px 0px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
 }
 
 .help-content,
@@ -96,9 +134,38 @@ code {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#aafefa",endColorstr="#ffffff",GradientType=1);
 }
 
+/* hacer que la toast se muestre abajo a la derecha */
+.toast {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+}
+
+.main-header {
+    width: 52vw;
+}
+
+.bg-gradient-index {
+    background-image: url("../images/bg-gradient.png");
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
 @media (max-width: 992px) {
     .pfp-nav {
         transform: translate(0px);
+    }
+
+    .main-header {
+        width: 90vw;
+    }
+
+    .subtext {
+        width: 80vw;
     }
 
     .help-content,
@@ -108,3 +175,84 @@ code {
         padding: 1rem;
     }
 }
+
+/* media querys de las fuentes */
+@media (max-width: 768px) {
+    .display-1 {
+        font-size: 64px;
+        letter-spacing: -3px;
+        line-height: 62px;
+        font-weight: bold;
+    }
+
+    .display-2 {
+        font-size: 48px;
+        letter-spacing: -5px;
+        line-height: 82px;
+        font-weight: bold;
+    }
+
+    .display-3 {
+        font-size: 36px;
+        letter-spacing: -5px;
+        line-height: 82px;
+        font-weight: bold;
+    }
+
+    .display-4 {
+        font-size: 24px;
+        letter-spacing: -5px;
+        line-height: 82px;
+        font-weight: bold;
+    }
+
+    .display-5 {
+        font-size: 18px;
+        letter-spacing: -5px;
+        line-height: 82px;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 576px) {
+    .display-1 {
+        font-size: 48px;
+        letter-spacing: -3px;
+        line-height: 52px;
+        font-weight: bold;
+    }
+
+    .display-2 {
+        font-size: 36px;
+        letter-spacing: -5px;
+        line-height: 82px;
+        font-weight: bold;
+    }
+
+    .display-3 {
+        font-size: 24px;
+        letter-spacing: -5px;
+        line-height: 82px;
+        font-weight: bold;
+    }
+
+    .display-4 {
+        font-size: 18px;
+        letter-spacing: -5px;
+        line-height: 82px;
+        font-weight: bold;
+    }
+
+    .display-5 {
+        font-size: 14px;
+        letter-spacing: -5px;
+        line-height: 82px;
+        font-weight: bold;
+    }
+
+    .main-header {
+        width: 100%;
+    }
+}
+
+/* media querys para teléfonos */
