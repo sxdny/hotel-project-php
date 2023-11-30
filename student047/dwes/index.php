@@ -4,8 +4,8 @@ $root = '/student047/dwes/';
 include('components/header.php')
     ?>
 
-<div class="d-flex flex-column mt-5 pt-5 align-items-center justify-content-center bg-gradient-index">
-    <div class="d-flex flex-column main-header text-center m-5 pt-5">
+<div class="d-flex flex-column align-items-center justify-content-center bg-gradient-index">
+    <div class="d-flex flex-column main-header text-center">
         <h1 class="display-1">
             <?php
             echo "Bienvenido/a a <span class='text-gradient'> Internazionale </span> Hotel"; ?>
@@ -16,9 +16,8 @@ include('components/header.php')
             role="button">Empezar a
             reservar</a>
     </div>
-    <div class="hero d-flex flex-column justify-content-center text-center align-items-center">
-        <!-- poner aquí un bento grid o algo -->
-    </div>
+    <!-- <div class="hero d-flex flex-column justify-content-center text-center align-items-center">
+        poner aquí un bento grid o algo
+    </div> -->
 </div>
-
 <?php include('components/footer.php') ?>

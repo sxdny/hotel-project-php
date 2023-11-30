@@ -12,24 +12,24 @@ include($dbConnection);
 <?php
 
 // obtener variables del cliente
-$nombre          = $_POST['nombre'];
-$dni             = $_POST['dni'];
-$email           = $_POST['email'];
-$telefono        = $_POST['telefono'];
-$metodo_de_pago  = $_POST['metodo-de-pago'];
-$username        = $_POST['username'];
-$passwd          = $_POST['passwd'];
+$nombre = $_POST['nombre'];
+$dni = $_POST['dni'];
+$correo = $_POST['correo'];
+$telefono = $_POST['telefono'];
+$metodo_de_pago = $_POST['metodo-de-pago'];
+$usuario = $_POST['usuario'];
+$contra = $_POST['contra'];
 
-$pfp             = "images/pfps/" . $_FILES["pfp"]["name"];
+$imagen = "images/pfps/" . $_FILES["imagen"]["name"];
 
 // insertar nuevo cliente
 $sql =
-    "INSERT INTO 047clientes (id, nombre, dni, email, telefono, metodo_pago, username, passwd, pfp) VALUES (DEFAULT, '" . $nombre . "', '" . $dni . "', '" . $email . "', " . $telefono . ", '" . $metodo_de_pago . "', '" . $username . "', '" . $passwd . "', '" . $pfp . "')";
+    "INSERT INTO 047clientes (id, nombre, dni, correo, telefono, metodo_pago, usuario, contra, imagen) VALUES (DEFAULT, '" . $nombre . "', '" . $dni . "', '" . $correo . "', " . $telefono . ", '" . $metodo_de_pago . "', '" . $usuario . "', '" . $contra . "', '" . $imagen . "')";
 
-// subir pfp al servidor
-if ($_FILES["pfp"]["error"] === UPLOAD_ERR_OK) {
-    $archivo_temporal = $_FILES["pfp"]["tmp_name"];
-    $nuevo_destino = "../../images/pfps/" . $_FILES["pfp"]["name"];
+// subir imagen al servidor
+if ($_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
+    $archivo_temporal = $_FILES["imagen"]["tmp_name"];
+    $nuevo_destino = "../../images/pfps/" . $_FILES["imagen"]["name"];
 
     if (move_uploaded_file($archivo_temporal, $nuevo_destino)) {
         echo "El archivo ha sido subido correctamente.";
@@ -64,10 +64,11 @@ if ($_FILES["pfp"]["error"] === UPLOAD_ERR_OK) {
     ?>
 
     <a class="btn btn-primary" href="<?php echo $root . '/index.php' ?>">Inicio</a>
-    
+
     <a class="btn btn-primary" href="<?php echo $root . '/forms/client/form_select_client.php' ?>">Ver clientes</a>
 
-    <a class="btn btn-primary" href="<?php echo $root . '/forms/client/form_insert_client.php' ?>">Volver a insertar un cliente</a>
+    <a class="btn btn-primary" href="<?php echo $root . '/forms/client/form_insert_client.php' ?>">Volver a insertar un
+        cliente</a>
 
 
 </div>

@@ -16,8 +16,8 @@ if (isset($_SESSION['cliente'])) {
     // datos de la reserva:
     $idCliente = $_SESSION['cliente']['id'];
     $idHabitacion = $_SESSION['habitacion-id'];
-    $dateIn = $_SESSION['date-in'];
-    $dateOut = $_SESSION['date-out'];
+    $dataEntrada = $_SESSION['date-in'];
+    $dataSalida = $_SESSION['date-out'];
     $nPersonas = $_SESSION['n-personas'];
     $precio = $_SESSION['habitacion']['precio'];
     $precioFinal = $precio; // de momento
@@ -27,7 +27,7 @@ if (isset($_SESSION['cliente'])) {
 
     $sql =
         "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
-        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dateIn . "','" . $dateOut . "'," . $precio . "," . $precioFinal . ",'" . $estado . "')
+        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dataEntrada . "','" . $dataSalida . "'," . $precio . "," . $precioFinal . ",'" . $estado . "')
         ";
 
 } else {
@@ -70,8 +70,8 @@ if (isset($_SESSION['cliente'])) {
     // datos de la reserva:
     $idCliente = $cliente['id'];
     $idHabitacion = $_SESSION['habitacion-id'];
-    $dateIn = $_SESSION['date-in'];
-    $dateOut = $_SESSION['date-out'];
+    $dataEntrada = $_SESSION['date-in'];
+    $dataSalida = $_SESSION['date-out'];
     $nPersonas = $_SESSION['n-personas'];
     $precio = $_SESSION['habitacion']['precio'];
     $precioFinal = $precio; // de momento
@@ -81,7 +81,7 @@ if (isset($_SESSION['cliente'])) {
 
     $sql =
         "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
-        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dateIn . "','" . $dateOut . "'," . $precio . "," . $precioFinal . ",'" . $estado . "')
+        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dataEntrada . "','" . $dataSalida . "'," . $precio . "," . $precioFinal . ",'" . $estado . "')
         ";
 }
 

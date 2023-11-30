@@ -101,7 +101,7 @@ mysqli_close($conn);
 
                     <tr>
                         <td>
-                            <img class="rounded" src="<?php echo $root . $client['pfp'] ?>" width="40px" height="40px">
+                            <img class="rounded" src="<?php echo $root . $client['imagen'] ?>" width="40px" height="40px">
                         </td>
                         <td>
                             <?php echo $client['id'] ?>
@@ -111,10 +111,10 @@ mysqli_close($conn);
                             <?php echo $client['nombre'] ?>
                         </td>
                         <td>
-                            <?php echo $client['email'] ?>
+                            <?php echo $client['correo'] ?>
                         </td>
                         <td>
-                            <?php echo $client['DNI'] ?>
+                            <?php echo $client['dni'] ?>
                         </td>
                         <td>
                             <?php echo $client['telefono'] ?>
@@ -146,14 +146,14 @@ mysqli_close($conn);
     if (isset($_SESSION['mensaje'])) {
         ?>
 
-        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="bg-success toast show" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <strong class="me-auto">Consola</strong>
                 <small class="text-muted">Ahora mismo</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                <p class="text-success m-0">
+                <p class="text-white m-0">
                     <?php echo $_SESSION['mensaje'] ?>
                 </p>
             </div>

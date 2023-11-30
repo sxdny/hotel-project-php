@@ -20,11 +20,11 @@ $footer = $root . '/components/footer.php';
         <p>Introduzca los datos para iniciar sesión:</p>
         <div class="mb-3">
             <label class="form-label">Nombre de usuario:</label>
-            <input type="text" class="form-control" name="username" aria-describedby="username" required>
+            <input type="text" class="form-control" name="username" aria-describedby="username" minlength="5" maxlength="20" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Contraseña</label>
-            <input type="password" class="form-control" name="passwd" aria-describedby="passwd" required>
+            <input type="password" class="form-control" name="passwd" aria-describedby="passwd" maxlength="20" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>

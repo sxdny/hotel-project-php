@@ -18,16 +18,16 @@ $capacidad    = $_POST['capacidad'];
 $tipo         = $_POST['tipo'];
 $estado       = $_POST['estado'];
 $precio       = $_POST['precio'];
-$img          = "images/rooms/" . $_FILES["img"]["name"];
+$imagen          = "images/rooms/" . $_FILES["imagen"]["name"];
 
 // insertar nueva habitación
 $sql =
-    "INSERT INTO 047habitaciones (id, nombre, descripcion, capacidad, tipo, estado, precio, img) VALUES (DEFAULT, '" . $nombre . "', '" . $descripcion . "', " . $capacidad . ", '" . $tipo . "', '" . $estado . "', " . $precio . ", '" . $img . "')";
+    "INSERT INTO 047habitaciones (id, nombre, descripcion, capacidad, tipo, estado, precio, imagen) VALUES (DEFAULT, '" . $nombre . "', '" . $descripcion . "', " . $capacidad . ", '" . $tipo . "', '" . $estado . "', " . $precio . ", '" . $imagen . "')";
 
 // subir foto de perfil (pfp) al servidor
-if ($_FILES["img"]["error"] === UPLOAD_ERR_OK) {
-    $archivo_temporal = $_FILES["img"]["tmp_name"];
-    $nuevo_destino = "../../images/rooms/" . $_FILES["img"]["name"];
+if ($_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
+    $archivo_temporal = $_FILES["imagen"]["tmp_name"];
+    $nuevo_destino = "../../images/rooms/" . $_FILES["imagen"]["name"];
 
     if (move_uploaded_file($archivo_temporal, $nuevo_destino)) {
         echo "El archivo se ha sido subido correctamente.";

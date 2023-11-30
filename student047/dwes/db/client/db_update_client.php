@@ -2,9 +2,9 @@
 $root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
 
 // component variables
-$header       = $root . '/components/header.php';
+$header = $root . '/components/header.php';
 $dbConnection = $root . '/components/db_connection.php';
-$footer       = $root . '/components/footer.php';
+$footer = $root . '/components/footer.php';
 
 include($dbConnection);
 ?>
@@ -12,26 +12,26 @@ include($dbConnection);
 <?php
 
 // obtener variables cliente
-$nombre         = $_POST['nombre'];
-$dni            = $_POST['dni'];
-$email          = $_POST['email'];
-$telefono       = $_POST['telefono'];
-$client_id      = $_POST['client-id'];
+$nombre = $_POST['nombre'];
+$dni = $_POST['dni'];
+$correo_electronico = $_POST['correo$correo_electronico'];
+$telefono = $_POST['telefono'];
+$client_id = $_POST['client-id'];
 $metodo_de_pago = $_POST['metodo-de-pago'];
-$username       = $_POST['username'];
-$passwd         = $_POST['passwd'];
+$usuario = $_POST['usuario'];
+$contra = $_POST['contra'];
 
 // actualizar datos cliente
 $sql =
     "UPDATE 047clientes
-    SET nombre = '" .$nombre. "',
-        DNI = '". $dni. "',
-        email = '". $email . "',
-        telefono = ". $telefono . ",
-        metodo_pago = '". $metodo_de_pago . "',
-        username = '" .$username . "',
-        passwd = '" . $passwd . "'
-    WHERE id = ".$client_id .";";
+    SET nombre = '" . $nombre . "',
+        DNI = '" . $dni . "',
+        correo$correo_electronico = '" . $correo_electronico . "',
+        telefono = " . $telefono . ",
+        metodo_pago = '" . $metodo_de_pago . "',
+        usuario = '" . $usuario . "',
+        contra = '" . $contra . "'
+    WHERE id = " . $client_id . ";";
 
 ?>
 
@@ -57,7 +57,7 @@ $sql =
     ?>
 
     <a class="btn btn-primary" href="<?php echo $root . '/index.php' ?>">Inicio</a>
-    
+
     <a class="btn btn-primary" href="<?php echo $root . '/forms/client/form_select_client.php' ?>">Ver clientes</a>
 
 </div>

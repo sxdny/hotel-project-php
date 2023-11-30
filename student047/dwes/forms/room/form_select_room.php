@@ -94,7 +94,7 @@ if (isset($_POST['filtro'])) {
             ?>
             <form class="col" action="<?php echo $root . 'forms/room/form_update_room.php'?>" method="POST">
                 <div class="card" style="min-width: 16rem;">
-                    <img src="<?php echo $root . $habitacion['img'] ?>" class="card-img-top" alt="Preview habitación.">
+                    <img src="<?php echo $root . $habitacion['imagen'] ?>" class="card-img-top" alt="Preview habitación.">
                     <div class="card-body">
                         <h5 class="card-title">
                             <?php echo $habitacion['nombre'] ?>

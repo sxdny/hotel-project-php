@@ -15,14 +15,14 @@ include($dbConnection);
 $idHabitacion = $_POST['id-habitacion'];
 $idCliente = $_POST['id-cliente'];
 $nPersonas = $_POST['n-personas'];
-$dateIn = $_POST['date-in'];
-$dateOut = $_POST['date-out'];
+$dataEntrada = $_POST['date-in'];
+$dataSalida = $_POST['date-out'];
 $precio = $_POST['precio'];
 $estado = $_POST['estado'];
 
 $sql =
     "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
-        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dateIn . "','" . $dateOut . "'," . $precio . "," . $precio . ",'" . $estado . "')
+        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dataEntrada . "','" . $dataSalida . "'," . $precio . "," . $precio . ",'" . $estado . "')
         ";
 ?>
 

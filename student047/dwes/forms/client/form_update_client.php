@@ -38,11 +38,11 @@ mysqli_close($conn);
         </div>
         <div class="mb-3">
             <label class="form-label">DNI / NIF / NIE</label>
-            <input type="text" class="form-control" name="dni" aria-describedby="dni" value="<?php echo $client['DNI'] ?>" required maxlength="9">
+            <input type="text" class="form-control" name="dni" aria-describedby="dni" value="<?php echo $client['dni'] ?>" required maxlength="9">
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="text" class="form-control" name="email" aria-describedby="email" value="<?php echo $client['email'] ?>" required>
+            <input type="text" class="form-control" name="email" aria-describedby="email" value="<?php echo $client['correo'] ?>" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Teléfono</label>
@@ -86,11 +86,11 @@ mysqli_close($conn);
         </div>
         <div class="mb-3">
             <label class="form-label">Nombre de usuario</label>
-            <input type="text" class="form-control" name="username" aria-describedby="username" value="<?php echo $client['username'] ?>" required>
+            <input type="text" class="form-control" name="username" aria-describedby="username" value="<?php echo $client['usuario'] ?>" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Contraseña</label>
-            <input type="password" class="form-control" name="passwd" aria-describedby="passwd" value="<?php echo $client['passwd'] ?>" required>
+            <input type="password" class="form-control" name="passwd" aria-describedby="passwd" value="<?php echo $client['contra'] ?>" required>
         </div>
 
         <!-- TODO hacer que se pueda cambiar la foto de pfp -->

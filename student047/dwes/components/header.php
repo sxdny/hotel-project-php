@@ -114,7 +114,7 @@ $root = '/student047/dwes/';
                         <li class="nav-item dropdown">
                             <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-                                <img class="rounded-circle" src="<?php echo $root . $_SESSION["cliente"]["pfp"] ?>"
+                                <img class="rounded-circle" src="<?php echo $root . $_SESSION["cliente"]["imagen"] ?>"
                                     width="40" height="40" </a>
                                 <ul class="dropdown-menu pfp-nav">
                                     <li>
