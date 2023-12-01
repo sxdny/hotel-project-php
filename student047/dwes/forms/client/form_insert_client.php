@@ -6,10 +6,12 @@ $root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
 $header = $root . '/components/header.php';
 $footer = $root . '/components/footer.php';
 
+$uploadIcon = $root . '/components/svgs/upload.php';
+
 ?>
 
 <?php include($header) ?>
-<section class="insert-client m-5 pt-5 h-100">
+<section class="insert-client m-5 pt-5">
 
     <!-- el enctype="multipart/form-data" es para que el formulario pueda subir archivos -->
     <form class="form-insert-client" action="<?php echo $root . '/db/client/db_client_insert.php' ?>" method="POST"
@@ -20,32 +22,33 @@ $footer = $root . '/components/footer.php';
             <div class="mb-3 image-placeholder">
                 <img id="avatar" src=""
                     class="img-fluid">
+                <?php include($uploadIcon) ?>
                 <input id="btn-avatar" type="file" accept="image/png,image/jpeg" class="form-control" name="imagen" required>
             </div>
         </div>
 
-        <h4>Información del cliente:</h4>
+        <h4 class="mt-4">Información del cliente</h4>
 
         <div class="client-info-insert">
 
-            <div class="mb-3">
-                <label class="form-label">Nombre del cliente</label>
-                <input type="text" class="form-control" name="nombre" aria-describedby="nombre" required>
+            <div class="nombre mb-3">
+                <label class="form-label">Nombre:</label>
+                <input type="text" class="form-control" name="nombre" aria-describedby="nombre" maxlength="40" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label">DNI / NIF / NIE</label>
-                <input type="text" class="form-control" name="dni" required>
+            <div class="dni mb-3">
+                <label class="form-label">DNI/NIE:</label>
+                <input type="text" class="form-control" name="dni" maxlength="15" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="text" class="form-control" name="correo" required>
+            <div class="email mb-3">
+                <label class="form-label">Email:</label>
+                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" class="form-control" name="correo" placeholder="ejemplo@correo.com" maxlength="30" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Teléfono</label>
-                <input type="number" class="form-control" name="telefono" required>
+            <div class="mb-3 telefono">
+                <label class="form-label">Teléfono:</label>
+                <input type="tel" pattern="{0-9}" maxlength="9" class="form-control" name="telefono" required>
             </div>
-            <div class="mb-3 d-flex flex-column">
-                <label class="form-label">Método de pago</label>
+            <div class="mb-3 pago d-flex flex-column">
+                <label class="form-label">Método de pago:</label>
                 <select class="form-label form-select" name="metodo-de-pago" required>
                     <option value="">Elige un método de pago</option>
                     <option value="tarjeta">Tarjeta</option>
@@ -56,13 +59,13 @@ $footer = $root . '/components/footer.php';
         </div>
 
         <div class="client-insert-user">
-            <h4 class="mt-3">Credenciales de acceso:</h4>
+            <h4 class="mt-3">Cuenta de usuario</h4>
             <div class="mb-3">
-                <label class="form-label">Nombre de usuario</label>
-                <input type="text" class="form-control" name="usuario" required>
+                <label class="form-label">Nombre de usuario:</label>
+                <input type="text" max="20" class="form-control" name="usuario" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Contraseña</label>
+                <label class="form-label">Contraseña:</label>
                 <input type="password" class="form-control" name="contra" required>
             </div>
         </div>
