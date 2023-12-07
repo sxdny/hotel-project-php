@@ -20,10 +20,9 @@ $uploadIcon = $root . '/components/svgs/upload.php';
         <div class="image-insert">
             <!-- image placeholder -->
             <div class="mb-3 image-placeholder">
-                <img id="avatar" src=""
-                    class="img-fluid">
-                <?php include($uploadIcon) ?>
-                <input id="btn-avatar" type="file" accept="image/png,image/jpeg" class="form-control" name="imagen" required>
+                <img id="avatar" src="" class="img-fluid">
+                <input id="btn-avatar" type="file" accept="image/png,image/jpeg" class="form-control" name="imagen"
+                    required>
             </div>
         </div>
 
@@ -41,7 +40,8 @@ $uploadIcon = $root . '/components/svgs/upload.php';
             </div>
             <div class="email mb-3">
                 <label class="form-label">Email:</label>
-                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" class="form-control" name="correo" placeholder="ejemplo@correo.com" maxlength="30" required>
+                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" class="form-control"
+                    name="correo" placeholder="ejemplo@correo.com" maxlength="30" required>
             </div>
             <div class="mb-3 telefono">
                 <label class="form-label">Teléfono:</label>
