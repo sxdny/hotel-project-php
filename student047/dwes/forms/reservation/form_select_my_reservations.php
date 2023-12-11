@@ -1,17 +1,17 @@
 <?php
 session_start();
-$root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
+$root = $_SERVER["DOCUMENT_ROOT"].'/student047/dwes';
 
 // component variables
-$header = $root . '/components/header.php';
-$footer = $root . '/components/footer.php';
-$dbConnection = $root . '/components/db_connection.php';
+$header = $root.'/components/header.php';
+$footer = $root.'/components/footer.php';
+$dbConnection = $root.'/components/db_connection.php';
 
 include($dbConnection);
 
 // query para seleccionar mis reservas
 
-$sql = "SELECT * FROM 047reservas WHERE id_cliente = " . $_SESSION["cliente"]["id"];
+$sql = "SELECT * FROM 047reservas WHERE id_cliente = ".$_SESSION["cliente"]["id"];
 $result = mysqli_query($conn, $sql);
 $reservations = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -34,11 +34,13 @@ include($header);
 
             <?php
 
-            if (empty($reservations)) {
+            if(empty($reservations)) {
                 ?>
 
                 <h2>Vaya, parece que no tienes reservas...</h2>
-                <p>Para realizar una reserva, vaya a <a href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">realizar una reserva.</a></p>
+                <p>Para realizar una reserva, vaya a <a
+                        href="<?php echo $root.'/forms/reservation/form_select_reservation.php' ?>">realizar una
+                        reserva.</a></p>
 
                 <?php
             } else {
@@ -56,8 +58,44 @@ include($header);
                         <th>Acciones</th>
                     </tr>
                     <?php
-                    foreach ($reservations as $reservation) {
+                    foreach($reservations as $reservation) {
                         ?>
+
+                        <!-- Modal para cancelar la reserva -->
+                        <div class="position-absolute modal top-0 fade"
+                            id="<?php echo 'exampleModal'.$reservation['id_reserva'] ?>" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                            <form class="modal-dialog"
+                                action="<?php echo $root.'db/reservation/db_reservation_delete_my.php' ?>" method="POST">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cancelar reserva</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¿Estás seguro que desea cancelar la reserva con id <b>
+                                                <?php echo $reservation["id_reserva"] ?>
+                                            </b>?<br>
+                                            Tendrás que introducir todos los datos nuevamente y puede que la habitación ya no
+                                            esté disponible.
+                                        </div>
+
+                                        <input type="text" hidden value="<?php echo $reservation['id_reserva'] ?>"
+                                            name="reserva-id">
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary"
+                                                data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-danger">Cancelar reserva</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
                         <tr>
                             <td>
                                 <?php echo $reservation["id_reserva"] ?>
@@ -77,13 +115,18 @@ include($header);
                             <td>
                                 <?php echo $reservation["id_habitacion"] ?>
                             </td>
-                            <td></td>
+                            <td>
+                                <!-- botón para cancelar la reserva -->
+                                <button class="btn btn-outline-danger" type="submit" data-bs-toggle="modal"
+                                    data-bs-target="<?php echo '#exampleModal'.$reservation["id_reserva"] ?>"> Cancelar
+                                    reserva</button>
+                            </td>
                         </tr>
                         <?php
                     }
                     ?>
                 </table>
-                <?php } ?>
+            <?php } ?>
         </div>
     </div>
 </section>

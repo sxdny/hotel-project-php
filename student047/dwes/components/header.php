@@ -14,7 +14,7 @@ $root = '/student047/dwes/';
     <title>Hermatite</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo $root . '/styles/styles.css' ?>">
+    <link rel="stylesheet" href="<?php echo $root.'/styles/styles.css' ?>">
 </head>
 
 <body>
@@ -23,7 +23,7 @@ $root = '/student047/dwes/';
     <nav style="font-size: 14px;" class="navbar px-5 fixed-top navbar-expand-lg bg-light border-bottom">
         <div class="container-fluid">
             <div class="d-flex align-content-center text-center justify-content-around gap-3 align-items-center">
-                <a class="logo-text" href=<?php echo '"' . $root . 'index.php' . '"'; ?>>Hermatiterre</a>
+                <a class="logo-text" href=<?php echo '"'.$root.'index.php'.'"'; ?>>Hermatiterre</a>
             </div>
 
             <!-- navigation button -->
@@ -38,9 +38,9 @@ $root = '/student047/dwes/';
 
                     <!-- Lista de menús (Hacer que aparezcan según el tipo de usuario) -->
 
-                    <?php if (isset($_SESSION['cliente'])) { ?>
+                    <?php if(isset($_SESSION['cliente'])) { ?>
 
-                        <?php if ($_SESSION['cliente']['tipo'] == 'admin') { ?>
+                        <?php if($_SESSION['cliente']['tipo'] == 'admin') { ?>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -49,11 +49,11 @@ $root = '/student047/dwes/';
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item"
-                                            href="<?php echo $root . '/forms/client/form_insert_client.php' ?>">Nuevo
+                                            href="<?php echo $root.'/forms/client/form_insert_client.php' ?>">Nuevo
                                             cliente</a></li>
 
                                     <li><a class="dropdown-item"
-                                            href="<?php echo $root . '/forms/client/form_select_client.php' ?>">Listar
+                                            href="<?php echo $root.'/forms/client/form_select_client.php' ?>">Listar
                                             clientes</a></li>
                                 </ul>
                             </li>
@@ -65,12 +65,12 @@ $root = '/student047/dwes/';
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item"
-                                            href="<?php echo $root . '/forms/room/form_insert_room.php' ?>">Nueva
+                                            href="<?php echo $root.'/forms/room/form_insert_room.php' ?>">Nueva
                                             habitación</a>
                                     </li>
 
                                     <li><a class="dropdown-item"
-                                            href="<?php echo $root . '/forms/room/form_select_room.php' ?>">Listar
+                                            href="<?php echo $root.'/forms/room/form_select_room.php' ?>">Listar
                                             habitaciones</a></li>
 
                                 </ul>
@@ -83,38 +83,38 @@ $root = '/student047/dwes/';
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item"
-                                            href="<?php echo $root . '/forms/reservation/form_insert_reservation_admin.php' ?>">Nueva
+                                            href="<?php echo $root.'/forms/reservation/form_insert_reservation_admin.php' ?>">Nueva
                                             reserva</a></li>
 
                                     <li><a class="dropdown-item"
-                                            href="<?php echo $root . '/forms/reservation/form_select_reservation_admin.php' ?>">Listar
+                                            href="<?php echo $root.'/forms/reservation/form_select_reservation_admin.php' ?>">Listar
                                             reservas</a></li>
                                 </ul>
-                            </li>
-
-                        <?php } else { ?>
-
-                            <li class="nav-item">
-                                <a disabled class="nav-link"
-                                    href="<?php echo $root . '/forms/reservation/form_select_my_reservations.php' ?>">Mis
-                                    reservas</a>
                             </li>
 
                         <?php }
                         ; ?>
 
                         <li class="nav-item">
+                            <a disabled class="nav-link"
+                                href="<?php echo $root.'/forms/reservation/form_select_my_reservations.php' ?>">Mis
+                                reservas</a>
+                        </li>
+
+
+
+                        <li class="nav-item">
                             <a class="nav-link"
-                                href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">Reservar</a>
+                                href="<?php echo $root.'/forms/reservation/form_select_reservation.php' ?>">Reservar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $root . '/manuals/help.php' ?>">Ayuda</a>
+                            <a class="nav-link" href="<?php echo $root.'/manuals/help.php' ?>">Ayuda</a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-                                <img class="rounded-circle" src="<?php echo $root . $_SESSION["cliente"]["imagen"] ?>"
+                                <img class="rounded-circle" src="<?php echo $root.$_SESSION["cliente"]["imagen"] ?>"
                                     width="40" height="40" </a>
                                 <ul class="dropdown-menu pfp-nav">
                                     <li>
@@ -123,21 +123,21 @@ $root = '/student047/dwes/';
                                     </li>
                                     <li>
                                         <a class="dropdown-item text-danger"
-                                            href="<?php echo $root . '/db/client/db_logout.php' ?>">Cerrar sesión</a>
+                                            href="<?php echo $root.'/db/client/db_logout.php' ?>">Cerrar sesión</a>
                                     </li>
                                 </ul>
                         </li>
                     <?php } else { ?>
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="<?php echo $root . '/forms/reservation/form_select_reservation.php' ?>">Reservar</a>
+                                href="<?php echo $root.'/forms/reservation/form_select_reservation.php' ?>">Reservar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo $root . '/manuals/help.php' ?>">Ayuda</a>
+                            <a class="nav-link" href="<?php echo $root.'/manuals/help.php' ?>">Ayuda</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a style="font-size: 14px; font-weight: 500;" class="btn btn-primary" role="button"
-                                href="<?php echo $root . '/forms/client/form_customer_login.php' ?>">Iniciar Sesión</a>
+                                href="<?php echo $root.'/forms/client/form_customer_login.php' ?>">Iniciar Sesión</a>
                         </li>
                     <?php }
                     ; ?>
