@@ -14,13 +14,13 @@ include($dbConnection);
 <?php
 
 // obtener variables del form
-$username = $_POST['username'];
-$passwd = $_POST['passwd'];
+$usuario = $_POST['usuario'];
+$contra = $_POST['contra'];
 
 // buscar el cliente con la password
 $sql =
     "SELECT * FROM 047clientes
-    WHERE usuario ='" . $username . "' AND contra = '" . $passwd . "';";
+    WHERE usuario ='" . $usuario . "' AND contra = '" . $contra . "';";
 $result = mysqli_query($conn, $sql);
 $clientes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 

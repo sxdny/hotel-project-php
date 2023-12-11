@@ -25,7 +25,7 @@ $footer = $root . '/components/footer.php';
 
             <div class="mb-3">
                 <label class="form-label">Usuario</label>
-                <input type="text" class="form-control" name="username" aria-describedby="username" minlength="5"
+                <input type="text" class="form-control" name="usuario" aria-describedby="username" minlength="5"
                     maxlength="20" required>
             </div>
             <div class="mb-3">
@@ -33,15 +33,15 @@ $footer = $root . '/components/footer.php';
                     <label class="form-label">Contraseña</label>
                     <a href="#">¿Has olvidado tu contraseña?</a>
                 </div>
-                <input type="password" class="form-control" name="passwd" aria-describedby="passwd" maxlength="20"
+                <input type="password" class="form-control" name="contra" aria-describedby="passwd" maxlength="20"
                     required>
             </div>
 
             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
 
-            <hr>
+            <hr class="mt-5">
 
-            <p>No tienes un usuario? <a href="#">Registrarse </a></p>
+            <p class="mt-5">No tienes un usuario? <a href="#">Registrarse </a></p>
 
         </div>
 

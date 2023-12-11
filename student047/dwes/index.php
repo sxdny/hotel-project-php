@@ -8,7 +8,7 @@ include('components/header.php')
     <div class="d-flex flex-column main-header text-center">
         <h1 class="display-1">
             <?php
-            echo "Bienvenido/a a <span class='text-gradient'> Internazionale </span> Hotel"; ?>
+            echo "Bienvenido/a a <span class='text-gradient'> Hermatiterre </span> Hotel"; ?>
         </h1>
         <p class="subtext">"Descubre el encanto único de la hospitalidad en Hotel Internazionale: donde cada estancia es
             una experiencia inolvidable."</p>

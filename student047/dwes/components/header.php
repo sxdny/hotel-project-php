@@ -11,7 +11,7 @@ $root = '/student047/dwes/';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Internazionale</title>
+    <title>Hermatite</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo $root . '/styles/styles.css' ?>">
@@ -23,7 +23,7 @@ $root = '/student047/dwes/';
     <nav style="font-size: 14px;" class="navbar px-5 fixed-top navbar-expand-lg bg-light border-bottom">
         <div class="container-fluid">
             <div class="d-flex align-content-center text-center justify-content-around gap-3 align-items-center">
-                <a class="logo-text" href=<?php echo '"' . $root . 'index.php' . '"'; ?>>Internazionale</a>
+                <a class="logo-text" href=<?php echo '"' . $root . 'index.php' . '"'; ?>>Hermatiterre</a>
             </div>
 
             <!-- navigation button -->
