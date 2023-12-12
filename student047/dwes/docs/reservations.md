@@ -33,6 +33,27 @@ Antes de emitir la factura al cliente, tendremos que tener en cuenta lo siguient
 - Contar los dias que ha estado hospedado en la habitación (po si se han añadido dias)
 - Contar los extras (más adelante)
 
+**¿Donde?**
+
+Cuando el recepcionista le de Check-Out, aparecerá una página para realizar el pago (se imprimirá también un archivo con todos los datos). El cliente después lo paga y esta se para a un historial de factura (para las estadísticas)
+
+**¿Cómo hacerlo?**
+
+### Cancelar reserva
+
+Tener en cuenta todo esto:
+
+- Un cliente podrá cancelar su reserva siempre y cuando esta no esté en el límite (no la puede cancelar el mismo dia)
+- Al cancelar la reserva, esta **no se elimina**, sino que pasa a un estado de **Cancelada**. Cuando la reserva cancelada llegue a su fin, esta se tendrá que borrar (para no consumir espacio en la base de datos)
+
+Hacer una función de SQL que se encarge de calcular todos estos datos para después hacer la query desde PHP.
+
+Código:
+
+```sql
+SELECT * FROM tables WHERE id = 1;
+```
+
 ---
 
 No es lo mismo eliminar que ocultar (reservas)

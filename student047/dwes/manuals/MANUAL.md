@@ -19,5 +19,9 @@ Información sobre los componentes de la página aquí.
 Información sobre los formularios de la página aquí.
 
 ```php
-sdfasfsda asdf
+<?php echo "Hola me llamo Paco" ?>
+```
+
+```sql
+SELECT * FROM tables WHERE id = 1;
 ```
