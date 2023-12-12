@@ -17,3 +17,7 @@ Información sobre los componentes de la página aquí.
 ### Formularios
 ---
 Información sobre los formularios de la página aquí.
+
+```php
+sdfasfsda asdf
+```

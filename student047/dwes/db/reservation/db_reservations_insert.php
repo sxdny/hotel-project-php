@@ -45,7 +45,7 @@ if (isset($_SESSION['cliente'])) {
     $username = $nombre . $dni;
 
     $sql =
-        "INSERT INTO 047clientes (id, nombre, DNI, email, telefono, metodo_pago, username, pfp)
+        "INSERT INTO 047clientes (id, nombre, dni, correo, telefono, metodo_pago, usuario, imagen)
     VALUES (DEFAULT, '" . $nombre . "','" . $dni . "', '" . $email . "', " . $telefono . ", '" . $metodo_de_pago . "', '" . $username . "', '" . $pfp . "');";
 
     if ($conn->query($sql)) {
