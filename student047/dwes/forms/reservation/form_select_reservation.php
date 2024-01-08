@@ -39,3 +39,7 @@ include($dbConnection);
 
     <?php include($footer) ?>
 </section>
+
+<script>
+    // Código y datepicker
+</script>
