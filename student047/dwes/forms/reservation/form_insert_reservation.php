@@ -50,12 +50,13 @@ $nPersonas = $_SESSION['n-personas'];
         <h2><strong>Personaliza tu estancia</strong></h2>
         <p>Select any additional services or options you'd like to add to your reservation.</p>
 
-        <div class="row row-cols-lg-3 g-2 g-lg-3 mt-5">
+        <!-- Lista de Extras -->
 
+        <div class="row row-cols-lg-3 g-2 g-lg-3 mt-5">
             <div class="cursor-pointer col-sm-6 mb-3 mb-sm-0">
-                <input type="checkbox" name="extra" id="extra1" style="display:none;">
+                <input type="checkbox" name="extras[]" value="patatas" id="extra1" style="display:none;">
                 <label for="extra1" style="width: 100%; height: 100%;">
-                    <div class="card">
+                    <div class="card" data-checkbox-id="extra1">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <h5 style="font-size: 16px;" class="text-dark card-title mb-0">Nombre del extra</h5>
@@ -70,11 +71,11 @@ $nPersonas = $_SESSION['n-personas'];
                 </label>
             </div>
 
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="radio" name="extra" id="extra2" style="display:none;">
-                <div class="card">
-                    <div class="card-body">
-                        <label for="extra1" style="width: 100%; height: 100%;">
+            <div class="cursor-pointer col-sm-6 mb-3 mb-sm-0">
+                <input type="checkbox" name="extras[]" value="panes" id="extra2" style="display:none;">
+                <label for="extra2" style="width: 100%; height: 100%;">
+                    <div class="card" data-checkbox-id="extra2">
+                        <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <h5 style="font-size: 16px;" class="text-dark card-title mb-0">Nombre del extra</h5>
                                 <strong>
@@ -83,16 +84,16 @@ $nPersonas = $_SESSION['n-personas'];
                             </div>
 
                             <p style="font-size: 14px;" class="card-text text-secondary">Descripción del extra</p>
-                        </label>
+                        </div>
                     </div>
-                </div>
+                </label>
             </div>
 
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="radio" name="extra" id="extra3" style="display:none;">
-                <div class="card">
-                    <div class="card-body">
-                        <label for="extra1" style="width: 100%; height: 100%;">
+            <div class="cursor-pointer col-sm-6 mb-3 mb-sm-0">
+                <input type="checkbox" name="extras[]" value="arroz" id="extra3" style="display:none;">
+                <label for="extra3" style="width: 100%; height: 100%;">
+                    <div class="card" data-checkbox-id="extra3">
+                        <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <h5 style="font-size: 16px;" class="text-dark card-title mb-0">Nombre del extra</h5>
                                 <strong>
@@ -101,10 +102,11 @@ $nPersonas = $_SESSION['n-personas'];
                             </div>
 
                             <p style="font-size: 14px;" class="card-text text-secondary">Descripción del extra</p>
-                        </label>
+                        </div>
                     </div>
-                </div>
+                </label>
             </div>
+
 
         </div>
 
@@ -214,8 +216,6 @@ $nPersonas = $_SESSION['n-personas'];
 
         <?php } ?>
 
-
-
         <button type="submit" class="btn btn-primary">Confirmar reserva</button>
     </section>
 
@@ -223,8 +223,12 @@ $nPersonas = $_SESSION['n-personas'];
 
 <style>
     .selected {
-        border: 2px solid #007bff;
+        border: 1px solid #007bff;
         /* Change this to your preferred color */
+    }
+
+    div.card {
+        cursor: pointer;
     }
 </style>
 
@@ -232,9 +236,29 @@ $nPersonas = $_SESSION['n-personas'];
 
 <script>
 
+    // jQuery
     $(document).ready(function () {
-        $(".card").click(function () {
-            $(this).addClass("selected"); // Add the selected class to the clicked card
+        $(".card").click(function (e) {
+
+            // cambio de border
+            if ($(this).hasClass("selected")) {
+                $(this).removeClass("selected");
+            } else
+                $(this).addClass("selected");
+
+            // obtenemos el id del checkbox asociado a la card
+            var checkboxId = $(this).data("checkbox-id");
+
+            // obtenemos el checkbox asociado a la card
+            var checkbox = $("#" + checkboxId);
+
+            // cambiamos el valor de la checkbox
+            if (checkbox.prop("checked")) {
+                checkbox.prop("checked", false);
+            } else {
+                checkbox.prop("checked", true);
+            }
+
         });
     });
 

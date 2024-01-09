@@ -23,11 +23,16 @@ if (isset($_SESSION['cliente'])) {
     $precioFinal = $precio; // de momento
     $estado = 'Check-in';
 
-    // hacer la query:
+    // obtenemos los checkboxes de los extras
+    $extras = $_POST['extras'];
 
+    // convertimis el array de extras en un JSON
+    $extrasJSON = json_encode($extras);
+
+    // query:
     $sql =
-        "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
-        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dataEntrada . "','" . $dataSalida . "'," . $precio . "," . $precioFinal . ",'" . $estado . "')
+        "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado, json_servicios)
+        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dataEntrada . "','" . $dataSalida . "'," . $precio . "," . $precioFinal . ",'" . $estado . "', '" . $extrasJSON . "')
         ";
 
 } else {
@@ -43,6 +48,12 @@ if (isset($_SESSION['cliente'])) {
     $metodo_de_pago = $_POST['metodo-de-pago'];
     $pfp = "images/pfps/defaultUser.png";
     $username = $nombre . $dni;
+
+    // obtenemos los checkboxes de los extras
+    $extras = $_POST['extras'];
+    
+    // convertimis el array de extras en un JSON
+    $extrasJSON = json_encode($extras);
 
     $sql =
         "INSERT INTO 047clientes (id, nombre, dni, correo, telefono, metodo_pago, usuario, imagen)
@@ -80,8 +91,8 @@ if (isset($_SESSION['cliente'])) {
     // hacer la query:
 
     $sql =
-        "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado)
-        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dataEntrada . "','" . $dataSalida . "'," . $precio . "," . $precioFinal . ",'" . $estado . "')
+        "INSERT INTO 047reservas (id_reserva, id_habitacion, id_cliente, n_personas, data_entrada, data_salida, precio_inicial, precio_final, estado, json_servicios)
+        VALUES (DEFAULT, " . $idHabitacion . "," . $idCliente . "," . $nPersonas . ",'" . $dataEntrada . "','" . $dataSalida . "'," . $precio . "," . $precioFinal . ",'" . $estado . "', '" . $extrasJSON . "')
         ";
 }
 
@@ -94,7 +105,6 @@ if (isset($_SESSION['cliente'])) {
 
     <?php
     // mensaje output de la query
-    echo $sql;
     if ($conn->query($sql) === TRUE) {
         ?>
         <div class="alert alert-success mt-2" role="alert">
