@@ -38,7 +38,11 @@ $_SESSION['habitacion'] = $habitacion;
 $dateIn = $_SESSION['date-in'];
 $dateOut = $_SESSION['date-out'];
 $nPersonas = $_SESSION['n-personas'];
+
+
 ?>
+
+<!-- /db/reservation/db_reservations_insert.php -->
 
 <form action="<?php echo $root . '/db/reservation/db_reservations_insert.php' ?>" method="POST">
 
@@ -50,69 +54,45 @@ $nPersonas = $_SESSION['n-personas'];
         <h2><strong>Personaliza tu estancia</strong></h2>
         <p>Select any additional services or options you'd like to add to your reservation.</p>
 
-        <!-- Lista de Extras -->
+        <!-- Hacer un foreach de los extras aquí... -->
+        <?php
+        $extras = json_decode($habitacion['extras'], true);
+        ?>
+        <div class="row row-cols-lg-3 g-2 g-lg-3 mt-3">
 
-        <div class="row row-cols-lg-3 g-2 g-lg-3 mt-5">
-            <div class="cursor-pointer col-sm-6 mb-3 mb-sm-0">
-                <input type="checkbox" name="extras[]" value="patatas" id="extra1" style="display:none;">
-                <label for="extra1" style="width: 100%; height: 100%;">
-                    <div class="card" data-checkbox-id="extra1">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h5 style="font-size: 16px;" class="text-dark card-title mb-0">Nombre del extra</h5>
-                                <strong>
-                                    <p class="mb-0 pb-0">$70</p>
-                                </strong>
+            <?php
+            foreach ($extras as $extra) {
+                $customId = $extra['nombre'] . $extra['precio'];
+                ?>
+                <div class="cursor-pointer col-sm-6 mb-3 mb-sm-0">
+                    <label for="<?php echo $customId ?>" style="width: 100%; height: 100%;">
+                        <div class="card" data-checkbox-id="<?php echo $customId ?>">
+                            <div class="card-body">
+                                <input type="checkbox" name="extras[]" value="<?php echo $extra['nombre'] ?>"
+                                    id="<?php echo $customId ?>" style="display:none">
+                                <div class="d-flex justify-content-between">
+                                    <h5 style="font-size: 16px;" class="text-dark card-title mb-0">
+                                        <?php echo $extra['nombre'] ?>
+                                    </h5>
+                                    <strong>
+                                        <p class="mb-0 pb-0">
+                                            <?php echo $extra['precio'] ?>€
+                                        </p>
+                                    </strong>
+                                </div>
+
+                                <p style="font-size: 14px;" class="card-text text-secondary">Descripción del extra</p>
                             </div>
-
-                            <p style="font-size: 14px;" class="card-text text-secondary">Descripción del extra</p>
                         </div>
-                    </div>
-                </label>
-            </div>
-
-            <div class="cursor-pointer col-sm-6 mb-3 mb-sm-0">
-                <input type="checkbox" name="extras[]" value="panes" id="extra2" style="display:none;">
-                <label for="extra2" style="width: 100%; height: 100%;">
-                    <div class="card" data-checkbox-id="extra2">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h5 style="font-size: 16px;" class="text-dark card-title mb-0">Nombre del extra</h5>
-                                <strong>
-                                    <p class="mb-0 pb-0">$70</p>
-                                </strong>
-                            </div>
-
-                            <p style="font-size: 14px;" class="card-text text-secondary">Descripción del extra</p>
-                        </div>
-                    </div>
-                </label>
-            </div>
-
-            <div class="cursor-pointer col-sm-6 mb-3 mb-sm-0">
-                <input type="checkbox" name="extras[]" value="arroz" id="extra3" style="display:none;">
-                <label for="extra3" style="width: 100%; height: 100%;">
-                    <div class="card" data-checkbox-id="extra3">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h5 style="font-size: 16px;" class="text-dark card-title mb-0">Nombre del extra</h5>
-                                <strong>
-                                    <p class="mb-0 pb-0">$70</p>
-                                </strong>
-                            </div>
-
-                            <p style="font-size: 14px;" class="card-text text-secondary">Descripción del extra</p>
-                        </div>
-                    </div>
-                </label>
-            </div>
-
-
+                    </label>
+                </div>
+                <?php
+            }
+            ?>
         </div>
-
     </section>
 
-    <section class="mt-5 p-5">
+    <section class="p-5">
 
         <h2>Resumen de la reserva</h2>
         <hr>
@@ -224,7 +204,6 @@ $nPersonas = $_SESSION['n-personas'];
 <style>
     .selected {
         border: 1px solid #007bff;
-        /* Change this to your preferred color */
     }
 
     div.card {
@@ -237,28 +216,15 @@ $nPersonas = $_SESSION['n-personas'];
 <script>
 
     // jQuery
+    // obteremos cada uno de los checkbox
+    // cuando se haga click en un checkbox, se añadirá la clase selected
     $(document).ready(function () {
-        $(".card").click(function (e) {
-
-            // cambio de border
-            if ($(this).hasClass("selected")) {
-                $(this).removeClass("selected");
-            } else
-                $(this).addClass("selected");
-
-            // obtenemos el id del checkbox asociado a la card
-            var checkboxId = $(this).data("checkbox-id");
-
-            // obtenemos el checkbox asociado a la card
-            var checkbox = $("#" + checkboxId);
-
-            // cambiamos el valor de la checkbox
-            if (checkbox.prop("checked")) {
-                checkbox.prop("checked", false);
-            } else {
-                checkbox.prop("checked", true);
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).prop("checked") == true) {
+                $(this).parent().parent().addClass("selected");
+            } else if ($(this).prop("checked") == false) {
+                $(this).parent().parent().removeClass("selected");
             }
-
         });
     });
 

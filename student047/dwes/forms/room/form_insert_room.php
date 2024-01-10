@@ -13,7 +13,8 @@ $footer = $root . '/components/footer.php';
 
     <h3 class="mt-3">Insertar habitación <span class="badge bg-secondary">Admin</span></h3>
 
-    <form class="" action="<?php echo $root . '/db/room/db_room_insert.php'?>" method="POST" enctype="multipart/form-data">
+    <form class="" action="<?php echo $root . '/db/room/db_room_insert.php' ?>" method="POST"
+        enctype="multipart/form-data">
         <p>Introduzca los datos de la habitación:</p>
         <div class="mb-3">
             <label class="form-label">Nombre de la habitación</label>
@@ -50,15 +51,14 @@ $footer = $root . '/components/footer.php';
                 <option value="out-of-service">Fuera de servicio</option>
             </select>
         </div>
-        <!-- TODO hacer que haya una imagen por defecto de habitación al no elegir una -->
         <div class="mb-3">
             <label class="form-label">Foto de la habitación</label>
-            <input type="file" class="form-control" name="img" aria-describedby="img" required>
+            <input type="file" class="form-control" name="imagen" aria-describedby="img" required>
         </div>
-
+        
         <button type="submit" class="btn btn-primary">Insertar</button>
 
     </form>
+    <?php include($footer) ?>
 
 </section>
-<?php include($footer) ?>
