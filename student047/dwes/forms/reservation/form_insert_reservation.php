@@ -39,10 +39,13 @@ $dateIn = $_SESSION['date-in'];
 $dateOut = $_SESSION['date-out'];
 $nPersonas = $_SESSION['n-personas'];
 
+// Precio total de la reserva
+$precioReserva = $habitacion['precio'];
+
+// Guardar el precio total de la reserva en una variable de sesión para poder acceder a ella desde db_reservations_get_price.php con AJAX
+$_SESSION['precio-reserva'] = $precioReserva;
 
 ?>
-
-<!-- /db/reservation/db_reservations_insert.php -->
 
 <form action="<?php echo $root . '/db/reservation/db_reservations_insert.php' ?>" method="POST">
 
@@ -52,7 +55,7 @@ $nPersonas = $_SESSION['n-personas'];
     <section class="mt-5 p-5">
 
         <h2><strong>Personaliza tu estancia</strong></h2>
-        <p>Select any additional services or options you'd like to add to your reservation.</p>
+        <p>Selecciona cualquier servicio adicional o opciones que le gustaria añadir a su reserva.</p>
 
         <!-- Hacer un foreach de los extras aquí... -->
         <?php
@@ -62,7 +65,8 @@ $nPersonas = $_SESSION['n-personas'];
 
             <?php
             foreach ($extras as $extra) {
-                $customId = $extra['nombre'] . $extra['precio'];
+                // Para borrar los espacios y ponerlo en minúsculas
+                $customId = strtolower(str_replace(' ', '', $extra['nombre'])) . $extra['precio'];
                 ?>
                 <div class="cursor-pointer col-sm-6 mb-3 mb-sm-0">
                     <label for="<?php echo $customId ?>" style="width: 100%; height: 100%;">
@@ -70,6 +74,8 @@ $nPersonas = $_SESSION['n-personas'];
                             <div class="card-body">
                                 <input type="checkbox" name="extras[]" value="<?php echo $extra['nombre'] ?>"
                                     id="<?php echo $customId ?>" style="display:none">
+                                <input hidden type="number" value="<?php echo $extra['precio'] ?>"
+                                    id="<?php echo $customId ?>">
                                 <div class="d-flex justify-content-between">
                                     <h5 style="font-size: 16px;" class="text-dark card-title mb-0">
                                         <?php echo $extra['nombre'] ?>
@@ -90,9 +96,17 @@ $nPersonas = $_SESSION['n-personas'];
             }
             ?>
         </div>
+
+        <div class="w-100">
+            <p class="mt-5">El precio total de la reserva es de <span class="fw-bold">
+                    <?php echo $precioReserva . '<script>let precioReserva = ' . $precioReserva . ' </script>' ?>
+                </span>€</p>
+        </div>
+
     </section>
 
     <section class="p-5">
+
 
         <h2>Resumen de la reserva</h2>
         <hr>
@@ -224,6 +238,59 @@ $nPersonas = $_SESSION['n-personas'];
                 $(this).parent().parent().addClass("selected");
             } else if ($(this).prop("checked") == false) {
                 $(this).parent().parent().removeClass("selected");
+            }
+        });
+    });
+
+    // AJAX para obtener el precio total de la reserva
+    // cuando se haga click en un checkbox, se enviará una petición AJAX al servidor
+    // el servidor devolverá el precio total de la reserva
+    // el precio total de la reserva se mostrará en la página
+    $(document).ready(function () {
+
+        // obtenemos todos los extras
+        let extraValues = document.querySelectorAll("input[type='number']");
+
+        $('input[type="checkbox"]').click(function () {
+            if ($(this).prop("checked") == true) {
+                var checkboxId = $(this).parent().parent().data("checkbox-id");
+
+                $.ajax({
+                    url: "<?php echo $root . '/db/reservation/db_reservations_get_price.php' ?>",
+                    type: "POST",
+                    data: {
+                        checkboxId: checkboxId
+                    },
+                    success: function (data) {
+                        // recorremos los extras para asignarles un precio
+                        extraValues.forEach((extra) => {
+                            if (extra.id == checkboxId) {
+                                // sumamos el precio del extra al precio de la reserva
+                                precioReserva = precioReserva + parseInt(extra.value);
+                            }
+                        });
+                        $("p span").text(precioReserva);
+                    }
+                });
+            } else if ($(this).prop("checked") == false) {
+                var checkboxId = $(this).parent().parent().data("checkbox-id");
+                $.ajax({
+                    url: "<?php echo $root . '/db/reservation/db_reservations_get_price.php' ?>",
+                    type: "POST",
+                    data: {
+                        checkboxId: checkboxId
+                    },
+                    success: function (data) {
+                        // recorremos los extras para restarles un precio
+                        extraValues.forEach((extra) => {
+                            if (extra.id == checkboxId) {
+                                // restamos el precio del extra al precio de la reserva
+                                precioReserva = precioReserva - parseInt(extra.value);
+                            }
+                        });
+                        $("p span").text(precioReserva);
+                    }
+                });
             }
         });
     });
