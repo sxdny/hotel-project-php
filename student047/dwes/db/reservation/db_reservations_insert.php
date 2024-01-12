@@ -20,7 +20,7 @@ if (isset($_SESSION['cliente'])) {
     $dataSalida = $_SESSION['date-out'];
     $nPersonas = $_SESSION['n-personas'];
     $precio = $_SESSION['habitacion']['precio'];
-    $precioFinal = $precio; // de momento
+    $precioFinal = $_POST['precio-final'];
     $estado = 'Check-in';
 
     // obtenemos los checkboxes de los extras
@@ -85,7 +85,7 @@ if (isset($_SESSION['cliente'])) {
     $dataSalida = $_SESSION['date-out'];
     $nPersonas = $_SESSION['n-personas'];
     $precio = $_SESSION['habitacion']['precio'];
-    $precioFinal = $precio; // de momento
+    $precioFinal = $_SESSION['precioReserva'];
     $estado = 'Check-in';
 
     // hacer la query:
@@ -105,6 +105,10 @@ if (isset($_SESSION['cliente'])) {
 
     <?php
     // mensaje output de la query
+    echo "Precio reserva final:" . $precioFinal;
+    echo "<br>";
+    echo $sql;
+
     if ($conn->query($sql) === TRUE) {
         ?>
         <div class="alert alert-success mt-2" role="alert">

@@ -97,20 +97,16 @@ $_SESSION['precio-reserva'] = $precioReserva;
             ?>
         </div>
 
-        <div class="w-100">
-            <p class="mt-5">El precio total de la reserva es de <span class="fw-bold">
-                    <?php echo $precioReserva . '<script>let precioReserva = ' . $precioReserva . ' </script>' ?>
-                </span>€</p>
+        <div class="w-100 ">
+            <?php echo '<script>let precioReserva = ' . $precioReserva . '</script>' ?>
+            <p class="mt-5 align-center">Precio total de la reserva: <span class="precioReserva fw-bold fs-3">
+                    <?php echo $precioReserva . '€' ?>
+                </span></p>
         </div>
 
     </section>
 
-    <section class="p-5">
-
-
-        <h2>Resumen de la reserva</h2>
-        <hr>
-
+    <section class="px-5">
         <header>
 
             <h3> Detalles de la habitación </h3>
@@ -164,7 +160,10 @@ $_SESSION['precio-reserva'] = $precioReserva;
                         <?php echo $nPersonas ?>
                     </td>
                     <td>
-                        <?php echo $habitacion['precio'] . "€" ?>
+                        <input hidden type="number" value="<?php echo $precioReserva ?>" name="precio-final" id="precioReservaInput">
+                        <p class="precioReserva">
+                            <?php echo $precioReserva . '€' ?>
+                        </p>
                     </td>
                 </tr>
             </table>
@@ -269,7 +268,14 @@ $_SESSION['precio-reserva'] = $precioReserva;
                                 precioReserva = precioReserva + parseInt(extra.value);
                             }
                         });
-                        $("p span").text(precioReserva);
+
+                        $(".precioReserva").text(precioReserva + "€");
+
+                        // obtenemos precioReservaInput
+                        let precioReservaInput = document.getElementById("precioReservaInput");
+
+                        // asignamos el precio de la reserva al input
+                        precioReservaInput.value = precioReserva;
                     }
                 });
             } else if ($(this).prop("checked") == false) {
@@ -288,7 +294,13 @@ $_SESSION['precio-reserva'] = $precioReserva;
                                 precioReserva = precioReserva - parseInt(extra.value);
                             }
                         });
-                        $("p span").text(precioReserva);
+                        $(".precioReserva").text(precioReserva + "€");
+
+                        // obtenemos precioReservaInput
+                        let precioReservaInput = document.getElementById("precioReservaInput");
+
+                        // asignamos el precio de la reserva al input
+                        precioReservaInput.value = precioReserva;
                     }
                 });
             }
