@@ -15,8 +15,8 @@ include($dbConnection);
 // obtener el id de la reserva a cancelar
 $reserva_id = $_POST['reserva-id'];
 
-// borrar reserva de la base de datos
-$sql = "DELETE FROM 047reservas WHERE id_reserva = ".$reserva_id.";";
+// cambiamos el estado de la reserva a cancelada
+$sql = "UPDATE 047reservas SET estado = 'cancelada' WHERE id_reserva = $reserva_id";
 
 ?>
 
@@ -28,7 +28,8 @@ $sql = "DELETE FROM 047reservas WHERE id_reserva = ".$reserva_id.";";
     if($conn->query($sql) === TRUE) {
         ?>
         <div class="alert alert-success mt-2" role="alert">
-            La reserva ha sido cancelada correctamente!
+            La reserva ha sido cancelada correctamente! No te preocupes, puedes volver a retomar la reserva cuando
+            quieras.
         </div>
         <?php
     } else {

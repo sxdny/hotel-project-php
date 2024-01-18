@@ -11,7 +11,9 @@ include($dbConnection);
 
 // query para seleccionar mis reservas
 
-$sql = "SELECT * FROM 047reservas WHERE id_cliente = ".$_SESSION["cliente"]["id"];
+$sql = "SELECT * FROM 047reservas
+        WHERE id_cliente = ". $_SESSION["cliente"]["id"]
+        . " AND estado <> 'cancelada';";
 $result = mysqli_query($conn, $sql);
 $reservations = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -26,11 +28,7 @@ include($header);
 
     <div class="container-fluid d-flex flex-column">
 
-        <div class="info">
-            <!-- Mostrar información de alguna cosa no me acuerdo. -->
-        </div>
-
-        <div class="container-fluid my-5 d-flex row gap-3">
+        <div class="container-fluid my-5 d-flex row gap-3 border p-5">
 
             <?php
 
@@ -45,11 +43,15 @@ include($header);
                 <?php
             } else {
                 ?>
-                <h2>Mis reservas</h2>
-                <p>Estas son tus reservas:</p>
+                <h2 class="font-weight-bold">Mis reservas</h2>
+                <!-- TODO: Poner este texto en otro lado. -->
+                <p>Recuerda que tienes hasta 3 dias antes para editar / cancelar una reserva. Las reservas que ya
+                    no se pueden editar, aparecerán en rojo. Llama a servicio técnico para más información si crees 
+                que ha habido un error.</p>
+                </p>
                 <table>
-                    <tr>
-                        <th>Id</th>
+                    <tr class="p-5 text-secondary font-weight-light border-bottom">
+                        <th class="p-2 font-weight-light">Id</th>
                         <th>Fecha de entrada</th>
                         <th>Fecha de salida</th>
                         <th>Número de personas</th>
@@ -117,9 +119,13 @@ include($header);
                             </td>
                             <td>
                                 <!-- botón para cancelar la reserva -->
-                                <button class="btn btn-outline-danger" type="submit" data-bs-toggle="modal"
+                                <button class="btn btn-outline-danger my-3" type="submit" data-bs-toggle="modal"
                                     data-bs-target="<?php echo '#exampleModal'.$reservation["id_reserva"] ?>"> Cancelar
                                     reserva</button>
+                                <!-- Botón para editar las reservas -->
+                                <a class="btn btn-outline-primary"
+                                    href="<?php echo $root . '/forms/reservation/form_edit_my_reservation.php'?>">Editar
+                                    reserva</a>
                             </td>
                         </tr>
                         <?php
