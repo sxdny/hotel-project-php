@@ -13,43 +13,45 @@ include($dbConnection);
 
 <?php include($header) ?>
 
-<section class="section-reservation container-fluid d-flex flex-column">
+<section class="h-full grid place-content-center flex-grow mt-5">
 
-    <form class="reservation-form" action="<?php echo 'form_choose_reservation.php' ?>" method="POST">
+    <form class="flex flex-col p-5 gap-3 text-center" action="<?php echo 'form_choose_reservation.php' ?>" method="POST">
 
-        <h2>¡Hagamos una reserva!</h2>
+        <h2 class="text-3xl uppercase font-medium">Empezar una reserva</h2>
+        <p class="mb-3 text-neutral-500">Introduzca los datos para empezar a realizar una reserva.</p>
 
-        <p>Introduzca los datos para empezar a realizar una reserva:</p>
-        <div class="mb-3">
-            <label for="date-in" class="form-label">Date-in:</label>
-            <input id="date-in" required type="date" class="datepicker date-picker form-control" name="date-in"
-                aria-describedby="date-in">
-        </div>
-        <div class="mb-3">
-            <label for="date-out" class="form-label">Date-out:</label>
-            <input id="date-out" required type="date" class="form-control" name="date-out" aria-describedby="date-out">
-        </div>
-        <div class="mb-3">
-            <label for="date-out" class="form-label">Número de personas:</label>
-            <input required type="number" class="form-control" name="n-personas" aria-describedby="n-personas" min="0"
-                max="4">
+        <div class="flex w-100 gap-4 text-start">
+            <div class="mb-3 w-full flex flex-col">
+                <label for="date-in" class="font-medium mb-2 text-neutral-950">Fecha de entrada</label>
+                <input id="date-in" required type="date" class="border px-3 py-2" name="date-in"
+                    aria-describedby="date-in">
+            </div>
+            <div class="mb-3 w-full flex flex-col">
+                <label for="date-out" class="font-medium mb-2 text-neutral-950">Fecha de salida</label>
+                <input id="date-out" required type="date" class="border px-3 py-2" name="date-out"
+                    aria-describedby="date-out">
+            </div>
         </div>
 
-        <div id="mensaje" class="invisible alert alert-danger" role="alert">
-           
+        <div class="mb-3 text-start flex flex-col">
+            <label for="date-out" class="font-medium mb-2 text-neutral-950">Número de personas:</label>
+            <input required type="number" class="border px-3 py-2" name="n-personas" aria-describedby="n-personas" min="0"
+                max="4" placeholder="Introduzca la cantidad de personas">
         </div>
 
-        <button id="submit" type="submit" class="btn btn-primary">Enviar</button>
+        <button id="submit" type="submit" class="bg-neutral-900  px-5 py-2 rounded text-slate-50 hover:bg-black">Enviar</button>
+
+        <div id="mensaje" class="invisible alert alert-danger" role="alert"></div>
+
 
     </form>
 
-    <?php include($footer) ?>
 </section>
+<?php include($footer) ?>
 
 <script>
     // Código y datepicker
 
-    // comparar fechas
     let inputDateIn = document.getElementById('date-in');
     let inputDateOut = document.getElementById('date-out');
     let mensaje = document.getElementById('mensaje');
