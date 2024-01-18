@@ -54,6 +54,7 @@ include($dbConnection);
 
     let inputDateIn = document.getElementById('date-in');
     let inputDateOut = document.getElementById('date-out');
+    let button = document.getElementById('submit');
     let mensaje = document.getElementById('mensaje');
 
     // eventos
@@ -70,12 +71,21 @@ include($dbConnection);
         if (dateIn < now || dateOut < now) {
             mensaje.classList.remove('invisible');
             mensaje.innerHTML = 'Las fechas no pueden ser anteriores a la fecha actual.';
+            button.disabled = true;
+            button.type = 'button';
+            console.log(button.type);
         } else if (dateOut <= dateIn) {
             mensaje.classList.remove('invisible');
             mensaje.innerHTML = 'La fecha de salida debe ser posterior a la fecha de entrada.';
+            button.disabled = true;
+            button.type = 'button';
+            console.log(button.type);
         }
         else {
             mensaje.classList.add('invisible');
+            button.disabled = false;
+            button.type = 'submit';
+            console.log(button.type);
         }
 
     }
