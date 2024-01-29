@@ -16,8 +16,5 @@ include('components/header.php')
             role="button">Empezar a
             reservar</a>
     </div>
-    <!-- <div class="hero d-flex flex-column justify-content-center text-center align-items-center">
-        poner aquí un bento grid o algo
-    </div> -->
 </div>
 <?php include('components/footer.php') ?>

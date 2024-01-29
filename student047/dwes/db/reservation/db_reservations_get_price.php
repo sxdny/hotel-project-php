@@ -5,5 +5,3 @@ $price = $_SESSION['precio-reserva'];
 
 // Devolvemos el precio
 echo json_encode($price);
-
-?>

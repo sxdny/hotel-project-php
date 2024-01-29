@@ -26,7 +26,7 @@ mysqli_close($conn);
     <!-- menú de filtrado / búsqueda -->
     <div class="d-flex justify-content-between">
         <div class="heading">
-            <h3 class="mt-3">Ver clientes <span class="badge bg-secondary">Admin</span></h3>
+            <h3 class="mt-3">Listado de reservas <span class="badge bg-secondary">Admin</span></h3>
         </div>
         <div class="filter">
             <div class="dropdown">

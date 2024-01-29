@@ -9,11 +9,11 @@ $dbConnection = $root.'/components/db_connection.php';
 
 include($dbConnection);
 
-// query para seleccionar mis reservas
-
-$sql = "SELECT * FROM 047reservas WHERE id_cliente = ".$_SESSION["cliente"]["id"];
+$sql = "SELECT * FROM 047reservas WHERE id_cliente = ".$_SESSION["cliente"]["id"]
+    ." AND estado NOT LIKE 'cancelado';";
 $result = mysqli_query($conn, $sql);
 $reservations = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
 ?>
 
 <?php
@@ -25,10 +25,6 @@ include($header);
 <section class="pt-5 m-5">
 
     <div class="container-fluid d-flex flex-column">
-
-        <div class="info">
-            <!-- Mostrar información de alguna cosa no me acuerdo. -->
-        </div>
 
         <div class="container-fluid my-5 d-flex row gap-3">
 
@@ -46,8 +42,9 @@ include($header);
             } else {
                 ?>
                 <h2>Mis reservas</h2>
-                <p>Estas son tus reservas:</p>
-                <table>
+                <p>A continuación se encuentran tus reservas.
+                </p>
+                <table class="table table-bordered">
                     <tr>
                         <th>Id</th>
                         <th>Fecha de entrada</th>
@@ -115,11 +112,27 @@ include($header);
                             <td>
                                 <?php echo $reservation["id_habitacion"] ?>
                             </td>
-                            <td>
-                                <!-- botón para cancelar la reserva -->
-                                <button class="btn btn-outline-danger" type="submit" data-bs-toggle="modal"
-                                    data-bs-target="<?php echo '#exampleModal'.$reservation["id_reserva"] ?>"> Cancelar
-                                    reserva</button>
+                            <td class="d-flex gap-2">
+                                <?php
+                                $fecha_actual = date("Y-m-d");
+                                // restamos 3 días a la fecha actual para que no se pueda cancelar una reserva con fecha de entrada anterior a la actual
+                                $fecha_actual = date("Y-m-d", strtotime($fecha_actual."- 3 days"));
+                                $fecha_salida = $reservation["data_salida"];
+                                if($fecha_salida > $fecha_actual) {
+                                    ?>
+                                    <a class="btn btn-outline-primary" href="<?php echo 'form_update_reservation.php' ?>"
+                                        role="button">Modificar reserva</a>
+                                    <button class="btn btn-outline-danger" type="submit" data-bs-toggle="modal"
+                                        data-bs-target="<?php echo '#exampleModal'.$reservation["id_reserva"] ?>"> Cancelar reserva</button>
+
+                                    <?php
+                                } else {
+                                    ?>
+                                    <p> No se puede modificar ni cancelar la reserva debido
+                                        a que ya ha pasado el plazo. </p>
+                                    <?php
+                                }
+                                ?>
                             </td>
                         </tr>
                         <?php
@@ -131,3 +144,8 @@ include($header);
     </div>
 </section>
 <?php include($footer) ?>
+
+<script>
+    // Evitamos que se pueda cancelar una reserva con fecha de entrada anterior a la actual
+    // De momento voy a ver si puedo hacerlo antes con PHP
+</script>
