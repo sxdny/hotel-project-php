@@ -32,7 +32,7 @@
 - [ ] Almacenar los datos de los servicios extras en un fichero JSON dentro de la base de datos y extraerlos correctamente para emitir la factura. (**En desarrollo**)
 
 **7. RESERVAS:**
-- [ ] Permitir cancelación, modificación (reducir o ampliar días), antes y durante la estancia en el hotel.
+- [x] Permitir cancelación, modificación (reducir o ampliar días), antes y durante la estancia en el hotel.
 
 **8. FUNCIONALIDADES:**
 - [ ] Permitir que el administrador suba ficheros al servidor (ej. imágenes de habitaciones o clientes -foto, dni-) mediante el formulario correspondiente. (**En desarrollo**)
