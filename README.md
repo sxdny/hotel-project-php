@@ -24,7 +24,7 @@
 - [x] Crear formulario login, fichero de acción asociado e implementar Control de Usuarios por tipo (guest, customer, admin) mediante el uso de la variable superglobal de sesión.
 
 **4. EXTRAS:**
-- [ ] Habilitar servicios extra en el hotel (spa, bar, restaurante) y permitir que los clientes puedan adquirirlos cargándolos a la habitación. Desarrollar algún sistema para que los clientes alojados en el hotel adquieran estos servicios aleatoriamente. (**En desarrollo**)
+- [ ] Habilitar servicios extra en el hotel (spa, bar, restaurante) y permitir que los clientes puedan adquirirlos cargándolos a la habitación. Desarrollar algún sistema para que los clientes alojados en el hotel adquieran estos servicios aleatoriamente. **50%**
       
 ### PHP Project - Silver
 
@@ -35,7 +35,7 @@
 - [x] Permitir cancelación, modificación (reducir o ampliar días), antes y durante la estancia en el hotel.
 
 **8. FUNCIONALIDADES:**
-- [ ] Permitir que el administrador suba ficheros al servidor (ej. imágenes de habitaciones o clientes -foto, dni-) mediante el formulario correspondiente. (**En desarrollo**)
+- [x] Permitir que el administrador suba ficheros al servidor (ej. imágenes de habitaciones o clientes -foto, dni-) mediante el formulario correspondiente.
 
 ### PHP Project - Gold
 
