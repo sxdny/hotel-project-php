@@ -80,7 +80,7 @@ include($header);
                                             esté disponible.
                                         </div>
 
-                                        <input type="text" hidden value="<?php echo $reservation['id_reserva'] ?>"
+                                        <input type="text" value="<?php echo $reservation['id_reserva'] ?>"
                                             name="reserva-id">
 
                                         <div class="modal-footer">
@@ -92,6 +92,8 @@ include($header);
                                 </div>
                             </form>
                         </div>
+
+                        <form method="POST" action="<?php echo $root . 'forms/reservation/form_update_my_reservation.php' ?>">
 
                         <tr>
                             <td>
@@ -120,8 +122,8 @@ include($header);
                                 $fecha_salida = $reservation["data_salida"];
                                 if($fecha_salida > $fecha_actual) {
                                     ?>
-                                    <a class="btn btn-outline-primary" href="<?php echo 'form_update_reservation.php' ?>"
-                                        role="button">Modificar reserva</a>
+                                    <button class="btn btn-outline-primary" type="submit">Modificar dias</button>
+                                        <input hidden name="reservation-id" type="number" value="<?php echo $reservation["id_reserva"] ?>">
                                     <button class="btn btn-outline-danger" type="submit" data-bs-toggle="modal"
                                         data-bs-target="<?php echo '#exampleModal'.$reservation["id_reserva"] ?>"> Cancelar reserva</button>
 
@@ -135,6 +137,7 @@ include($header);
                                 ?>
                             </td>
                         </tr>
+                        </form>
                         <?php
                     }
                     ?>

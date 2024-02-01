@@ -63,13 +63,11 @@ mysqli_close($conn);
                 <th>Precio final</th>
                 <th>Estado</th>
                 <th>Servicios</th>
-                <th></th>
-                <th></th>
+                <th>Acciones</th>
             </tr>
 
             <?php
-            foreach ($reservations as $reservation) {
-                ?>
+            foreach ($reservations as $reservation) { ?>
 
                 <div class="position-absolute modal top-0 fade"
                     id="<?php echo 'exampleModal' . $reservation['id_reserva'] ?>" tabindex="-1"
@@ -106,7 +104,8 @@ mysqli_close($conn);
                     <tr>
                         <td>
                             <?php echo $reservation['id_reserva'] ?>
-                            <input hidden type="number" value="<?php echo $reservation['id_reserva'] ?>" name="reservation-id">
+                            <input hidden type="number" value="<?php echo $reservation['id_reserva'] ?>"
+                                name="reservation-id">
                         </td>
                         <td>
                             <?php echo $reservation['id_habitacion'] ?>
@@ -135,18 +134,44 @@ mysqli_close($conn);
                         </td>
 
                         <td>
-                            <?php echo $reservation['json_servicios'] ?>
+                            <!-- <?php echo $reservation['json_servicios'] ?> -->
+                            <?php
+                            $servicios_reserva = json_decode($reservation['json_servicios']);
+
+                            if ($servicios_reserva == NULL) {
+                                echo "No hay servicios asociados a esta reserva.";
+                            } else {
+                                // echo gettype($servicios_reserva);
+                                foreach ($servicios_reserva as $servicio) {
+                                    ?>
+                                    <li>
+                                        <?php echo $servicio ?>
+                                    </li>
+                                    <?php
+                                }
+                            }
+
+                            ?>
                         </td>
 
                         <td>
                             <button class="btn btn-primary" type="submit">Editar</button>
-                        </td>
-
-                        <td>
                             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
                                 data-bs-target="<?php echo '#exampleModal' . $reservation['id_reserva'] ?>">
                                 Eliminar
                             </button>
+                            <?php
+                            if ($reservation['estado'] == 'Check-out') {
+                                ?>
+                                <form method="POST" action="<?php echo $root . 'forms/reservation/form_bill_reservation.php' ?>">
+                                    <input hidden type="number" value="<?php echo $reservation['id_reserva'] ?>"
+                                        name="id-reserva">
+                                        <button type="submit" class="btn btn-outline-success" type="submit">Emitir factura</button>
+                                </form>
+                                
+                                <?php
+                            }
+                            ?>
                         </td>
                     </tr>
 

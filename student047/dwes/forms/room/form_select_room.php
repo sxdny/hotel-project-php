@@ -86,14 +86,12 @@ if (isset($_POST['filtro'])) {
         ?>
     </div>
 
-    <!-- mostrar habitaciones -->
-    <!-- TODO cambiar colores etiquetas dependiendo del estado -->
     <div class="container-fluid my-5 d-flex row gap-3">
         <?php
         foreach ($habitaciones as $habitacion) {
             ?>
             <form class="col" action="<?php echo $root . 'forms/room/form_update_room.php'?>" method="POST">
-                <div class="card" style="min-width: 16rem;">
+                <div class="card min-h-50">
                     <img src="<?php echo $root . $habitacion['imagen'] ?>" class="card-img-top" alt="Preview habitación.">
                     <div class="card-body">
                         <h5 class="card-title">
@@ -134,7 +132,7 @@ if (isset($_POST['filtro'])) {
             <!-- Generar un modal para cada cliente -->
             <div class="modal fade" id="<?php echo "exampleModal" . $habitacion['id'] ?>" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <form class="modal-dialog-centered" action="../db/db_room_delete.php" method="POST">
+                <form class="modal-dialog-centered" action="<?php echo $root . 'db/room/db_room_delete.php' ?>" method="POST">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
