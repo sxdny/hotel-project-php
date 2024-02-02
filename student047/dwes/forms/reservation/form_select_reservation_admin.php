@@ -161,16 +161,6 @@ mysqli_close($conn);
                                 Eliminar
                             </button>
                             <?php
-                            if ($reservation['estado'] == 'Check-out') {
-                                ?>
-                                <form method="POST" action="<?php echo $root . 'forms/reservation/form_bill_reservation.php' ?>">
-                                    <input hidden type="number" value="<?php echo $reservation['id_reserva'] ?>"
-                                        name="id-reserva">
-                                        <button type="submit" class="btn btn-outline-success" type="submit">Emitir factura</button>
-                                </form>
-                                
-                                <?php
-                            }
                             ?>
                         </td>
                     </tr>

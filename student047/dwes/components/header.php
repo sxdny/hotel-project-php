@@ -93,6 +93,10 @@ $root = '/student047/dwes/';
                                 </ul>
                             </li>
 
+                            <li>
+                            <a class="nav-link" href="<?php echo $root . 'forms/reservation/form_bill_reservation.php' ?>">Facturas</a>
+                            </li>
+
                         <?php }
                         ; ?>
 
@@ -101,7 +105,6 @@ $root = '/student047/dwes/';
                                 href="<?php echo $root.'/forms/reservation/form_select_my_reservations.php' ?>">Mis
                                 reservas</a>
                         </li>
-
 
 
                         <li class="nav-item">
