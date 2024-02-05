@@ -23,49 +23,24 @@ mysqli_close($conn);
 
 <?php include($header) ?>
 
+
 <section class="select-clients pt-5 m-5 mb-0">
 
-    <!-- menú de filtrado -->
-    <!-- TODO hacer menú de filtrado -->
     <div class="d-flex justify-content-between">
         <div class="heading">
             <h3 class="mt-3">Ver clientes <span class="badge bg-secondary">Admin</span></h3>
         </div>
-        <div class="filter">
-            <div class="dropdown">
-                <form class="d-flex" action="form_select_room.php" method="POST">
-                    <select disabled class="form-select" aria-label="Default select example" name="filtro" required>
-                        <option value="" selected>Filtrar por</option>
-                        <option value="todos">Todos los clientes</option>
-                        <option value="metodo-pagp">Por método de pago</option>
-                    </select>
-                    <button disabled class="btn btn-primary ms-4" type="submit">Buscar</button>
-                </form>
-            </div>
+        <div class="d-flex items-center justify-content-center align-items-center gap-3">
+            <p class="m-0">Buscar usuario por nombre:</p>
+            <input class="px-2 py-1 border rounded focus-ring" type="search" name="cient-name" id="search-client-name">
         </div>
-    </div>
-
-    <div class="info">
-        <!-- Mostrar información de alguna cosa no me acuerdo. -->
     </div>
 
     <div class="container-fluid my-5 d-flex row gap-3">
 
-        <table class="table">
+        <table class="table" id="clientes">
 
-            <tr>
-                <th>Foto</th>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Correo electrónico</th>
-                <th>DNI / NIE</th>
-                <th>Teléfono de contacto</th>
-                <th>Método de pago</th>
-                <th></th>
-                <th></th>
-            </tr>
-
-            <?php
+            <!-- <?php
             foreach ($clients as $client) {
                 ?>
 
@@ -138,7 +113,7 @@ mysqli_close($conn);
                 </form>
                 <?php
             }
-            ?>
+            ?> -->
         </table>
     </div>
 
@@ -164,5 +139,107 @@ mysqli_close($conn);
     ?>
 
 </section>
+
+<script>
+
+    let inputSeachClient = document.getElementById('search-client-name');
+
+    window.onload = () => {
+        getClientsAJAX();
+    }
+
+    inputSeachClient.addEventListener('input', () => {
+        getClientsAJAX();
+    });
+
+    function getClientsAJAX() {
+        let nombre = inputSeachClient.value;
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '<?php echo $root . "ajax/search_client_table.php" ?>', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = () => {
+            console.log(xhr.responseText);
+            console.log(xhr.status);
+            if (xhr.status === 200) {
+                let clientes = JSON.parse(xhr.responseText);
+                let tablaClientes = document.getElementById('clientes');
+                tablaClientes.innerHTML = " <th>Foto</th> <th>Id</th> <th>Nombre</th> <th>Correo electrónico</th> <th>DNI / NIE</th> <th>Teléfono de contacto</th> <th>Método de pago</th> <th> Acciones </th>";
+
+                console.log(clientes);
+
+                if (clientes.length === 0) {
+                    tablaClientes.innerHTML = '<p>No se han encontrado clientes...</p>';
+                    return;
+                } else {
+                    let form = document.createElement('form');
+                    console.log(form);
+                    form.action = <?php echo " ' " . $root . "forms/client/form_update_client.php' " ?>;
+                    form.method = 'POST';
+                    clientes.forEach(cliente => {
+
+                        let trCliente = document.createElement('tr');
+
+                        let tdFoto = document.createElement('td');
+                        let imgFoto = document.createElement('img');
+                        imgFoto.src = <?php echo " ' " . $root . "'" ?> + cliente.imagen;
+                        imgFoto.width = 50;
+                        imgFoto.height = 50;
+                        imgFoto.classList.add('rounded');
+                        tdFoto.appendChild(imgFoto);
+                        trCliente.appendChild(tdFoto);
+
+                        let tdId = document.createElement('td');
+                        tdId.textContent = cliente.id;
+                        trCliente.appendChild(tdId);
+
+                        let tdNombre = document.createElement('td');
+                        tdNombre.textContent = cliente.nombre;
+                        trCliente.appendChild(tdNombre);
+
+                        let tdCorreo = document.createElement('td');
+                        tdCorreo.textContent = cliente.correo;
+                        trCliente.appendChild(tdCorreo);
+
+                        let tdDni = document.createElement('td');
+                        tdDni.textContent = cliente.dni;
+                        trCliente.appendChild(tdDni);
+
+                        let tdTelefono = document.createElement('td');
+                        tdTelefono.textContent = cliente.telefono;
+                        trCliente.appendChild(tdTelefono);
+
+                        let tdMetodoPago = document.createElement('td');
+                        tdMetodoPago.textContent = cliente.metodo_pago;
+                        trCliente.appendChild(tdMetodoPago);
+
+                        let tdAcciones = document.createElement('td');
+                        let btnEditar = document.createElement('button');
+                        btnEditar.classList.add('btn', 'btn-primary');
+                        btnEditar.textContent = 'Editar';
+                        btnEditar.addEventListener('click', () => {
+                            window.location.href = <?php echo " ' " . $root . "forms/client/form_update_client.php' " ?> + '?client-id=' + cliente.id;
+                        });
+                        tdAcciones.appendChild(btnEditar);
+                        let secretInput = document.createElement('input');
+                        secretInput.type = 'text';
+                        secretInput.hidden = true;
+                        secretInput.value = cliente.id;
+                        secretInput.name = 'client-id';
+                        tdAcciones.appendChild(secretInput);
+
+                        tablaClientes.appendChild(trCliente);
+                    })
+
+                    tablaClientes.appendChild(form);
+                }
+
+
+            }
+        }
+        xhr.send('nombre=' + nombre);
+    }
+
+</script>
 
 <?php include($footer) ?>
