@@ -19,18 +19,22 @@ $contra = $_POST['contra'];
 
 // buscar el cliente con la password
 $sql =
-    "SELECT * FROM 047clientes
+    "SELECT * FROM clientes
     WHERE usuario ='" . $usuario . "' AND contra = '" . $contra . "';";
 $result = mysqli_query($conn, $sql);
 $clientes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+// si el usuario no existe en la base de datos...
+if (empty($clientes)) {
+    $_SESSION["error"] = "Usuario o contraseña incorrectos";
+    header('Location: /student047/dwes/forms/client/form_customer_login.php');
+    exit();
+}
+
 $_SESSION["cliente"] = $clientes[0];
 
 if (isset($_SERVER['HTTP_REFERER'])) {
-    // para retroceder dos páginas
-    echo '<script>window.history.go(-2);</script>';
-} else {
     header('Location: /student047/dwes/index.php');
+    exit();
 }
-exit();
 ?>

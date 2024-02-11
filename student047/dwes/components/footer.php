@@ -15,6 +15,4 @@
 
 <script>hljs.highlightAll();</script>
 
-</body>
-
 </html>
