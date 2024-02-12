@@ -6,6 +6,7 @@ $root = $_SERVER["DOCUMENT_ROOT"] . '/student047/dwes';
 $header = $root . '/components/header.php';
 $footer = $root . '/components/footer.php';
 $dbConnection = $root . '/components/db_connection.php';
+$navbar = $root . '/components/navbar.php';
 
 include($dbConnection);
 
@@ -13,43 +14,48 @@ include($dbConnection);
 
 <?php include($header) ?>
 
-<section class="section-reservation container-fluid d-flex flex-column">
+<?php include($navbar) ?>
 
-    <form class="reservation-form" action="<?php echo 'form_choose_reservation.php' ?>" method="POST">
+<body class="h-100 d-flex flex-column align-items-center">
 
-        <h2>¡Hagamos una reserva!</h2>
+    <section class="container-fluid d-flex flex-column flex-grow-1 align-self-center justify-content-center align-items-center">
 
-        <p>Introduzca los datos para empezar a realizar una reserva:</p>
-        <div class="mb-3">
-            <label for="date-in" class="form-label">Date-in:</label>
-            <input id="date-in" required type="date" class="datepicker date-picker form-control" name="date-in"
-                aria-describedby="date-in">
-        </div>
-        <div class="mb-3">
-            <label for="date-out" class="form-label">Date-out:</label>
-            <input id="date-out" required type="date" class="form-control" name="date-out" aria-describedby="date-out">
-        </div>
-        <div class="mb-3">
-            <label for="date-out" class="form-label">Número de personas:</label>
-            <input required type="number" class="form-control" name="n-personas" aria-describedby="n-personas" min="0"
-                max="4">
-        </div>
+        <form class="border-none align-self-center m-5 d-flex flex-column align-items-center" action="<?php echo 'form_choose_reservation.php' ?>" method="POST">
 
-        <div id="mensaje" class="invisible alert alert-danger" role="alert">
-           
-        </div>
+            <h2>¡Hagamos una reserva!</h2>
 
-        <button id="submit" type="submit" class="btn btn-primary">Enviar</button>
+            <p>Introduzca los datos para empezar a realizar una reserva:</p>
+            <div class="mb-3 w-100">
+                <label for="date-in" class="form-label">Date-in:</label>
+                <input id="date-in" required type="date" class="datepicker date-picker form-control" name="date-in"
+                    aria-describedby="date-in">
+            </div>
+            <div class="mb-3 w-100">
+                <label for="date-out" class="form-label">Date-out:</label>
+                <input id="date-out" required type="date" class="form-control" name="date-out"
+                    aria-describedby="date-out">
+            </div>
+            <div class="mb-3 w-100">
+                <label for="date-out" class="form-label">Número de personas:</label>
+                <input required type="number" class="form-control" name="n-personas" aria-describedby="n-personas"
+                    min="0" max="4">
+            </div>
 
-    </form>
+            <div id="mensaje" class="invisible alert alert-danger" role="alert">
 
+            </div>
+
+            <button id="submit" type="submit" class="btn btn-primary w-100">Enviar</button>
+
+        </form>
+
+    </section>
+    
     <?php include($footer) ?>
-</section>
+</body>
 
 <script>
-    // Código y datepicker
-
-    // comparar fechas
+    
     let inputDateIn = document.getElementById('date-in');
     let inputDateOut = document.getElementById('date-out');
     let mensaje = document.getElementById('mensaje');
